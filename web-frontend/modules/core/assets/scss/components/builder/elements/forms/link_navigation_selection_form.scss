@@ -1,0 +1,9 @@
+.link-navigation-selection-form__navigate-option-page-name {
+  @extend %ellipsis;
+}
+
+.link-navigation-selection-form__navigate-option-page-path {
+  color: $color-neutral-600;
+
+  @extend %ellipsis;
+}

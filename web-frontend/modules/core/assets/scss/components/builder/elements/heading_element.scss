@@ -1,0 +1,9 @@
+.heading-element__heading {
+  .element--alignment-horizontal-center & {
+    text-align: center;
+  }
+
+  .element--alignment-horizontal-right & {
+    text-align: right;
+  }
+}

@@ -1,0 +1,167 @@
+@import 'api_docs/all';
+
+.api-docs {
+  position: relative;
+  background-color: $white;
+  padding: $api-docs-header-height 0 1px $api-docs-nav-width;
+
+  &::after {
+    content: '';
+    width: calc(50% - #{$api-docs-nav-width * 0.5});
+    background-color: $color-neutral-600;
+    z-index: $api-docs-background-z-index;
+
+    @include absolute(0, 0, 0, auto);
+
+    @media screen and (max-width: $api-docs-breakpoint) {
+      display: none;
+    }
+  }
+}
+
+.api-docs__header {
+  display: flex;
+  height: $api-docs-header-height;
+  align-items: center;
+  background-color: $white;
+  border-bottom: 2px solid $color-neutral-200;
+  z-index: $api-docs-header-z-index;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.api-docs__logo {
+  padding: 0 16px;
+
+  img {
+    max-width: 104px;
+  }
+}
+
+.api-docs__switch {
+  padding: 0 10px;
+  font-weight: 600;
+  color: $color-neutral-900;
+  user-select: none;
+
+  @include fixed-height(32px, 13px);
+  @include rounded($rounded);
+  @include flex-align-items(6px);
+
+  &:hover {
+    text-decoration: none;
+    background-color: $color-neutral-100;
+  }
+}
+
+.api-docs__switch-icon {
+  font-size: 14px;
+  margin-right: 6px;
+  color: $color-primary-500;
+}
+
+.api-docs__open {
+  padding: 0 16px;
+  margin-left: auto;
+}
+
+.api-docs__databases {
+  z-index: $api-docs-databases-z-index;
+  background-color: $white;
+  overflow-y: auto;
+  width: 262px;
+  box-shadow: 1px 0 4px 0 rgba($black, 0.16);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.api-docs__databases-inner {
+  padding: 30px;
+}
+
+.api-docs__nav {
+  width: $api-docs-nav-width;
+  background-color: $color-neutral-100;
+  border-right: solid 1px $color-neutral-200;
+  overflow: auto;
+  z-index: $api-docs-nav-z-index;
+  position: fixed;
+  top: $api-docs-header-height;
+  bottom: 0;
+  left: 0;
+}
+
+.api-docs__body {
+  position: relative;
+  z-index: $api-docs-body-z-index;
+}
+
+.api-docs__item {
+  display: flex;
+  margin: 40px 0;
+
+  @media screen and (max-width: $api-docs-breakpoint) {
+    display: block;
+  }
+}
+
+.api-docs__left {
+  width: 50%;
+  padding: 0 34px;
+
+  @media screen and (max-width: $api-docs-breakpoint) {
+    width: 100%;
+  }
+}
+
+.api-docs__right {
+  width: 50%;
+  padding: 0 20px;
+
+  @media screen and (max-width: $api-docs-breakpoint) {
+    width: 100%;
+    padding: 0 34px;
+    margin: 20px 0;
+  }
+}
+
+.api-docs__content {
+  color: $color-neutral-900;
+
+  &.markdown code {
+    display: inline-block;
+    font-size: 14px;
+    padding: 3px 6px;
+    background-color: $color-neutral-100;
+
+    @include rounded($rounded);
+  }
+
+  &.markdown p {
+    color: $color-neutral-900;
+    margin-bottom: 20px;
+    font-size: 13px;
+    line-height: 140%;
+  }
+
+  &.markdown ul {
+    padding-left: 1em;
+  }
+}
+
+.api-docs__heading-wrapper {
+  display: flex;
+  justify-content: space-between;
+
+  @media screen and (max-width: $api-docs-breakpoint) {
+    display: block;
+  }
+}
+
+.api-docs__endpoint-type {
+  width: 100px;
+}

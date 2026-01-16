@@ -1,0 +1,106 @@
+.page-preview__wrapper {
+  padding: 10px 30px;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page-preview {
+  position: relative;
+  z-index: 1;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  .page__header,
+  .page__content,
+  .page__footer {
+    // page parts are under the page separators...
+    z-index: 0;
+    position: relative;
+  }
+
+  .page__header--element-selected,
+  .page__content--element-selected,
+  .page__footer--element-selected {
+    // ...Except if they contain the selected element
+    z-index: 2;
+    position: relative;
+  }
+}
+
+.page-preview__add {
+  @include center-text(26px, 10px);
+
+  display: block;
+  border-radius: 100%;
+  border: solid 1px $color-neutral-400;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+  color: $color-neutral-900;
+  background-color: $white;
+
+  &:hover {
+    background-color: $color-neutral-50;
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.32);
+  }
+}
+
+.page-preview__scaled {
+  width: 100%;
+  min-height: 100%;
+  overflow: auto;
+  position: relative;
+
+  // These properties are duplicated from the page element because during the SSR
+  // the screen size is fixed to an arbitrary value and when returned to the browser
+  // there is a small gap at the bottom of the screen between the end of the `.page` and
+  // the end of this element. By duplicating them, we hide the difference before the
+  // front hydratation.
+  background-color: var(--page-background-color, #fff);
+  background-image: var(--page-background-image, none);
+  background-size: var(--page-background-size, cover);
+  background-repeat: var(--page-background-repeat, no-repeat);
+
+  // We need to do this because the border of the preview is round and we need to round
+  // the border of the selection box so that border has to have the same shape.
+  > div:first-child {
+    & .element__menu-item-description {
+      @include absolute(30px, -2px, auto, auto);
+    }
+  }
+
+  > div:last-child::before {
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+}
+
+.page-preview__empty {
+  max-width: 400px;
+  margin: 120px auto;
+}
+
+.page-preview__separator {
+  width: 100%;
+  border-bottom: 1px solid $palette-neutral-200;
+  display: flex;
+  justify-content: center;
+  height: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.page-preview__separator-label {
+  position: absolute;
+  top: -8px;
+  padding: 4px 8px;
+  border-radius: 16px;
+  background: $palette-neutral-50;
+  color: $palette-neutral-700;
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 10px;
+}

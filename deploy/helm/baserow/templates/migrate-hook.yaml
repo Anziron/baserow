@@ -1,0 +1,65 @@
+{{ if .Values.migration.enabled }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "baserow.global.fullname" .}}-migrate
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    helm.sh/hook: post-install, pre-upgrade
+    helm.sh/hook-weight: "5"
+spec:
+  template:
+    spec:
+      {{- if or .Values.global.baserow.securityContext.enabled .Values.migration.securityContext.enabled }}
+      securityContext: {{- include "podSecurityContext" . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: migrate
+          image: {{ include "baserow.global.migration.image" . }}
+          args: ["setup"]
+          imagePullPolicy: Always
+          {{- if .Values.migration.extraEnv }}
+          env:
+            {{- range .Values.migration.extraEnv }}
+            {{- if and (.name) (.value) }}
+            - name: {{ .name | quote }}
+              value: {{ .value | quote }}
+            {{- else if and (.name) (.valueFrom) }}
+            - name: {{ .name | quote }}
+              valueFrom:
+                {{- toYaml .valueFrom | nindent 16 }}
+            {{- end }}
+            {{- end }}
+          {{- end }}
+          envFrom: {{ include "baserow.global.migration.envFrom" . | nindent 12 }}
+          {{- if .Values.migration.priorityClassName }}
+          priorityClassName: {{ .Values.migration.priorityClassName }}
+          {{- end -}}
+          {{- if or .Values.global.baserow.containerSecurityContext.enabled .Values.migration.containerSecurityContext.enabled }}
+          securityContext: {{- include "containerSecurityContext" . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.migration.volumeMounts }}
+          volumeMounts:
+            {{ toYaml . | nindent 12 }}
+          {{- end }}
+      restartPolicy: Never
+      {{ if .Values.migration.priorityClassName }}
+      priorityClassName: {{ .Values.migration.priorityClassName }}
+      {{- end }}
+      {{- with .Values.migration.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.migration.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.migration.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.migration.volumes }}
+      volumes:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{ end }}

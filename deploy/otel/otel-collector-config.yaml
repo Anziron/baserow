@@ -1,0 +1,59 @@
+receivers:
+  otlp:
+    protocols:
+      grpc: # port 4317
+      http:
+        endpoint: "0.0.0.0:4318"
+
+processors:
+  # Disable sending spans for the sync templates task as it contains a huge number
+  # which pointlessly uses up resource limits. Also disable silk spam.
+  filter:
+    spans:
+      exclude:
+        match_type: regexp
+        attributes:
+          - key: db.statement
+            value: .*silk.*
+  filter/2:
+    spans:
+      exclude:
+        match_type: regexp
+        attributes:
+          - key: celery.task_name
+            value: .*sync_templates_task.*
+  batch:
+    send_batch_size: 1000
+
+exporters:
+  otlp:
+    endpoint: "api.honeycomb.io:443"
+    headers:
+      "x-honeycomb-team": "${env:HONEYCOMB_API_KEY}"
+  otlp/metrics:
+    endpoint: "api.honeycomb.io:443"
+    headers:
+      "x-honeycomb-team": "${env:HONEYCOMB_API_KEY}"
+      "x-honeycomb-dataset": "${env:HONEYCOMB_METRICS_DATASET}"
+  logging:
+
+service:
+#  telemetry:
+#    logs:
+#      level: "debug"
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [filter,filter/2,batch]
+      exporters: [otlp,logging]
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlp/metrics,logging]
+    logs:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlp,logging]
+
+extensions:
+  health_check:

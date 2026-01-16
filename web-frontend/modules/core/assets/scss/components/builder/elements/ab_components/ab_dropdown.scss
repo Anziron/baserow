@@ -1,0 +1,114 @@
+.ab-dropdown {
+  position: relative;
+}
+
+.ab-dropdown__selected {
+  position: relative;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: var(--input-font-size, 13px);
+  color: var(--input-text-color, $color-neutral-900);
+  font-family: var(--input-font-family, Inter);
+  font-weight: var(--input-font-weight, 400);
+  background-color: var(--input-background-color, $white);
+  padding: var(--input-vertical-padding, 8px)
+    var(--input-horizontal-padding, 12px);
+  border: var(--input-border-size, 1px) solid var(--input-border-color, black);
+  border-radius: var(--input-border-radius, 0);
+
+  @include flex-align-items(4px);
+
+  &:hover {
+    text-decoration: none;
+    border-color: color-mix(
+      in srgb,
+      var(--input-border-color, $palette-neutral-500),
+      var(--input-border-color-complement, gray) 30%
+    );
+  }
+
+  .ab-dropdown--disabled & {
+    background-color: $palette-neutral-100;
+    color: $palette-neutral-900;
+    cursor: not-allowed;
+    border-color: $palette-neutral-600;
+  }
+}
+
+.ab-dropdown__selected-text {
+  @extend %ellipsis;
+
+  min-width: 0;
+}
+
+.ab-dropdown__selected-icon {
+  margin-right: 4px;
+  color: var(--input-text-color, $color-neutral-900);
+  font-size: var(--input-font-size, 13px);
+}
+
+.ab-dropdown__selected-image {
+  margin-right: 4px;
+  max-width: 15px;
+  max-height: 15px;
+}
+
+.ab-dropdown__toggle-icon {
+  margin-left: auto;
+  color: var(--input-text-color, $color-neutral-900);
+}
+
+.ab-dropdown__items {
+  border: var(--input-border-size, 1px) solid var(--input-border-color, black);
+  border-radius: var(--input-border-radius, 0);
+  background-color: var(--input-background-color, $white);
+  font-size: var(--input-font-size, 13px);
+  font-weight: var(--input-font-weight, 400);
+  z-index: 1;
+
+  @include absolute(0, 0, auto, 0);
+  @include elevation($elevation-medium);
+
+  &.ab-dropdown__items--fixed {
+    flex-direction: column;
+    position: fixed;
+    right: auto;
+
+    &:not(.hidden) {
+      display: flex;
+    }
+  }
+
+  .ab-dropdown--floating & {
+    right: auto;
+  }
+
+  .ab-dropdown--floating-left & {
+    left: auto;
+    right: 0;
+  }
+
+  .select__items--empty {
+    color: color-mix(
+      in srgb,
+      var(--input-text-color, $color-neutral-900),
+      grey 50%
+    );
+  }
+}
+
+.ab-dropdown__selected-placeholder {
+  @extend %ellipsis;
+}
+
+.ab-dropdown__items--max-width {
+  max-width: 500px;
+}
+
+// InfiniteScroll component uses absolute positioning by default.
+// To make it work inside a AB Dropdown we override this behavior
+// with relative positioning.
+.ab-dropdown .infinite-scroll {
+  position: relative;
+}

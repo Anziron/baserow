@@ -1,0 +1,196 @@
+.form-input,
+%form-input {
+  background: $white;
+  display: flex;
+  border: 1px solid $palette-neutral-400;
+  position: relative;
+  height: 36px;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  @include elevation($elevation-low);
+  @include rounded($rounded-md);
+
+  &.form-input--small {
+    height: 28px;
+  }
+
+  &.form-input--large {
+    height: 44px;
+  }
+
+  &.form-input--xlarge {
+    height: 52px;
+  }
+
+  &.form-input--no-border {
+    border: none;
+    box-shadow: none;
+  }
+
+  &:active:not(.form-input--no-border),
+  &:focus:not(.form-input--no-border),
+  &:focus-within:not(.form-input--no-border) {
+    &:not(.form-input--disabled):not(.form-input--error) {
+      border-color: $palette-blue-500;
+    }
+  }
+
+  &.form-input--error {
+    border-color: $palette-red-600;
+  }
+
+  &.form-input--disabled {
+    cursor: not-allowed;
+    box-shadow: none;
+    background-color: $palette-neutral-100;
+  }
+
+  /* stylelint-disable-next-line selector-class-pattern */
+  .tiptap.ProseMirror {
+    width: 100%;
+  }
+}
+
+.form-input__wrapper {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  position: relative;
+
+  .form-input--loading & {
+    @include loading-spinner;
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      margin-top: -7px;
+      right: 12px;
+    }
+  }
+}
+
+.form-input__input {
+  appearance: none;
+  border: none;
+  width: 100%;
+  outline: none;
+  line-height: 100%;
+  background: none;
+  padding: 12px 16px;
+  background-color: $white;
+
+  @include rounded($rounded-md);
+
+  &::placeholder {
+    color: $palette-neutral-700;
+
+    @extend %ellipsis;
+  }
+
+  .form-input--xlarge & {
+    font-size: 16px;
+  }
+
+  .form-input--icon-left & {
+    padding-left: 8px;
+  }
+
+  .form-input--icon-right & {
+    padding-right: 8px;
+  }
+
+  .form-input--disabled & {
+    cursor: not-allowed;
+    background-color: $palette-neutral-100;
+    color: $palette-neutral-700;
+  }
+
+  .form-input--small & {
+    padding: 8px 12px;
+  }
+
+  .form-input--monospace & {
+    font-family: monospace;
+  }
+
+  .form-input--suffix & {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .form-input--no-controls & {
+    @extend %remove-number-input-controls;
+  }
+
+  &.form-input__input--text-invisible {
+    color: transparent;
+
+    &::placeholder {
+      color: transparent;
+    }
+  }
+}
+
+.form-input__icon {
+  position: relative;
+  color: $palette-neutral-600;
+  font-size: 16px;
+  top: 50%;
+  margin-top: -8px;
+
+  &.form-input__icon-left {
+    padding-left: 16px;
+  }
+
+  &.form-input__icon-right {
+    padding-right: 16px;
+    top: auto;
+    margin-top: 0;
+  }
+
+  .form-input--error & {
+    color: $palette-red-400;
+  }
+
+  .form-input--disabled & {
+    color: $palette-neutral-600;
+  }
+
+  .form-input--focus & {
+    color: $palette-blue-500;
+  }
+
+  .form-input--loading &.form-input__icon-right {
+    display: none;
+  }
+
+  .form-input:active:not(.form-input--disabled):not(.form-input--error):not(
+      .form-input--no-border
+    )
+    &,
+  .form-input:focus:not(.form-input--disabled):not(.form-input--error):not(
+      .form-input--no-border
+    )
+    &,
+  .form-input:focus-within:not(.form-input--disabled):not(
+      .form-input--error
+    ):not(.form-input--no-border)
+    & {
+    color: $palette-blue-500;
+  }
+}
+
+.form-input__suffix {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  border-left: 1px solid $palette-neutral-400;
+  appearance: none;
+  padding: 0 12px;
+  outline: none;
+  line-height: 100%;
+  background: $palette-neutral-50;
+  border-top-right-radius: $rounded-md;
+  border-bottom-right-radius: $rounded-md;
+}

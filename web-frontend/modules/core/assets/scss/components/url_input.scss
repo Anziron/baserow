@@ -1,0 +1,16 @@
+.url-input {
+  position: relative;
+}
+
+.url-input__link {
+  position: absolute;
+  top: 0;
+  left: 17px;
+  line-height: 44px;
+  bottom: 0;
+  max-width: calc(100% - (17px * 2));
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  vertical-align: center;
+}

@@ -1,0 +1,23 @@
+.onboarding-tool-preview {
+  border-top: solid 8px $palette-neutral-1300;
+  border-left: solid 8px $palette-neutral-1300;
+  border-top-left-radius: $rounded-3xl;
+  overflow: hidden;
+  pointer-events: none;
+  transition: left 0.5s ease;
+  z-index: $z-index-layout-col-1;
+
+  @include absolute(10%, 0, 0, 10%);
+}
+
+.onboarding-tool-preview__focus-table {
+  left: -500px !important;
+}
+
+.onboarding-tool-preview__inner {
+  @include absolute(0, 0, 0, 0);
+
+  &--reserve-space-right {
+    right: -370px;
+  }
+}

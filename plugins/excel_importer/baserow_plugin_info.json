@@ -1,0 +1,11 @@
+{
+  "name": "Excel Importer",
+  "version": "1.0.0",
+  "description": "Import Excel files (.xlsx, .xls) into Baserow tables",
+  "author": "Your Name",
+  "modules": {
+    "web-frontend": "web-frontend/modules/excel_importer"
+  },
+  "permission_levels": [],
+  "admin_only": false
+}

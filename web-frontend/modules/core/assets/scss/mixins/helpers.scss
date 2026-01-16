@@ -1,0 +1,83 @@
+@mixin fixed-height($height, $font-size) {
+  height: $height;
+  line-height: $height;
+  font-size: $font-size;
+}
+
+@mixin center-text($width, $font-size, $height: $width) {
+  @include fixed-height($height, $font-size);
+
+  width: $width;
+  text-align: center;
+}
+
+@mixin flex-align-items($gap: 0, $display: flex) {
+  display: $display;
+  align-items: center;
+  gap: $gap;
+}
+
+@mixin loading($size: 1.4rem) {
+  position: relative;
+  display: block;
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  border: 0.25em solid;
+  border-color: $color-primary-500 transparent $color-primary-500 transparent;
+  animation: spin infinite 1800ms;
+  animation-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+// The basically works the same as padding: 10px 0 0 10px or padding: 10px; only then
+// resulting position: absolute; with corresponding top, right, bottom, left values.
+// -------
+// Example:
+//  @include absolute(10px);
+// Would result in:
+//  position: absolute;
+//  top: 10px; right: 10px; bottom: 10px; left: 10px;
+// -------
+// Example:
+//  @include absolute(10px, 20px);
+// Would result in:
+//  position: absolute;
+//  top: 10px; right: 20px; bottom: 10px; left: 20px;
+// -------
+// Example:
+//  @include absolute(10px, 20px, 30px);
+// Would result in:
+//  position: absolute;
+//  top: 10px; right: 20px; bottom: 30px;
+@mixin absolute($top: null, $right: null, $bottom: null, $left: null) {
+  position: absolute;
+
+  @if $top != null and $right == null and $bottom == null and $left == null {
+    inset: $top $top $top $top;
+  }
+
+  /* stylelint-disable-next-line at-rule-no-unknown */
+  @else if $top != null and $right != null and $bottom == null and $left == null
+  {
+    inset: $top $right $top $right;
+  }
+
+  /* stylelint-disable-next-line at-rule-no-unknown */
+  @else {
+    @if $top {
+      top: $top;
+    }
+
+    @if $right {
+      right: $right;
+    }
+
+    @if $bottom {
+      bottom: $bottom;
+    }
+
+    @if $left {
+      left: $left;
+    }
+  }
+}

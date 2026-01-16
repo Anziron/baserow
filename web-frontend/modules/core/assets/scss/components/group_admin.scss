@@ -1,0 +1,12 @@
+.group-admin-name {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.group-admin-name__name {
+  @extend %ellipsis;
+
+  word-wrap: break-word;
+  line-height: 24px;
+}

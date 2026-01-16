@@ -1,0 +1,29 @@
+.placeholder {
+  margin: 60px auto;
+  width: 520px;
+  text-align: center;
+
+  &.placeholder--align-left {
+    text-align: left;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.placeholder__logo {
+  margin-bottom: 50px;
+}
+
+.placeholder__logo-image {
+  max-width: 120px;
+}
+
+.placeholder__icon {
+  color: $color-neutral-900;
+  font-size: 34px;
+}
+
+.placeholder__title {
+  font-size: 33px;
+  font-weight: 600;
+}

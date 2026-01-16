@@ -1,0 +1,254 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Field footer component Change type 1`] = `
+<div
+  class="context visibility-hidden"
+  style="top: 10px; right: auto; bottom: auto; left: 0px;"
+>
+  <ul
+    class="select__items"
+  >
+    <li
+      class="select__item select__item--no-options"
+    >
+      <a
+        class="select__item-link"
+      >
+        <div
+          class="select__item-name"
+        >
+          <span
+            class="select__item-name-text"
+          >
+            common.none
+          </span>
+        </div>
+      </a>
+       
+      <!---->
+    </li>
+     
+    <li
+      class="select__item select__item--no-options"
+    >
+      <a
+        class="select__item-link"
+      >
+        <div
+          class="select__item-name"
+        >
+          <span
+            class="select__item-name-text"
+          >
+            viewAggregationType.emptyCount
+          </span>
+        </div>
+      </a>
+       
+      <!---->
+    </li>
+    <li
+      class="select__item select__item--no-options active"
+    >
+      <a
+        class="select__item-link"
+      >
+        <div
+          class="select__item-name"
+        >
+          <span
+            class="select__item-name-text"
+          >
+            viewAggregationType.notEmptyCount
+          </span>
+        </div>
+      </a>
+       
+      <i
+        class="select__item-active-icon iconoir-check"
+      />
+    </li>
+    <li
+      class="select__item select__item--no-options"
+    >
+      <a
+        class="select__item-link"
+      >
+        <div
+          class="select__item-name"
+        >
+          <span
+            class="select__item-name-text"
+          >
+            viewAggregationType.emptyPercentage
+          </span>
+        </div>
+      </a>
+       
+      <!---->
+    </li>
+    <li
+      class="select__item select__item--no-options"
+    >
+      <a
+        class="select__item-link"
+      >
+        <div
+          class="select__item-name"
+        >
+          <span
+            class="select__item-name-text"
+          >
+            viewAggregationType.notEmptyPercentage
+          </span>
+        </div>
+      </a>
+       
+      <!---->
+    </li>
+    <li
+      class="select__item select__item--no-options"
+    >
+      <a
+        class="select__item-link"
+      >
+        <div
+          class="select__item-name"
+        >
+          <span
+            class="select__item-name-text"
+          >
+            viewAggregationType.uniqueCount
+          </span>
+        </div>
+      </a>
+       
+      <!---->
+    </li>
+    <li
+      class="select__item select__item--no-options"
+    >
+      <a
+        class="select__item-link"
+      >
+        <div
+          class="select__item-name"
+        >
+          <span
+            class="select__item-name-text"
+          >
+            viewAggregationType.distribution
+          </span>
+        </div>
+      </a>
+       
+      <!---->
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Field footer component Change type 2`] = `
+<div
+  class="grid-view-aggregation"
+>
+  <div
+    class="grid-view-aggregation__empty"
+  >
+    <i
+      class="grid-view-aggregation__empty-icon iconoir-plus"
+    />
+    
+    common.summarize
+  
+  </div>
+   
+</div>
+`;
+
+exports[`Field footer component Change type 3`] = `
+<div
+  class="grid-view-aggregation"
+>
+  <div
+    class="grid-view-aggregation__generic"
+  >
+    <span
+      class="grid-view-aggregation__generic-name"
+    >
+      viewAggregationType.emptyCount
+    </span>
+     
+    <span
+      class="grid-view-aggregation__generic-value"
+    >
+      10
+    </span>
+  </div>
+   
+</div>
+`;
+
+exports[`Field footer component Default component 1`] = `
+<div
+  class="grid-view-aggregation"
+>
+  <div
+    class="grid-view-aggregation__empty"
+  >
+    <i
+      class="grid-view-aggregation__empty-icon iconoir-plus"
+    />
+    
+    common.summarize
+  
+  </div>
+   
+</div>
+`;
+
+exports[`Field footer component Default component 2`] = `
+<div
+  class="grid-view-aggregation"
+>
+  <div
+    class="grid-view-aggregation__generic"
+  >
+    <span
+      class="grid-view-aggregation__generic-name"
+    >
+      viewAggregationType.notEmptyCount
+    </span>
+     
+    <span
+      class="grid-view-aggregation__generic-value"
+    >
+      
+    </span>
+  </div>
+   
+</div>
+`;
+
+exports[`Field footer component Default component 3`] = `
+<div
+  class="grid-view-aggregation"
+>
+  <div
+    class="grid-view-aggregation__generic"
+  >
+    <span
+      class="grid-view-aggregation__generic-name"
+    >
+      viewAggregationType.notEmptyCount
+    </span>
+     
+    <span
+      class="grid-view-aggregation__generic-value"
+    >
+      75%
+    </span>
+  </div>
+   
+</div>
+`;

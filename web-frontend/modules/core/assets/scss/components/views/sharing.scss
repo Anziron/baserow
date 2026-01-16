@@ -1,0 +1,216 @@
+/**
+ layout changes for shared links (smaller padding)
+ for not-yet shared use `share` naming
+ for shared use `shared` naming
+ */
+
+.view-sharing {
+  max-height: inherit;
+  display: flex;
+  flex-direction: column;
+
+  &--scrollable {
+    overflow-y: scroll;
+  }
+}
+
+.view-sharing__content {
+  max-height: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+.view-sharing__loading-icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border: 2px;
+  margin-left: 4px;
+  margin-right: 16px;
+  top: -2px;
+  position: relative;
+
+  @include rounded($rounded-md);
+
+  &::before {
+    content: '';
+    z-index: 1;
+
+    @include loading(14px);
+  }
+}
+
+.view-sharing__share-link {
+  padding: 48px 80px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+
+  @include rounded($rounded-md);
+
+  &--scrollable {
+    overflow-y: scroll;
+  }
+}
+
+.view-sharing__shared-link {
+  padding: 20px;
+  text-align: left;
+  max-width: 624px;
+  color: $palette-neutral-900;
+  border-top: solid 1px $palette-neutral-200;
+
+  &:first-child {
+    border-top: none;
+  }
+}
+
+.view-sharing__share-link-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: $palette-neutral-1200;
+}
+
+.view-sharing__share-link-description {
+  font-size: 12px;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.view-sharing__share-link-options {
+  @include flex-align-items(16px);
+}
+
+.view-sharing__shared-link-title {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+  margin-bottom: 8px;
+  color: $palette-neutral-1200;
+}
+
+.view-sharing__shared-link-description {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  margin-bottom: 8px;
+}
+
+.view-sharing__share-link-content {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.view-sharing__shared-link-content {
+  display: flex;
+  align-items: center;
+}
+
+.view-sharing__shared-link-box {
+  @extend %ellipsis;
+
+  background-color: $palette-neutral-100;
+  line-height: 32px;
+  padding: 0 8px;
+  font-family: monospace;
+  font-size: 10px;
+  width: 516px;
+  border: solid 1px $palette-neutral-400;
+  overscroll-behavior: none;
+  margin: 8px 0;
+  height: 32px;
+
+  @include scrollable-overflow;
+  @include rounded($rounded);
+
+  &.view-sharing__shared-link-box--short {
+    width: 484px;
+  }
+}
+
+.view-sharing__shared-link-action {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  vertical-align: center;
+  margin-left: 4px;
+  line-height: 32px;
+  font-size: 14px;
+  text-align: center;
+  color: $palette-neutral-900;
+
+  @include rounded($rounded);
+
+  &:not(.view-sharing__shared-link-action--loading):hover {
+    background-color: $color-neutral-100;
+  }
+
+  &.view-sharing__shared-link-action--loading {
+    color: $white;
+    cursor: inherit;
+
+    &::before {
+      content: '';
+      margin-top: -7px;
+      margin-left: -7px;
+      z-index: 1;
+
+      @include loading(14px);
+      @include absolute(50%, auto, auto, 50%);
+    }
+  }
+
+  &.view-sharing__shared-link-action--disabled {
+    background-color: transparent;
+
+    &:hover {
+      cursor: inherit;
+    }
+  }
+}
+
+.view-sharing__shared-link-foot {
+  display: flex;
+  justify-content: left;
+  gap: 20px;
+  padding: 16px;
+  line-height: 20px;
+  border-top: solid 1px $palette-neutral-200;
+}
+
+.view-sharing__shared-link-options {
+  margin-top: 14px;
+}
+
+.view-sharing__option {
+  margin-top: 14px;
+
+  @include flex-align-items(4px);
+
+  &--disabled {
+    cursor: pointer;
+    color: $color-neutral-500;
+  }
+}
+
+.view-sharing__option-icon {
+  font-size: 14px;
+}
+
+p.box__description {
+  margin-bottom: 15px;
+}
+
+.view-sharing__option-change-password {
+  margin-left: 12px;
+
+  @include flex-align-items(4px);
+
+  &:hover {
+    text-decoration: none;
+  }
+}

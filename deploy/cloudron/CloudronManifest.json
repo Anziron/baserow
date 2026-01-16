@@ -1,0 +1,22 @@
+{
+  "id": "io.baserow.cloudronapp",
+  "title": "Baserow",
+  "author": "Bram Wiepjes",
+  "description": "file://DESCRIPTION.md",
+  "tagline": "Collaborate on any form of data",
+  "website": "https://baserow.io",
+  "contactEmail": "bram@baserow.io",
+  "icon": "file://logo.png",
+  "tags": ["no-code", "nocode", "database", "data", "collaborate", "airtable"],
+  "version": "2.0.6",
+  "healthCheckPath": "/api/_health/",
+  "httpPort": 80,
+  "addons": {
+    "postgresql": {},
+    "sendmail": {},
+    "localstorage": {}
+  },
+  "memoryLimit": 2147483648,
+  "manifestVersion": 2,
+  "multiDomain": true
+}

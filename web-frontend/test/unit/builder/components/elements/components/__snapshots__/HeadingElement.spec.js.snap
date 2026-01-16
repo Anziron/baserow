@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeadingElement Default HeadingElement component 1`] = `
+<div
+  class="heading-element element--no-value"
+>
+  <h2
+    class="ab-heading ab-heading--h2"
+  >
+    
+     
+  
+  </h2>
+</div>
+`;
+
+exports[`HeadingElement Default HeadingElement component v2 1`] = `
+<div
+  class="heading-element"
+>
+  <h3
+    class="ab-heading ab-heading--h3"
+  >
+    
+    hello
+  
+  </h3>
+</div>
+`;

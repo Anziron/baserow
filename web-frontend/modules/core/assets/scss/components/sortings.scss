@@ -1,0 +1,154 @@
+.sortings {
+  .dropdown__selected {
+    @extend %ellipsis;
+  }
+}
+
+.sortings__content {
+  max-height: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+.sortings__none {
+  padding: 16px 20px;
+
+  &--scrollable {
+    overflow-y: scroll;
+  }
+}
+
+.sortings__none-title {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.sortings__none-description {
+  font-size: 13px;
+}
+
+.sortings__items {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0;
+  gap: 16px;
+
+  .sortings__misconfigured-text {
+    color: $palette-red-800;
+  }
+
+  &--scrollable {
+    overflow-y: scroll;
+  }
+}
+
+.sortings__item {
+  position: relative;
+  padding: 0 16px;
+
+  @include rounded($rounded);
+  @include flex-align-items(10px);
+
+  &.sortings__item--loading {
+    &::before {
+      content: '';
+      margin: 0 4px;
+
+      @include loading(14px);
+    }
+  }
+}
+
+.sortings__remove {
+  font-size: 20px;
+  color: $color-neutral-900;
+  justify-content: center;
+  width: 22px;
+
+  @include flex-align-items;
+
+  &:hover {
+    text-decoration: none;
+    color: $color-neutral-500;
+  }
+
+  .sortings__item--loading & {
+    display: none;
+  }
+}
+
+.sortings__description {
+  flex: 0 0 58px;
+  width: 58px;
+  margin-right: 2px;
+
+  span {
+    padding-left: 12px;
+  }
+}
+
+.sortings__field {
+  margin-right: 10px;
+  flex: 0 0 120px;
+
+  .dropdown,
+  .dropdown__selected {
+    width: 120px;
+  }
+}
+
+.sortings__order {
+  display: flex;
+}
+
+.sortings__order-dropdown {
+  width: 170px;
+}
+
+.sortings__order-item {
+  justify-content: center;
+  flex-wrap: nowrap;
+  height: 32px;
+  color: $color-neutral-900;
+  font-weight: 600;
+  width: 80px;
+  font-size: 14px;
+
+  @include rounded($rounded);
+  @include flex-align-items(5px);
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  > div {
+    font-weight: 600;
+
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
+  }
+
+  &:hover {
+    background-color: $color-neutral-100;
+    text-decoration: none;
+
+    .sortings__order--disabled & {
+      cursor: inherit;
+      background-color: transparent;
+    }
+  }
+
+  &.active {
+    background-color: $color-primary-100;
+
+    .sortings__order--disabled & {
+      background-color: $color-neutral-100;
+    }
+  }
+}
+
+.sortings__add {
+  @include absolute(calc(100% + 4px), auto, auto, 0);
+}

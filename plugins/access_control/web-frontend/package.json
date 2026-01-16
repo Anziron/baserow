@@ -1,0 +1,12 @@
+{
+  "name": "@baserow/access-control-web-frontend",
+  "version": "1.0.0",
+  "description": "Access Control plugin frontend for Baserow",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --ext .js,.vue modules",
+    "lint:fix": "eslint --fix --ext .js,.vue modules"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

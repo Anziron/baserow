@@ -1,0 +1,9 @@
+.subject-sample-field-list__avatar {
+  border: 2px solid $white;
+  float: left;
+  margin-left: -10px;
+
+  &.extras {
+    background-color: $color-neutral-200;
+  }
+}

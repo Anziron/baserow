@@ -1,0 +1,119 @@
+.api-docs__example-title {
+  color: $white;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 20px 0;
+
+  @media screen and (max-width: $api-docs-breakpoint) {
+    color: $color-neutral-900;
+  }
+}
+
+.api-docs__example {
+  width: 100%;
+  min-width: 0;
+  position: relative;
+  background-color: $color-neutral-100;
+
+  &.api-docs__example--with-padding {
+    padding: 16px;
+  }
+}
+
+.api-docs__copy {
+  position: relative;
+  font-size: 12px;
+  font-weight: 600;
+  color: $color-neutral-500;
+
+  @include absolute(20px, 20px, auto, auto);
+}
+
+.api-docs__example-request {
+  display: flex;
+  margin: -6px 0;
+  padding-right: 40px;
+}
+
+.api-docs__example-request-type {
+  flex: 0;
+  line-height: 30px;
+  font-size: 14px;
+  text-transform: uppercase;
+  background-color: $color-neutral-500;
+  color: $white;
+  padding: 0 10px;
+  margin-right: 10px;
+
+  &.api-docs__example-request-type--success {
+    background-color: $color-success-500;
+  }
+
+  &.api-docs__example-request-type--error {
+    background-color: $color-error-500;
+  }
+
+  &.api-docs__example-request-type--primary {
+    background-color: $color-primary-500;
+  }
+
+  &.api-docs__example-request-type--warning {
+    background-color: $color-warning-500;
+  }
+}
+
+.api-docs__example-request-url {
+  @extend %ellipsis;
+
+  flex: 1;
+  min-width: 0;
+  line-height: 30px;
+  font-size: 13px;
+}
+
+.api-docs__example-type {
+  width: 400px;
+  margin-bottom: 20px;
+  padding: 16px 16px 0;
+  display: flex;
+}
+
+.api-docs__example-type-item {
+  margin-left: 20px;
+}
+
+.api-docs__example-content-container {
+  display: flex;
+}
+
+.api-docs__example-content-side {
+  position: relative;
+  flex: 0 0 120px;
+  padding: 16px 0;
+  background-color: $color-neutral-200;
+}
+
+.api-docs__example-content-line {
+  @extend %ellipsis;
+
+  margin-top: 16px;
+  padding: 0 10px;
+  font-size: 13px;
+  font-family: monospace;
+  color: $color-neutral-700;
+
+  @include absolute(auto, 0, auto, 0);
+}
+
+.api-docs__example-content-wrapper {
+  padding: 16px;
+  width: 100%;
+  min-width: 0;
+}
+
+.api-docs__example-content {
+  margin: 0;
+  line-height: 21px;
+  color: $color-neutral-700;
+  overflow-x: auto;
+}

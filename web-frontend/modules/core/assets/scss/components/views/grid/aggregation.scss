@@ -1,0 +1,85 @@
+.grid-view-aggregation {
+  position: relative;
+  padding-right: 10px;
+  width: 100%;
+  height: 32px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+
+  // Handle read-only state
+  &:not(.read-only) {
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba($palette-neutral-1300, 0.04);
+    }
+  }
+}
+
+.grid-view-aggregation__empty {
+  width: 100%;
+  text-align: right;
+  font-size: 12px;
+  line-height: 19px;
+  color: $palette-neutral-700;
+
+  &.grid-view-aggregation__empty--active,
+  .grid-view-aggregation:hover & {
+    color: $palette-neutral-900;
+  }
+}
+
+.grid-view-aggregation__empty-icon {
+  font-size: 16px;
+  line-height: 16px;
+  margin-right: 4px;
+  color: $palette-neutral-500;
+
+  .grid-view-aggregation__empty--active &,
+  .grid-view-aggregation:hover & {
+    color: $palette-neutral-700;
+  }
+}
+
+.grid-view-aggregation__generic {
+  text-align: right;
+  display: flex;
+  width: 100%;
+}
+
+.grid-view-aggregation__generic-name {
+  @extend %ellipsis;
+
+  flex: 1;
+  color: $color-neutral-500;
+  margin-right: 5px;
+  margin-left: 6px;
+}
+
+.grid-view-aggregation__generic-value {
+  @extend %ellipsis;
+
+  position: relative;
+  display: inline-block;
+}
+
+.grid-view-aggregation__generic-value--loading {
+  color: $color-neutral-200;
+  min-width: 1em;
+
+  &::after {
+    content: '';
+    z-index: 5;
+    margin: -7px auto auto -7px;
+
+    @include loading(14px);
+    @include absolute(50%, auto, auto, 50%);
+  }
+}
+
+.grid-view-aggregation__distribution {
+  height: 100%;
+  align-items: center;
+  line-height: 15px;
+}

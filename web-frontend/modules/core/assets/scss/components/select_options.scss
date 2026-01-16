@@ -1,0 +1,54 @@
+.select-options {
+  position: relative;
+}
+
+.select-options__item {
+  display: flex;
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.select-options__color {
+  width: 36px;
+  text-align: center;
+  color: $color-neutral-900;
+  font-size: 14px;
+  justify-content: center;
+  height: 36px;
+
+  @include rounded($rounded);
+  @include flex-align-items;
+}
+
+.select-options__value {
+  flex: 1 1 100%;
+  padding: 4px 8px;
+  min-width: 0;
+}
+
+.select-options__remove {
+  flex: 0 0 28px;
+  line-height: 28px;
+  margin-left: 4px;
+  text-align: center;
+  color: $color-neutral-600;
+  font-size: 16px;
+
+  &:hover {
+    color: $color-neutral-400;
+  }
+}
+
+.select-options__drag-handle {
+  width: 12px;
+  margin: 4px 8px 4px 0;
+  cursor: grab;
+  background-image: radial-gradient($color-neutral-200 40%, transparent 40%);
+  background-size: 4px 4px;
+  background-repeat: repeat;
+}
+
+.select-options--scrollable {
+  max-height: 25vh;
+  overflow-y: scroll;
+}

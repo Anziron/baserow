@@ -1,0 +1,408 @@
+{
+  "premium": {
+    "adminType": {
+      "licenses": "管理许可证"
+    },
+    "viewType": {
+      "kanban": "看板",
+      "timeline": "时间线",
+      "calendar": "日历"
+    },
+    "exporterType": {
+      "json": "导出为 JSON",
+      "xml": "导出为 XML",
+      "excel": "导出为 Excel",
+      "file": "导出文件"
+    },
+    "deactivated": "高级版功能"
+  },
+  "paidFeaturesModal": {
+    "description": "此功能需要 {plan} 计划。要使用此功能，请订阅升级你的账户。点击下方按钮查看定价选项。",
+    "viewPricing": "查看定价"
+  },
+  "rowCommentSidebar": {
+    "onlyPremium": "行评论是高级版功能。",
+    "readOnlyNoComment": "此行没有评论。",
+    "noComment": "此行还没有评论。使用下方表单添加评论。",
+    "comment": "评论",
+    "more": "更多信息",
+    "name": "评论"
+  },
+  "rowComment": {
+    "you": "你",
+    "anonymous": "匿名",
+    "creating": "创建中",
+    "updating": "更新中",
+    "deleting": "删除中",
+    "created": "已创建",
+    "edited": "已编辑",
+    "commentTrashed": "此评论已被删除。",
+    "errorUserNotCommentAuthorTitle": "无法更新或删除。",
+    "errorUserNotCommentAuthor": "只有评论作者才能更新或删除评论。",
+    "errorInvalidCommentMentionTitle": "无效的提及",
+    "errorInvalidCommentMention": "提及的用户不存在。"
+  },
+  "rowCommentContext": {
+    "edit": "编辑评论",
+    "delete": "删除评论"
+  },
+  "rowCommentMentionNotification": {
+    "title": "{sender} 在 {table} 的行 {row} 中提到了你",
+    "deletedUser": "已删除的用户"
+  },
+  "rowCommentNotification": {
+    "title": "{sender} 在 {table} 的行 {row} 中发表了评论",
+    "deletedUser": "已删除的用户"
+  },
+  "trashType": {
+    "row_comment": "行评论"
+  },
+  "registerLicenseModal": {
+    "titleRegisterLicense": "注册许可证",
+    "registerLicense": "注册许可证",
+    "viewPricing": "查看定价",
+    "licenseDescription": "许可证只能在 baserow.io 获取。如果你已购买许可证，它将通过邮件发送给你，你也可以在账户概览中获取。将许可证密钥复制粘贴到下方框中，然后点击按钮将许可证注册到此实例。同一密钥不能在两个不同的安装中使用。如果你还没有密钥，请{pricingLink}。",
+    "licenseError": {
+      "invalidTitle": "无效",
+      "invalid": "提供的许可证无效。",
+      "unsupportedTitle": "不支持",
+      "unsupported": "提供的许可证与你的 Baserow 版本不兼容。请更新到最新版本后重试。",
+      "expiredTitle": "已过期",
+      "expired": "提供的许可证已过期。",
+      "duplicateTitle": "重复",
+      "duplicate": "提供的许可证已在此实例注册。",
+      "instanceMismatchTitle": "实例不匹配",
+      "instanceMismatch": "提供的许可证不属于此实例。"
+    }
+  },
+  "disconnectLicenseModal": {
+    "disconnectLicense": "断开许可证",
+    "disconnectDescription": "确定要断开此许可证吗？如果在许可证有效期内断开，相关用户将无法再使用该计划。这将有效移除许可证。如果你想在其他自托管实例中使用此许可证，请联系我们的支持团队 {contact}。"
+  },
+  "registerLicenseForm": {
+    "licenseKey": "许可证密钥"
+  },
+  "tableJSONExporter": {
+    "encoding": "编码"
+  },
+  "tableXMLExporter": {
+    "encoding": "编码"
+  },
+  "tableExcelExporter": {
+    "includeHeader": "包含字段名作为表头"
+  },
+  "tableFileExporter": {
+    "organizeFiles": "按行 ID 分组文件"
+  },
+  "kanbanViewStackContext": {
+    "createCard": "创建卡片",
+    "editStack": "编辑堆栈",
+    "deleteStack": "删除堆栈",
+    "delete": "删除 {name}",
+    "deleteDescription": "确定要删除堆栈 {name} 吗？删除堆栈会删除单选字段的选项，这可能导致数据丢失，因为行的值将被设为空。"
+  },
+  "kanbanViewHeader": {
+    "stackBy": "分组依据",
+    "stackedBy": "按 {fieldName} 分组",
+    "customizeCards": "自定义卡片"
+  },
+  "kanbanViewOptionForm": {
+    "selectOption": "选择选项"
+  },
+  "kanbanViewStakedBy": {
+    "title": "分组字段",
+    "chooseField": "选择哪个单选字段来分组卡片？"
+  },
+  "kanbanView": {
+    "addStack": "添加堆栈"
+  },
+  "kanbanViewStack": {
+    "uncategorized": "未分类",
+    "tryAgain": "重试"
+  },
+  "calendarViewType": {
+    "sharedViewText": "允许任何人查看此视图中的数据或将事件同步到外部日历。",
+    "sharedViewEnableSyncToExternalCalendar": "同步到外部日历",
+    "sharedViewDisableSyncToExternalCalendar": "禁用外部同步",
+    "sharedViewDescription": "将此链接粘贴到你的日历应用中",
+    "sharedViewTitle": "同步到外部日历"
+  },
+  "calendarViewHeader": {
+    "displayBy": "显示依据",
+    "displayedBy": "按「{fieldName}」字段显示",
+    "labels": "标签"
+  },
+  "timelineViewHeader": {
+    "dateSettings": "日期设置",
+    "labels": "标签"
+  },
+  "selectDateFieldContext": {
+    "save": "保存"
+  },
+  "timelineDateSettingsForm": {
+    "startDateField": "开始日期",
+    "endDateField": "结束日期",
+    "noCompatibleDateFields": "表中缺少日期字段。请先在表中创建开始和结束日期字段。",
+    "incompatibleFieldsErrorTitle": "字段不兼容",
+    "incompatibleFieldsErrorMessage": "字段不兼容。请选择两个使用相同「包含时间」设置且对所有协作者使用相同时区的有效日期字段。",
+    "forceTimezone": "{timezone}",
+    "includeTime": "日期和时间",
+    "dateOnly": "仅日期"
+  },
+  "timelineTimescaleContext": {
+    "hour": "小时",
+    "day": "天",
+    "week": "周",
+    "month": "月",
+    "quarter": "季度",
+    "year": "年",
+    "disabledTooltip": "此选项仅适用于启用了「包含时间」的日期字段。"
+  },
+  "initTimelineViewSettings": {
+    "settings": "日期设置"
+  },
+  "viewDateSelector": {
+    "today": "今天"
+  },
+  "calendarMonthDay": {
+    "hiddenRowsCount": "0 | 还有 1 条... | 还有 {hiddenRowsCount} 条..."
+  },
+  "calendarMonthDayExpanded": {
+    "tryAgain": "重试"
+  },
+  "timelineGridRow": {
+    "days": "0 | 1 天 | {count} 天"
+  },
+  "premiumFeatures": {
+    "rowComments": "行评论",
+    "rowCommentsContent": "直接在表中协作。为单行添加评论，提及团队成员，保持对话在上下文中。",
+    "kanbanView": "看板视图",
+    "kanbanViewContent": "在看板上可视化组织数据。卡片根据单选字段分组到堆栈中，你可以轻松地在堆栈之间拖放。",
+    "calendarView": "日历视图",
+    "calendarViewContent": "使用你选择的日期字段在日历上轻松查看行。非常适合跟踪截止日期、事件和日程安排。",
+    "timelineView": "时间线视图",
+    "timelineViewContent": "使用开始和结束日期沿水平时间线显示行。非常适合项目规划和路线图。",
+    "exports": "表导出",
+    "exportsContent": "轻松将数据导出为 Excel、JSON 和 XML 等其他格式，或批量下载表中的所有文件——非常适合备份、报告和分享。",
+    "rowColoring": "行着色",
+    "rowColoringContent": "根据单选字段或自定义条件用颜色高亮行。这使得更容易发现模式和优先级。",
+    "rowNotifications": "行通知",
+    "rowNotificationsContent": "通过可自定义的行评论通知保持了解。选择接收所有评论的提醒或仅在被提及时接收。",
+    "surveyForm": "问卷表单",
+    "surveyFormContent": "使用问卷模式一次收集一个问题的回答。表单视图的简化版本，针对专注和易用性进行了优化。",
+    "publicLogoRemoval": "移除公开 Logo",
+    "publicLogoRemovalContent": "从公开视图中移除 Baserow Logo，让你分享的内容看起来更简洁、更有品牌感。",
+    "personalViews": "个人视图",
+    "personalViewsContent": "创建只有作者可见的视图。这让你有空间进行实验、筛选和排序数据，而不影响其他人的工作区。",
+    "aiFeatures": "AI 功能",
+    "aiFeaturesContent": "使用 AI 自动化和增强你的工作流。通过 AI 提示字段类型，你可以根据可引用其他字段的动态提示直接在单元格中生成文本、摘要或洞察。此外，你还可以让 AI 为你创建公式。",
+    "chartWidget": "图表小部件",
+    "chartWidgetContent": "在仪表盘上用图表可视化数据。使用任何表作为数据源，添加多个系列，并按字段分组或排序，提供丰富的汇总选项。"
+  },
+  "licenses": {
+    "titleNoLicenses": "未找到许可证",
+    "titleLicenses": "许可证",
+    "noLicensesDescription": "你的 Baserow 实例没有注册任何许可证。高级许可证可让你立即访问所有附加功能。如果你已有许可证，可以在此注册。或者点击下方按钮获取一个。",
+    "getLicense": "获取许可证",
+    "baserowInstanceId": "你的 Baserow 实例 ID 是：",
+    "registerLicense": "注册许可证",
+    "licenceId": "许可证 ID",
+    "premium": "高级版",
+    "expired": "已过期",
+    "validity": "有效期：{start} 至 {end}",
+    "seats": "席位",
+    "applicationUsers": "应用用户"
+  },
+  "license": {
+    "title": "{name} 计划",
+    "users": "用户",
+    "description": "选择可以使用 {product_code} 计划的用户。此许可证允许你最多授予 {seats} 个用户 {product_code}。",
+    "seatLeft": "没有剩余席位|还剩 1 个席位|还剩 {count} 个席位",
+    "fillSeats": "用不在计划中的用户填充席位",
+    "removeAll": "移除所有用户",
+    "licenseId": "许可证 ID",
+    "addUser": "添加用户",
+    "plan": "计划",
+    "premium": "高级版",
+    "expired": "已过期",
+    "validFrom": "生效日期",
+    "validThrough": "到期日期",
+    "validThroughDescription": "许可证过期后，你和任何已分配的用户将无法再使用许可证授予的额外功能。",
+    "lastCheck": "上次检查",
+    "lastCheckDescription": "许可证会定期检查更改。如果你续订或升级了许可证，更改将在检查后生效。",
+    "checkNow": "立即检查",
+    "seats": "席位（用户数量）",
+    "applicationUsers": "应用用户",
+    "applicationUsersDescription": "已发布应用构建器用户源中的应用用户总数。",
+    "licensedTo": "授权给",
+    "applications": "应用/数据库",
+    "unlimited": "无限制",
+    "rowUsage": "行使用量",
+    "storeUsage": "存储使用量",
+    "disconnectLicense": "断开许可证",
+    "disconnectDescription": "如果在许可证有效期内断开，相关用户将无法再使用该计划。这将有效移除许可证。如果你想在其他自托管实例中使用此许可证，请联系我们的支持团队 {contact}。",
+    "moreSeatsNeededTitle": "需要更多席位",
+    "contactSalesMoreSeats": "联系销售获取更多席位",
+    "automaticSeatsProgressBarStatus": "已使用 {seats_taken} / {seats} 个付费席位和 {free_users_count} 个免费席位",
+    "premiumFeatureName": "高级版",
+    "advancedFeatureName": "进阶版",
+    "enterpriseFeatureName": "企业版",
+    "supportFeatureName": "支持"
+  },
+  "viewDecoratorType": {
+    "leftBorderColor": "左边框",
+    "leftBorderColorDescription": "为行的左边框着色",
+    "backgroundColor": "背景色",
+    "backgroundColorDescription": "为行的背景着色",
+    "onlyForPremium": "高级版功能",
+    "onlyOneDecoratorPerView": "每个视图只能有一个此类型的装饰"
+  },
+  "decoratorValueProviderType": {
+    "singleSelectColor": "单选",
+    "singleSelectColorDescription": "根据单选值为行着色",
+    "conditionalColor": "条件",
+    "conditionalColorDescription": "当行匹配条件时着色"
+  },
+  "singleSelectColorValueProviderForm": {
+    "chooseAColor": "选择哪个单选字段来为行着色？"
+  },
+  "conditionalColorValueProviderForm": {
+    "addCondition": "添加条件",
+    "addConditionGroup": "添加条件组",
+    "colorAlwaysApplyTitle": "此颜色默认应用。",
+    "colorAlwaysApply": "你可以点击「添加条件」按钮添加条件。",
+    "addColor": "添加颜色",
+    "deleteColor": "删除颜色",
+    "title": "颜色"
+  },
+  "redirectToBaserowModal": {
+    "title": "正在跳转到 https://baserow.io",
+    "content": "你正在离开自托管实例，即将跳转到 https://baserow.io。"
+  },
+  "premiumTopSidebar": {
+    "impersonateDescription": "此账户正在被模拟。刷新页面将停止模拟。",
+    "impersonateStop": "停止",
+    "premium": "高级版",
+    "premiumDescription": "你的账户可以全局访问高级功能"
+  },
+  "formViewModeType": {
+    "survey": "问卷",
+    "surveyDescription": "一次只显示一个字段。",
+    "onlyForPremium": "高级版功能"
+  },
+  "formViewModePreviewSurvey": {
+    "orderFields": "排序字段",
+    "deactivated": "问卷表单是高级版功能。",
+    "more": "更多信息"
+  },
+  "shareLinkOptions": {
+    "baserowLogo": {
+      "label": "在共享视图中隐藏 Baserow Logo",
+      "premiumModalName": "移除公开 Logo"
+    },
+    "allowPublicExportLabel": "允许在共享视图中导出"
+  },
+  "viewsContext": {
+    "personal": "个人"
+  },
+  "dateFieldSelectForm": {
+    "dateField": "你想为此视图使用哪个字段？",
+    "noCompatibleDateFields": "此表中没有日期字段，请先创建一个。"
+  },
+  "selectDateFieldModal": {
+    "chooseDateField": "选择日期字段",
+    "save": "保存"
+  },
+  "RowEditModalCommentNotificationMode": {
+    "modeMentionsTitle": "仅提及",
+    "modeMentionsDesc": "只有在被提及时才会收到通知。",
+    "modeAllTitle": "所有评论",
+    "modeAllDesc": "你将收到此行所有评论的通知。"
+  },
+  "premiumFieldType": {
+    "ai": "AI 提示",
+    "aiDescription": "一个只读字段，根据字段提示保存 AI 生成的文本。"
+  },
+  "functionalGridViewFieldAI": {
+    "generate": "生成"
+  },
+  "gridViewFieldAI": {
+    "generate": "生成",
+    "regenerate": "重新生成"
+  },
+  "fieldAISubForm": {
+    "prompt": "提示词",
+    "promptPlaceholder": "什么是 Baserow？",
+    "premiumFeature": "AI 字段是高级功能",
+    "emptyFileField": "无",
+    "fileFieldHelp": "字段中第一个兼容的文件将用作提示的知识库。文件必须是支持扩展名的文本文件，如 .txt、.md、.pdf、.docx。",
+    "outputType": "输出类型",
+    "outputTypeTooltip": "选择期望的输出格式，引导 AI 生成符合你需求的响应。",
+    "outputTypeChangedWarning": "清除已生成的单元格值。",
+    "autoUpdate": "自动更新",
+    "autoUpdateHelp": "启用后，当提示中引用的任何字段更新时，AI 字段值将自动重新生成。",
+    "autoUpdateDescription": "当引用字段更改时重新生成"
+  },
+  "rowEditFieldAI": {
+    "generate": "生成",
+    "createRowBefore": "AI 值可以在行创建后生成。"
+  },
+  "aiFormulaModal": {
+    "title": "使用 AI 生成公式",
+    "description": "请注意，生成的公式可能不总是按预期工作。我们为模型构建提示，并将输出加载到公式输入中。使用高参数模型（如 gpt-4-turbo-preview）效果最佳。",
+    "label": "提示词",
+    "labelDescription": "描述你想生成的公式",
+    "generate": "生成",
+    "noModels": "你的 Baserow 实例和工作区没有配置任何 AI 模型。导航到首页，点击工作区名称，然后点击设置进行配置。"
+  },
+  "formulaFieldAI": {
+    "generateWithAI": "使用 AI 生成",
+    "featureName": "使用 AI 生成公式"
+  },
+  "aiOutputType": {
+    "text": "文本",
+    "textDescription": "根据提示生成自由文本。",
+    "choice": "选择",
+    "choiceDescription": "只选择字段选项之一。"
+  },
+  "publicViewExport": {
+    "export": "导出"
+  },
+  "chart": {
+    "true": "是",
+    "false": "否",
+    "other": "其他"
+  },
+  "generateAIValuesModal": {
+    "title": "生成所有 AI 值",
+    "noPreviousJobs": "没有之前的任务",
+    "started": "已开始",
+    "finished": "已完成",
+    "running": "运行中",
+    "failed": "失败",
+    "cancelled": "已取消",
+    "pending": "等待中",
+    "view": "视图：{name}",
+    "table": "表：所有行",
+    "deletedView": "视图：ID {viewId}（已删除）",
+    "rows": "行数：{count} 行"
+  },
+  "generateAIValuesForm": {
+    "scopeLabel": "范围",
+    "entireTable": "整个表",
+    "skipPopulated": "仅为空单元格生成值",
+    "warningTitle": "Token 使用警告",
+    "warningMessage": "生成所有 AI 值将消耗 API Token，根据行数可能需要较长时间。"
+  },
+  "generateAIValuesFormFooter": {
+    "generate": "使用 AI 生成",
+    "close": "关闭"
+  },
+  "jobType": {
+    "generateAIValues": "重新生成 AI 字段值"
+  },
+  "viewOwnershipType": {
+    "personal": "个人",
+    "personalDescription": "只有你可以看到此视图。"
+  }
+}

@@ -1,0 +1,34 @@
+.ab-checkbox {
+  display: flex;
+  align-items: center;
+  font-size: var(--input-font-size, 13px);
+  font-family: var(--input-font-family, Inter);
+  font-weight: var(--input-font-weight, 400);
+  color: var(--input-text-color, $color-neutral-900);
+  gap: calc(var(--input-font-size, 13px) / 2);
+
+  &:nth-child(n + 2) {
+    margin-top: 0.5em;
+  }
+}
+
+.ab-checkbox__input {
+  cursor: pointer;
+  height: 1em;
+  width: 1em;
+  color: var(--input-border-color, black);
+  accent-color: currentcolor;
+}
+
+.ab-checkbox--error {
+  border-color: var(--main-error-color, $color-error-600);
+}
+
+.ab-checkbox--readonly {
+  pointer-events: none;
+}
+
+.ab-checkbox__label {
+  cursor: pointer;
+  user-select: none;
+}

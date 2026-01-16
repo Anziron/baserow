@@ -1,0 +1,28 @@
+.auth-provider-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-provider-buttons__no-buttons {
+  margin-bottom: 32px;
+}
+
+.auth-provider-buttons__no-buttons--hide {
+  display: none;
+}
+
+.auth-provider-buttons--small {
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 16px;
+
+  & div {
+    width: 100%;
+  }
+
+  & .auth-provider-icon {
+    margin-right: 0;
+  }
+}

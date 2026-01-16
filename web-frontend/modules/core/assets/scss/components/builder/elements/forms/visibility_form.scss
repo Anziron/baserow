@@ -1,0 +1,28 @@
+.visibility-form__expanded-form-element {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.visibility-form__role-list {
+  display: block;
+  margin: 16px 0;
+}
+
+.visibility-form__role-checkbox {
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.visibility-form__actions {
+  display: flex;
+  gap: 15px;
+}
+
+.visibility-form__visibility-all {
+  display: flex;
+  justify-content: start;
+}
+
+.visibility-form__visibility-logged-in {
+  min-width: 200px;
+}

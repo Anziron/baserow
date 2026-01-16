@@ -1,0 +1,87 @@
+apiVersion: v2
+name: baserow
+description: The open platform to create scalable databases and applications—without coding.
+type: application
+version: 1.0.42
+appVersion: "2.0.6"
+home: https://github.com/baserow/baserow/blob/develop/deploy/helm/baserow?ref_type=heads
+icon: https://baserow.io/img/favicon_192.png
+sources:
+  - https://github.com/baserow/baserow
+  - https://baserow.io
+
+dependencies:
+  - name: baserow
+    alias: baserow-backend-asgi
+    version: "1.0.42"
+    repository: "file://charts/baserow-common"
+
+  - name: baserow
+    alias: baserow-backend-wsgi
+    version: "1.0.42"
+    repository: "file://charts/baserow-common"
+
+  - name: baserow
+    alias: baserow-frontend
+    version: "1.0.42"
+    repository: "file://charts/baserow-common"
+
+  - name: baserow
+    alias: baserow-celery-beat-worker
+    version: "1.0.42"
+    repository: "file://charts/baserow-common"
+
+  - name: baserow
+    alias: baserow-celery-export-worker
+    version: "1.0.42"
+    repository: "file://charts/baserow-common"
+
+  - name: baserow
+    alias: baserow-celery-worker
+    version: "1.0.42"
+    repository: "file://charts/baserow-common"
+
+  - name: baserow
+    alias: baserow-celery-flower
+    version: "1.0.42"
+    repository: "file://charts/baserow-common"
+    condition: baserow-celery-flower.enabled
+
+  - name: baserow
+    alias: baserow-embeddings
+    version: "1.0.42"
+    repository: "file://charts/baserow-common"
+    condition: baserow-embeddings.enabled
+
+  - name: redis
+    version: 19.5.x
+    repository: https://charts.bitnami.com/bitnami
+    condition: redis.enabled
+
+  - name: postgresql
+    version: 15.5.x
+    repository: https://charts.bitnami.com/bitnami
+    condition: postgresql.enabled
+
+  - name: minio
+    version: 14.6.18
+    repository: https://charts.bitnami.com/bitnami
+    condition: minio.enabled
+
+  - name: caddy-ingress-controller
+    alias: caddy
+    version: 1.1.0
+    repository: https://caddyserver.github.io/ingress
+    condition: caddy.enabled
+
+annotations:
+  artifacthub.io/category: database
+  artifacthub.io/keywords: baserow, database, application, scalable, open-source
+  artifacthub.io/links: |
+    - name: website
+      url: https://baserow.io
+    - name: source
+      url: https://gitlab.com/baserow/baserow
+    - name: helm
+      url: https://github.com/baserow/baserow/blob/develop/deploy/helm/baserow?ref_type=heads
+  artifacthub.io/quality: production

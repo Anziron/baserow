@@ -1,0 +1,14 @@
+{
+  "name": "@baserow/excel-importer-web-frontend",
+  "version": "1.0.0",
+  "description": "Excel Importer plugin frontend for Baserow",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --ext .js,.vue modules",
+    "lint:fix": "eslint --fix --ext .js,.vue modules"
+  },
+  "dependencies": {
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {}
+}

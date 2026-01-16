@@ -1,0 +1,63 @@
+.ab-form-group {
+  font-size: var(--label-font-size, 13px);
+  font-weight: var(--label-font-weight, 400);
+
+  &.ab-form-group--with-label {
+    margin-bottom: 0.33em;
+  }
+
+  &.ab-form-group--horizontal,
+  &.ab-form-group--horizontal-variable {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+}
+
+.ab-form-group__label {
+  display: block;
+  font-size: var(--label-font-size, 13px);
+  font-weight: var(--label-font-weight, 500);
+  color: var(--label-text-color, $color-neutral-900);
+  font-family: var(--label-font-family, Inter);
+  margin-bottom: 0.75em;
+
+  @include flex-align-items(3px);
+
+  .ab-form-group--horizontal & {
+    flex-basis: 30%;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .ab-form-group--horizontal-variable & {
+    flex: auto 0 0;
+    font-weight: 500;
+    margin: 0;
+  }
+}
+
+.ab-form-group__children {
+  .ab-form-group--horizontal & {
+    flex-basis: 70%;
+    margin-top: 0;
+  }
+
+  .ab-form-group--horizontal-variable & {
+    margin-top: 0;
+    margin-left: 16px;
+  }
+}
+
+.ab-form-group--error {
+  .ab-input,
+  .ab-dropdown__selected {
+    border-color: var(--main-error-color, $color-error-600);
+  }
+}
+
+.ab-form-group__error-message {
+  margin-top: 0.8em;
+  font-size: 0.9em;
+  color: var(--main-error-color, $color-error-600);
+}

@@ -1,0 +1,18 @@
+.row-edit-array-field {
+  overflow: hidden;
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  gap: 4px;
+
+  .array-field__item {
+    height: auto;
+  }
+
+  .array-field__multiple-select-option {
+    margin-top: 6px;
+    margin-bottom: 6px;
+  }
+}

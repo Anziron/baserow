@@ -1,0 +1,31 @@
+.presentation {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.presentation__content {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.presentation__avatar {
+  margin-right: 12px;
+}
+
+.presentation__title {
+  font-size: 13px;
+  margin-bottom: 3px;
+  line-height: 16px;
+
+  @extend %ellipsis;
+}
+
+.presentation__subtitle {
+  color: $color-neutral-500;
+  font-size: 12px;
+  line-height: 15px;
+
+  @extend %ellipsis;
+}

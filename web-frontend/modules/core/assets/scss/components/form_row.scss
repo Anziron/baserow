@@ -1,0 +1,11 @@
+.form-row {
+  width: 100%;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  gap: 10px;
+
+  & > .control {
+    margin-bottom: 0;
+  }
+}

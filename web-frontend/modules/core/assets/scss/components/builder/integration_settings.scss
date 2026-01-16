@@ -1,0 +1,18 @@
+.integration-settings__integration {
+  display: flex;
+  padding: 10px 0;
+  overflow: hidden;
+  gap: 10px;
+}
+
+.integration-settings__loader {
+  @include loading;
+
+  margin: auto;
+}
+
+.integration-settings__integration-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

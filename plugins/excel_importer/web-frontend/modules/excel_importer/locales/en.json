@@ -1,0 +1,19 @@
+{
+  "excelImporter": {
+    "importerType": {
+      "excel": "Import an Excel file"
+    },
+    "chooseFileLabel": "Choose Excel file",
+    "chooseFileDescription": "You can import an existing Excel file by uploading the .xlsx or .xls file with tabular data.",
+    "chooseFile": "Choose Excel file",
+    "firstRowHeader": "First row is header",
+    "sheetSelection": "Select sheet",
+    "limitFileSize": "The maximum file size is {limit}MB.",
+    "limitError": "It is not possible to import more than {limit} rows.",
+    "emptyFile": "This Excel file has no sheets.",
+    "emptySheet": "The selected sheet is empty.",
+    "parseError": "Failed to parse the Excel file. Please ensure it is a valid Excel file.",
+    "exporterName": "Excel",
+    "includeHeader": "Include header row"
+  }
+}

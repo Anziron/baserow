@@ -1,0 +1,408 @@
+{
+  "premium": {
+    "adminType": {
+      "licenses": "Manage licenses"
+    },
+    "viewType": {
+      "kanban": "Kanban",
+      "timeline": "Timeline",
+      "calendar": "Calendar"
+    },
+    "exporterType": {
+      "json": "Export to JSON",
+      "xml": "Export to XML",
+      "excel": "Export to Excel",
+      "file": "Export files"
+    },
+    "deactivated": "Available in premium version"
+  },
+  "paidFeaturesModal": {
+    "description": "This feature is available with a {plan} plan. To access it, please upgrade your account by subscribing. Click the button below to view our pricing options.",
+    "viewPricing": "View pricing"
+  },
+  "rowCommentSidebar": {
+    "onlyPremium": "Row comments are available in the premium version.",
+    "readOnlyNoComment": "No comments for this row.",
+    "noComment": "No comments for this row yet. Use the form below to add a comment.",
+    "comment": "Comment",
+    "more": "More information",
+    "name": "Comments"
+  },
+  "rowComment": {
+    "you": "You",
+    "anonymous": "Anonymous",
+    "creating": "creating",
+    "updating": "updating",
+    "deleting": "deleting",
+    "created": "created",
+    "edited": "edited",
+    "commentTrashed": "This comment has been deleted.",
+    "errorUserNotCommentAuthorTitle": "Cannot update or delete.",
+    "errorUserNotCommentAuthor": "Only the author of the comment can update or delete it.",
+    "errorInvalidCommentMentionTitle": "Invalid mention",
+    "errorInvalidCommentMention": "The mentioned user does not exist."
+  },
+  "rowCommentContext": {
+    "edit": "Edit comment",
+    "delete": "Delete comment"
+  },
+  "rowCommentMentionNotification": {
+    "title": "{sender} mentioned you in row {row} in {table}",
+    "deletedUser": "A deleted user"
+  },
+  "rowCommentNotification": {
+    "title": "{sender} posted a comment in row {row} in {table}",
+    "deletedUser": "A deleted user"
+  },
+  "trashType": {
+    "row_comment": "row comment"
+  },
+  "registerLicenseModal": {
+    "titleRegisterLicense": "Register a license",
+    "registerLicense": "Register license",
+    "viewPricing": "View pricing",
+    "licenseDescription": "A license can only be obtained on baserow.io. If you have already purchased a license, it will be delivered to you by email and you can get in from the overview in your account. Copy and paste the license key in the box below and click on the button to register the license key to this instance. It’s not possible to use the same key on two different installations. {pricingLink} if you don’t have a key yet.",
+    "licenseError": {
+      "invalidTitle": "Invalid",
+      "invalid": "The provided license is invalid.",
+      "unsupportedTitle": "Unsupported",
+      "unsupported": "The provided license is incompatible with your Baserow version. Please update to the latest version and try again.",
+      "expiredTitle": "Expired",
+      "expired": "The provided license has expired.",
+      "duplicateTitle": "Duplicate",
+      "duplicate": "The provided license is already registered to this instance.",
+      "instanceMismatchTitle": "Instance mismatch",
+      "instanceMismatch": "The provided license does not belong to this instance."
+    }
+  },
+  "disconnectLicenseModal": {
+    "disconnectLicense": "Disconnect license",
+    "disconnectDescription": "Are you sure that you want to disconnect this license? If you disconnect this license while it's active, the related users won’t have access to the plan anymore. It will effectively remove the license. Please contact our support team at {contact} if you want to use this license in another self hosted instance."
+  },
+  "registerLicenseForm": {
+    "licenseKey": "License key"
+  },
+  "tableJSONExporter": {
+    "encoding": "Encoding"
+  },
+  "tableXMLExporter": {
+    "encoding": "Encoding"
+  },
+  "tableExcelExporter": {
+    "includeHeader": "Include field names as header"
+  },
+  "tableFileExporter": {
+    "organizeFiles": "Group files by row id"
+  },
+  "kanbanViewStackContext": {
+    "createCard": "Create card",
+    "editStack": "Edit stack",
+    "deleteStack": "Delete stack",
+    "delete": "Delete {name}",
+    "deleteDescription": "Are you sure that you want to delete stack {name}? Deleting the stack results in deleting the select option of the single select field, which might result into data loss because row values are going to be set to empty."
+  },
+  "kanbanViewHeader": {
+    "stackBy": "Stack by",
+    "stackedBy": "Stacked by {fieldName}",
+    "customizeCards": "Customize cards"
+  },
+  "kanbanViewOptionForm": {
+    "selectOption": "Select option"
+  },
+  "kanbanViewStakedBy": {
+    "title": "Group field",
+    "chooseField": "Which single select field should the cards be stacked by?"
+  },
+  "kanbanView": {
+    "addStack": "Add stack"
+  },
+  "kanbanViewStack": {
+    "uncategorized": "Uncategorized",
+    "tryAgain": "Try again"
+  },
+  "calendarViewType": {
+    "sharedViewText": "Allow anyone to see the data in this view or sync events to your external calendar.",
+    "sharedViewEnableSyncToExternalCalendar": "Sync to an external calendar",
+    "sharedViewDisableSyncToExternalCalendar": "Disable external sync",
+    "sharedViewDescription": "Paste this link into your calendar application",
+    "sharedViewTitle": "Sync to an external calendar"
+  },
+  "calendarViewHeader": {
+    "displayBy": "Display by",
+    "displayedBy": "Displayed by “{fieldName}” field",
+    "labels": "Labels"
+  },
+  "timelineViewHeader": {
+    "dateSettings": "Date settings",
+    "labels": "Labels"
+  },
+  "selectDateFieldContext": {
+    "save": "Save"
+  },
+  "timelineDateSettingsForm": {
+    "startDateField": "Start date",
+    "endDateField": "End date",
+    "noCompatibleDateFields": "Date fields are missing in the table. Please create a start and end date field in the table first.",
+    "incompatibleFieldsErrorTitle": "Incompatible fields",
+    "incompatibleFieldsErrorMessage": "Fields are not compatible. Please choose two valid date fields in the table that use the same settings for 'include time' and use the same timezone for all collaborators.",
+    "forceTimezone": "{timezone}",
+    "includeTime": "date and time",
+    "dateOnly": "date only"
+  },
+  "timelineTimescaleContext": {
+    "hour": "Hour",
+    "day": "Day",
+    "week": "Week",
+    "month": "Month",
+    "quarter": "Quarter",
+    "year": "Year",
+    "disabledTooltip": "This option is available only for date fields with `include time` enabled."
+  },
+  "initTimelineViewSettings": {
+    "settings": "Date settings"
+  },
+  "viewDateSelector": {
+    "today": "Today"
+  },
+  "calendarMonthDay": {
+    "hiddenRowsCount": "0 | 1 more... | {hiddenRowsCount} more..."
+  },
+  "calendarMonthDayExpanded": {
+    "tryAgain": "try again"
+  },
+  "timelineGridRow": {
+    "days": "0 | 1 day | {count} days"
+  },
+  "premiumFeatures": {
+    "rowComments": "Row comments",
+    "rowCommentsContent": "Collaborate directly in your table. Add comments to individual rows, mention team members, and keep the conversation in context.",
+    "kanbanView": "Kanban view",
+    "kanbanViewContent": "Organize your data visually on a Kanban board. Cards are grouped into stacks based on a single select field, and you can easily drag and drop them between stacks.",
+    "calendarView": "Calendar view",
+    "calendarViewContent": "Easily see your rows on a calendar, using a date field of your choice. Perfect for keeping track of deadlines, events, and schedules at a glance.",
+    "timelineView": "Timeline view",
+    "timelineViewContent": "Display rows along a horizontal timeline using start and end dates. Ideal for project planning and roadmaps.",
+    "exports": "Table export",
+    "exportsContent": "Easily export your data in additional formats like Excel, JSON, and XML, or bulk-download all files from a table - perfect for backups, reports, and sharing with others.",
+    "rowColoring": "Row coloring",
+    "rowColoringContent": "Highlight rows with colors based on a single select field or custom conditions. This makes it easier to spot patterns and priorities.",
+    "rowNotifications": "Row notifications",
+    "rowNotificationsContent": "Stay in the loop with customizable row comment notifications. Choose between receiving alerts for all comments or only when you're mentioned.",
+    "surveyForm": "Survey form",
+    "surveyFormContent": "Collect responses one question at a time with survey mode. A simplified version of the form view, optimized for focus and ease of use.",
+    "publicLogoRemoval": "Public logo removal",
+    "publicLogoRemovalContent": "Remove the Baserow logo from public views to give your shared content a cleaner, more branded look.",
+    "personalViews": "Personal views",
+    "personalViewsContent": "Create views that only the author can see. This gives you space to experiment, filter, and sort data without affecting the workspace for others.",
+    "aiFeatures": "AI features",
+    "aiFeaturesContent": "Use AI to automate and enhance your workflows. With the AI prompt field type you can generate text, summaries, or insights directly in cells based on a dynamic prompts that can reference other fields. Separately, you can also ask AI to create formulas for you.",
+    "chartWidget": "Chart widget",
+    "chartWidgetContent": "Visualize your data with charts on dashboards. Use any table as a data source, add multiple series, and group or sort by fields with rich summary options."
+  },
+  "licenses": {
+    "titleNoLicenses": "No licenses found",
+    "titleLicenses": "Licenses",
+    "noLicensesDescription": "Your Baserow instance doesn’t have any licenses registered. A premium license gives you immediate access to all of the additional features. If you already have a license, you can register it here. Alternatively you can get one by clicking on the button below.",
+    "getLicense": "Get a license",
+    "baserowInstanceId": "Your Baserow instance ID is:",
+    "registerLicense": "Register license",
+    "licenceId": "License ID",
+    "premium": "Premium",
+    "expired": "Expired",
+    "validity": "Valid from {start} through {end}",
+    "seats": "seats",
+    "applicationUsers": "Application users"
+  },
+  "license": {
+    "title": "{name} plan",
+    "users": "Users",
+    "description": "Choose the users that can use the {product_code} plan. This license allows you to grant {product_code} to a maximum of {seats} users.",
+    "seatLeft": "You have no seats left|You have one seat left|You have {count} seats left",
+    "fillSeats": "Fill seats with users that are not on the plan",
+    "removeAll": "Remove all users",
+    "licenseId": "License ID",
+    "addUser": "Add a user",
+    "plan": "Plan",
+    "premium": "premium",
+    "expired": "Expired",
+    "validFrom": "Valid from",
+    "validThrough": "Valid through",
+    "validThroughDescription": "After your license has expired, you and any assigned users will no longer be able to use the extra functionality granted by the license.",
+    "lastCheck": "Last check",
+    "lastCheckDescription": "The license is periodically checked for changes. If you for example renewed or upgraded your license, the changes become active after the check.",
+    "checkNow": "check now",
+    "seats": "Seats (amount of users)",
+    "applicationUsers": "Application users",
+    "applicationUsersDescription": "The total number of application users in published application builder user sources.",
+    "licensedTo": "Licensed to",
+    "applications": "Applications / databases",
+    "unlimited": "Unlimited",
+    "rowUsage": "Row usage",
+    "storeUsage": "Storage usage",
+    "disconnectLicense": "Disconnect license",
+    "disconnectDescription": "If you disconnect this license while it's active, the related users won’t have access to the plan anymore. It will effectively remove the license. Please contact our support team at {contact} if you want to use this license in another self hosted instance.",
+    "moreSeatsNeededTitle": "More Seats Needed",
+    "contactSalesMoreSeats": "Contact Sales for more seats",
+    "automaticSeatsProgressBarStatus": "{seats_taken} / {seats} paid seats and {free_users_count} free seats in use",
+    "premiumFeatureName": "Premium",
+    "advancedFeatureName": "Advanced",
+    "enterpriseFeatureName": "Enterprise",
+    "supportFeatureName": "Support"
+  },
+  "viewDecoratorType": {
+    "leftBorderColor": "Left border",
+    "leftBorderColorDescription": "Color the left border of a row",
+    "backgroundColor": "Background color",
+    "backgroundColorDescription": "Color the background of a row",
+    "onlyForPremium": "Available in the premium version",
+    "onlyOneDecoratorPerView": "You can only have one decoration of that type for a view"
+  },
+  "decoratorValueProviderType": {
+    "singleSelectColor": "Single select",
+    "singleSelectColorDescription": "Color rows the same as a single select value",
+    "conditionalColor": "Conditions",
+    "conditionalColorDescription": "Color rows when they match the conditions"
+  },
+  "singleSelectColorValueProviderForm": {
+    "chooseAColor": "Which single select field should the row be colored by?"
+  },
+  "conditionalColorValueProviderForm": {
+    "addCondition": "Add condition",
+    "addConditionGroup": "Add condition group",
+    "colorAlwaysApplyTitle": "This color applies by default.",
+    "colorAlwaysApply": "You can add conditions by clicking on the \"Add condition\" button.",
+    "addColor": "Add color",
+    "deleteColor": "Delete color",
+    "title": "Colors"
+  },
+  "redirectToBaserowModal": {
+    "title": "Redirecting to https://baserow.io",
+    "content": "You are leaving your self hosted instance and you are being redirected to https://baserow.io."
+  },
+  "premiumTopSidebar": {
+    "impersonateDescription": "This account is impersonated. A page refresh will stop it.",
+    "impersonateStop": "Stop",
+    "premium": "Premium",
+    "premiumDescription": "Your account has access to the premium features globally"
+  },
+  "formViewModeType": {
+    "survey": "Survey",
+    "surveyDescription": "One field is visible at the same time.",
+    "onlyForPremium": "Available in the premium version"
+  },
+  "formViewModePreviewSurvey": {
+    "orderFields": "Order fields",
+    "deactivated": "Survey form is available in the premium version.",
+    "more": "More information"
+  },
+  "shareLinkOptions": {
+    "baserowLogo": {
+      "label": "Hide Baserow logo on shared view",
+      "premiumModalName": "public logo removal"
+    },
+    "allowPublicExportLabel": "Allow export on shared view"
+  },
+  "viewsContext": {
+    "personal": "Personal"
+  },
+  "dateFieldSelectForm": {
+    "dateField": "Which field would you like to use for this view?",
+    "noCompatibleDateFields": "There are no date fields in this table, please create one first."
+  },
+  "selectDateFieldModal": {
+    "chooseDateField": "Choose date field",
+    "save": "Save"
+  },
+  "RowEditModalCommentNotificationMode": {
+    "modeMentionsTitle": "Only mentions",
+    "modeMentionsDesc": "You will only receive notifications when you are mentioned.",
+    "modeAllTitle": "All comments",
+    "modeAllDesc": "You will receive notifications for all comments in this row."
+  },
+  "premiumFieldType": {
+    "ai": "AI prompt",
+    "aiDescription": "A read-only field that holds AI generated text based on the field prompt."
+  },
+  "functionalGridViewFieldAI": {
+    "generate": "Generate"
+  },
+  "gridViewFieldAI": {
+    "generate": "Generate",
+    "regenerate": "Regenerate"
+  },
+  "fieldAISubForm": {
+    "prompt": "Prompt",
+    "promptPlaceholder": "What is Baserow?",
+    "premiumFeature": "The AI field is a premium feature",
+    "emptyFileField": "None",
+    "fileFieldHelp": "The first compatible file in the field will be used as the knowledge base for the prompt. The file has to be a text file with the supported file extension like .txt, .md, .pdf, .docx.",
+    "outputType": "Output type",
+    "outputTypeTooltip": "Select your desired output format to guide the LLM in generating responses that match your desired options.",
+    "outputTypeChangedWarning": "Clears the generated cell values.",
+    "autoUpdate": "Auto update",
+    "autoUpdateHelp": "When enabled, the AI field value will be automatically regenerated when any of the referenced fields in the prompt are updated.",
+    "autoUpdateDescription": "Regenerate when referenced fields change"
+  },
+  "rowEditFieldAI": {
+    "generate": "Generate",
+    "createRowBefore": "The AI value can be generated after the row has been created."
+  },
+  "aiFormulaModal": {
+    "title": "Generate formula using AI",
+    "description": "Note that the generated formulas might not always work as expected. We're constructing a prompt for the model, and we load the output in the formula input. It works best with a high parameter model like gpt-4-turbo-preview.",
+    "label": "Prompt",
+    "labelDescription": "Describe the formula you would like to generate",
+    "generate": "Generate",
+    "noModels": "Your Baserow instance and workspace doesn't have any AI models configured. Navigate to the homepage, click on the name of your workspace, then on settings to configure them."
+  },
+  "formulaFieldAI": {
+    "generateWithAI": "Generate using AI",
+    "featureName": "Generate formula using AI"
+  },
+  "aiOutputType": {
+    "text": "Text",
+    "textDescription": "Generates free text based on the prompt.",
+    "choice": "Choice",
+    "choiceDescription": "Chooses only one of the field options."
+  },
+  "publicViewExport": {
+    "export": "Export"
+  },
+  "chart": {
+    "true": "true",
+    "false": "false",
+    "other": "Other"
+  },
+  "generateAIValuesModal": {
+    "title": "Generate all AI values",
+    "noPreviousJobs": "No previous jobs",
+    "started": "Started",
+    "finished": "Completed",
+    "running": "Running",
+    "failed": "Failed",
+    "cancelled": "Cancelled",
+    "pending": "Pending",
+    "view": "View: {name}",
+    "table": "Table: All rows",
+    "deletedView": "View: ID {viewId} (deleted)",
+    "rows": "Rows: {count} rows"
+  },
+  "generateAIValuesForm": {
+    "scopeLabel": "Scope",
+    "entireTable": "Entire table",
+    "skipPopulated": "Generate only values for empty cells",
+    "warningTitle": "Token Usage Warning",
+    "warningMessage": "Geenerating all AI values will consume API tokens and may take substantial time depending on the number of rows."
+  },
+  "generateAIValuesFormFooter": {
+    "generate": "Generate with AI",
+    "close": "Close"
+  },
+  "jobType": {
+    "generateAIValues": "Regenerate AI field values"
+  },
+  "viewOwnershipType": {
+    "personal": "Personal",
+    "personalDescription": "Only you can see the view."
+  }
+}

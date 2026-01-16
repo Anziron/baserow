@@ -1,0 +1,203 @@
+[
+  {
+    "formula": "",
+    "content": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "wrapper"
+        }
+      ]
+    }
+  },
+  {
+    "formula": "'hello'",
+    "content": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "wrapper",
+          "content": [{ "text": "hello", "type": "text" }]
+        }
+      ]
+    }
+  },
+  {
+    "formula": "concat('hello', 'there')",
+    "content": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "wrapper",
+          "content": [
+            { "type": "text", "text": "hello" },
+            { "type": "text", "text": "there" }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "formula": "concat('hello', 'there', 'friend :)')",
+    "content": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "wrapper",
+          "content": [
+            { "type": "text", "text": "hello" },
+            { "type": "text", "text": "there" },
+            { "type": "text", "text": "friend :)" }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "formula": "get('data_source.hello.there')",
+    "content": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "wrapper",
+          "content": [
+            {
+              "type": "text",
+              "text": "\u200B"
+            },
+            {
+              "type": "get-formula-component",
+              "attrs": {
+                "path": "data_source.hello.there",
+                "isSelected": false
+              }
+            },
+            {
+              "type": "text",
+              "text": "\u200B"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "formula": "concat(get('data_source.hello.there'), 'friend :)')",
+    "content": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "wrapper",
+          "content": [
+            {
+              "type": "text",
+              "text": "\u200B"
+            },
+            {
+              "type": "get-formula-component",
+              "attrs": {
+                "path": "data_source.hello.there",
+                "isSelected": false
+              }
+            },
+            {
+              "type": "text",
+              "text": "\u200B"
+            },
+            { "type": "text", "text": "friend :)" }
+          ]
+        }
+      ]
+    }
+  },
+
+  {
+    "formula": "concat('hello', '\n', 'there')",
+    "content": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "wrapper",
+          "content": [
+            {
+              "type": "text",
+              "text": "hello"
+            }
+          ]
+        },
+        {
+          "type": "wrapper",
+          "content": [
+            {
+              "type": "text",
+              "text": "there"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "formula": "concat('hello', '\n', get('data_source.hello.there'))",
+    "content": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "wrapper",
+          "content": [
+            {
+              "type": "text",
+              "text": "hello"
+            }
+          ]
+        },
+        {
+          "type": "wrapper",
+          "content": [
+            {
+              "type": "text",
+              "text": "\u200B"
+            },
+            {
+              "type": "get-formula-component",
+              "attrs": {
+                "path": "data_source.hello.there",
+                "isSelected": false
+              }
+            },
+            {
+              "type": "text",
+              "text": "\u200B"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "formula": "concat('hello', '\n', '')",
+    "content": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "wrapper",
+          "content": [
+            {
+              "type": "text",
+              "text": "hello"
+            }
+          ]
+        },
+        {
+          "type": "wrapper",
+          "content": [
+            {
+              "type": "text",
+              "text": "\u200B"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

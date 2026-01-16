@@ -1,0 +1,38 @@
+html,
+body {
+  height: 100%;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $color-neutral-100;
+}
+
+a {
+  cursor: pointer;
+}
+
+b,
+strong {
+  font-weight: 600;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+:focus {
+  outline: 0;
+}
+
+hr {
+  border: none;
+  margin: 0;
+  margin-bottom: 16px;
+  border-top: 1px solid $color-neutral-200;
+}

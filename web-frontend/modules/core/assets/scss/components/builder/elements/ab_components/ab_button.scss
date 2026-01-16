@@ -1,0 +1,41 @@
+.ab-button {
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-block;
+  text-decoration: none;
+  line-height: 1em;
+  color: var(--button-text-color, $white);
+  background-color: var(--button-background-color, $black);
+  font-size: var(--button-font-size, 12px);
+  font-weight: var(--button-font-weight, 400);
+  border: var(--button-border-size, 0) solid var(--button-border-color, black);
+  border-radius: var(--button-border-radius, 4px);
+  width: var(--button-width, auto);
+  text-align: var(--button-text-alignment, center);
+  align-self: var(--force-self-alignment, var(--button-alignment, initial));
+  font-family: var(--button-font-family, Inter);
+  padding: var(--button-vertical-padding, 4px)
+    var(--button-horizontal-padding, 12px);
+
+  &:not(.loading-spinner):hover,
+  &:not(.loading-spinner).ab-button--force-hover {
+    background-color: var(--button-hover-background-color, $black);
+    border-color: var(--button-hover-border-color, $white);
+    color: var(--button-hover-text-color, $white);
+    text-decoration: none;
+  }
+
+  &:not(.loading-spinner).ab-button--force-active {
+    background-color: var(--button-active-background-color, $black);
+    border-color: var(--button-active-border-color, $white);
+    color: var(--button-active-text-color, $white);
+    text-decoration: none;
+  }
+
+  &[disabled],
+  &[disabled]:hover {
+    cursor: not-allowed;
+    filter: saturate(0%);
+    opacity: 0.8;
+  }
+}

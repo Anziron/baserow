@@ -1,0 +1,1074 @@
+{
+  "common": {
+    "dateFormatTitle": "Date format",
+    "dateFormatEU": "European",
+    "dateFormatUS": "US",
+    "dateFormatISO": "ISO",
+    "timeFormatTitle": "Time format",
+    "timeFormat24Hour": "24 hour",
+    "timeFormat12Hour": "12 hour"
+  },
+  "builderToast": {
+    "details": "Details",
+    "defaultTitle": "Unexpected Error",
+    "defaultMessage": "An unexpected error occurred. Please try again later.",
+    "invalidContextTitle": "Invalid request",
+    "invalidContextMessage": "The request is invalid.",
+    "InvalidContentTitle": "Invalid form",
+    "invalidContentMessage": "One or more fields contain invalid values.",
+    "serviceMisconfiguredTitle": "Incomplete configuration",
+    "serviceMisconfiguredMessage": "Please check the configuration.",
+    "errorWorkflowActionDispatch": "The \"{name}\" action failed: ",
+    "errorDataSourceDispatch": "Failed to load \"{name}\" data: "
+  },
+  "dataProviderType": {
+    "dataSource": "Data records",
+    "dataSourceContext": "Available options",
+    "pageParameter": "Parameter",
+    "currentRecord": "Data source",
+    "formData": "Form data",
+    "previousAction": "Previous action",
+    "user": "User"
+  },
+  "formDataProviderType": {
+    "nodeMissing": "Missing"
+  },
+  "builderForm": {
+    "submit": "Add application"
+  },
+  "sidebarComponentBuilder": {
+    "settings": "Settings",
+    "createPage": "New page"
+  },
+  "builderSettingsModal": {
+    "title": "Application"
+  },
+  "builderSettingTypes": {
+    "generalName": "General",
+    "integrationsName": "Integrations",
+    "themeName": "Theme",
+    "domainsName": "Domains",
+    "userSourcesName": "Users"
+  },
+  "createPageModal": {
+    "header": "Create page",
+    "submit": "Add page"
+  },
+  "pageErrors": {
+    "errorNameNotUnique": "A page with this name already exists",
+    "errorNameNotUniqueDescription": "Please enter a unique name for the page",
+    "errorPathNotUnique": "A path with this name already exists",
+    "errorStartingSlash": "A path needs to start with a '/'",
+    "errorValidPathCharacters": "The path contains invalid characters",
+    "errorUniquePathParams": "Path parameters have to be unique.",
+    "errorUniqueValidQueryParams": "Query parameter names have to be unique and valid."
+  },
+  "pageHeaderItemTypes": {
+    "labelElements": "Elements",
+    "labelDataSource": "Data",
+    "labelVariables": "Variables",
+    "labelSettings": "Page settings"
+  },
+  "pageActionTypes": {
+    "preview": "Preview",
+    "publish": "Publish"
+  },
+  "publishActionModal": {
+    "title": "Publish",
+    "description": "Take your app live by publishing to one of the domains. Note that your application can have multiple domains, each running a different version of the application.",
+    "publish": "Publish",
+    "publishSucceedTitle": "Site published",
+    "publishSucceedDescription": "The site has been successfully published.",
+    "publishSucceedLink": "View site",
+    "publishFailedTitle": "Site publishing failed",
+    "publishFailedDescription": "The site publishing has failed. Please try again later.",
+    "openInNewTab": "Open in a new tab",
+    "importingState": "Importing",
+    "noDomain": "You need to have at least one domain in order to publish your application.",
+    "addDomain": "Add domain"
+  },
+  "lastPublishedDomainDate": {
+    "neverPublished": "never",
+    "lastPublished": "Last published:"
+  },
+  "elementsContext": {
+    "searchPlaceholder": "Search elements",
+    "noPageElements": "No elements found for this page",
+    "noElements": "No elements found"
+  },
+  "elementType": {
+    "heading": "Heading",
+    "headingDescription": "Page heading title",
+    "text": "Text",
+    "textDescription": "Multi-line text",
+    "link": "Link",
+    "linkDescription": "A link to page/URL",
+    "image": "Image",
+    "imageDescription": "Display image",
+    "inputText": "Data input",
+    "inputTextDescription": "A data input field",
+    "column": "Columns",
+    "columnDescription": "Columns container",
+    "button": "Button",
+    "buttonDescription": "A button element",
+    "table": "Table",
+    "tableDescription": "A table element",
+    "formContainer": "Form",
+    "formContainerDescription": "A form element",
+    "choice": "Choice",
+    "choiceDescription": "For single/multiple value selection",
+    "checkbox": "Checkbox",
+    "checkboxDescription": "Checkbox element",
+    "iframe": "IFrame",
+    "iframeDescription": "Inline frame",
+    "authForm": "Login form",
+    "authFormDescription": "A user login form",
+    "repeat": "Repeat",
+    "repeatDescription": "A repeatable set of elements",
+    "recordSelector": "Record selector",
+    "recordSelectorDescription": "A related record selector",
+    "dateTimePicker": "Date time picker",
+    "dateTimePickerDescription": "A date and time input field",
+    "header": "Multi-page header",
+    "headerDescription": "A container shared across pages",
+    "footer": "Multi-page footer",
+    "footerDescription": "A container shared across pages",
+    "notAllowedUnlessTop": "This element is allowed only at the top of the page",
+    "notAllowedUnlessBottom": "This element is allowed only at the bottom of the page",
+    "notAllowedUnlessHeader": "This element is allowed only inside the page header",
+    "notAllowedUnlessFooter": "This element is allowed only inside the page footer",
+    "notAllowedInsideContainer": "This element is not allowed inside a container",
+    "notAllowedInsideSameType": "This element is not allowed in a container of the same type",
+    "ratingInput": "Rating input",
+    "ratingInputDescription": "A rating input element",
+    "rating": "Rating",
+    "ratingDescription": "A rating element",
+    "invalidElementValue": "Invalid element value: {value}",
+    "notAllowedLocation": "This element is not allowed at this location",
+    "menu": "Menu",
+    "menuDescription": "Menu element",
+    "simpleContainer": "Container",
+    "simpleContainerDescription": "A container for other elements",
+    "fileInput": "File input",
+    "fileInputDescription": "An input to upload files",
+    "errorValueMissing": "Missing value property",
+    "errorEmptyContainer": "This container is empty",
+    "errorParentWithDataSourceMissing": "No data source selected on the element or a parent container",
+    "errorDataSourceMissing": "No data source selected",
+    "errorSchemaPropertyMissing": "No schema property selected",
+    "errorWorkflowActionInError": "At least one action is misconfigured",
+    "errorCollectionFieldInError": "At least one field is misconfigured",
+    "errorNavigateToPageMissing": "Missing Navigate to property",
+    "errorPageParameterInError": "At least one page parameter is misconfigured",
+    "errorNavigationUrlMissing": "Missing Navigation URL property",
+    "errorImageFileMissing": "Missing Image file",
+    "errorImageUrlMissing": "Missing Image URL property",
+    "errorNoWorkflowAction": "No workflow action configured",
+    "errorOptionsMissing": "No option configured",
+    "errorIframeUrlMissing": "Missing IFrame URL property",
+    "errorIframeContentMissing": "Missing IFrame content",
+    "errorNoMenuItem": "No menu item configured",
+    "errorMenuItemInError": "At least one menu is misconfigured",
+    "errorSubMenuItemInError": "At least one sub menu is misconfigured"
+  },
+  "addElementButton": {
+    "label": "Element"
+  },
+  "addElementModal": {
+    "title": "Add new element",
+    "searchPlaceholder": "Search elements",
+    "elementInProgress": "Adding element..."
+  },
+  "addElementCategory": {
+    "suggestedElement": "Suggested elements",
+    "baseElement": "Base elements",
+    "layoutElement": "Layout elements",
+    "formElement": "Form elements"
+  },
+  "elementMenu": {
+    "moveUp": "Move up",
+    "moveDown": "Move down",
+    "moveLeft": "Move left",
+    "moveRight": "Move right",
+    "selectParent": "Select parent"
+  },
+  "duplicatePageJobType": {
+    "name": "Duplicate page",
+    "duplicating": "Duplicating",
+    "duplicatedTitle": "Page duplicated"
+  },
+  "pageSidePanelType": {
+    "general": "General",
+    "style": "Style",
+    "visibility": "Visibility",
+    "events": "Events",
+    "eventsTabDeactivatedNoEvents": "This element doesn't support any events",
+    "eventsTabInError": "One or more actions are misconfigured."
+  },
+  "emptySidePanelState": {
+    "message": "Click on one of the elements to see more details"
+  },
+  "pagePreview": {
+    "emptyMessage": "Click to create an element",
+    "header": "HEADER",
+    "footer": "FOOTER"
+  },
+  "elementForms": {
+    "textInputPlaceholder": "Enter text...",
+    "urlInputPlaceholder": "Enter url...",
+    "invalidFormula": "The formula is invalid"
+  },
+  "headingElement": {
+    "missingValue": "Missing title...",
+    "emptyValue": "Empty title..."
+  },
+  "headingElementForm": {
+    "levelTitle": "Level",
+    "textTitle": "Text",
+    "textPlaceholder": "Enter text...",
+    "headingName": "Heading {level} <h{level}>",
+    "textError": "The value is invalid."
+  },
+  "textElement": {
+    "missingValue": "Missing text...",
+    "emptyValue": "Empty text..."
+  },
+  "textElementForm": {
+    "textTitle": "Text",
+    "textPlaceholder": "Enter text...",
+    "textError": "The value is invalid.",
+    "textFormatTypeLabel": "Format",
+    "textFormatTypePlain": "Plain text",
+    "textFormatTypeMarkdown": "Markdown"
+  },
+  "orientations": {
+    "label": "Orientation",
+    "horizontal": "Horizontal",
+    "vertical": "Vertical"
+  },
+  "menuElement": {
+    "missingValue": "Missing menu item",
+    "separator": "Separator",
+    "spacer": "Spacer",
+    "missingLinkValue": "Missing link name...",
+    "emptyLinkValue": "Empty link name...",
+    "missingButtonValue": "Missing button name...",
+    "emptyButtonValue": "Empty button name..."
+  },
+  "menuElementForm": {
+    "menuItemsLabel": "Menu items",
+    "addMenuItemLink": "Add...",
+    "alignment": "Alignment",
+    "menuItemDefaultName": "Page",
+    "menuItemLabelLabel": "Label",
+    "menuItemTypeLabel": "Type",
+    "menuItemTypeSeparator": "Separator",
+    "menuItemVariantLabel": "Variant",
+    "menuItemVariantLink": "Link",
+    "menuItemVariantButton": "Button",
+    "namePlaceholder": "Page",
+    "addSubLink": "Add sublink",
+    "menuItemSubLinkDefaultName": "Sublink",
+    "menuItemAddLink": "Link",
+    "menuItemAddButton": "Button",
+    "menuItemAddSeparator": "Separator",
+    "menuItemAddSpacer": "Spacer",
+    "eventDescription": "To configure actions for this button, open the Events tab of this element.",
+    "noMenuItemsMessage": "Click 'Add' to add your first menu item."
+  },
+  "simpleContainerElementForm": {
+    "noConfigurationOptions": "The container element does not have any configuration options."
+  },
+  "imageElement": {
+    "missingValue": "Missing alt text...",
+    "emptyValue": "Empty alt text..."
+  },
+  "generalForm": {
+    "labelTitle": "Label",
+    "labelPlaceholder": "Enter label",
+    "valueTitle": "Value",
+    "defaultValueTitle": "Default value",
+    "defaultValuePlaceholder": "Enter default value",
+    "valuePlaceholder": "Enter value",
+    "placeholderTitle": "Placeholder",
+    "placeholderPlaceholder": "Enter a placeholder",
+    "requiredTitle": "Required",
+    "validationTitle": "Validation"
+  },
+  "inputTextElementForm": {
+    "multilineTitle": "Multiline",
+    "rowsTitle": "Number of lines",
+    "rowsPlaceholder": "Enter the number of rows of this input",
+    "validationTypeAnyLabel": "Any",
+    "validationTypeAnyDescription": "Allow any value to be set in this input.",
+    "validationTypeIntegerLabel": "Number",
+    "validationTypeIntegerDescription": "Enforce a numeric value in this input (accepts integers and decimals).",
+    "validationTypeEmailLabel": "Email",
+    "validationTypeEmailDescription": "Enforce an email address value in this input.",
+    "inputType": "Input type",
+    "inputTypeTextLabel": "Text",
+    "inputTypePasswordLabel": "Password",
+    "passwordTypeWarning": "Passwords are sensitive data. Please be careful how you handle and store passwords in your application."
+  },
+  "dateTimePickerElementForm": {
+    "includeTime": "Include time",
+    "invalidDateError": "Invalid date. Please make sure the input date matches the given format."
+  },
+  "imageElementForm": {
+    "fileLabel": "Image",
+    "invalidUrlError": "URL is invalid",
+    "altTextTitle": "Alt text",
+    "altTextDescription": "Is used by screen readers and displayed if the image can't load",
+    "fileSourceTypeUpload": "Upload",
+    "fileSourceTypeURL": "URL",
+    "urlWarning": "Note: please make sure that you have control over, or trust the url entered.",
+    "uploadFileButton": "Upload file"
+  },
+  "iframeElementForm": {
+    "missingValue": "Missing IFrame source...",
+    "emptyValue": "Empty IFrame source...",
+    "sourceTypeLabel": "Source type",
+    "urlLabel": "URL",
+    "urlPlaceholder": "Link to the external resource to be embedded",
+    "urlHelp": "Note: please make sure that you have control over, or trust the url entered.",
+    "embedLabel": "Embed",
+    "embedPlaceholder": "Raw HTML content to be embedded",
+    "heightLabel": "Height (px)",
+    "heightPlaceholder": "Height in pixels"
+  },
+  "columnElementForm": {
+    "columnAmountTitle": "Layout",
+    "verticalAlignment": "Vertical alignment",
+    "columnAmountName": "no columns | 1 column | {columnAmount} columns",
+    "columnGapTitle": "Space between columns",
+    "columnGapPlaceholder": "Enter space between columns..."
+  },
+  "domainSettings": {
+    "titleOverview": "Domains",
+    "titleAddDomain": "Add domain",
+    "addDomain": "Add domain",
+    "noDomainMessage": "You have not yet associated a domain with this application. You must add a domain to be able to publish your application. You can publish different versions of your application for each domain listed here."
+  },
+  "userSourceSettings": {
+    "titleAddUserSource": "New user source",
+    "titleUpdateUserSource": "Edit user source",
+    "noUserSourceMessage": "You have not yet added a user source to this application. You must add a user source if you want users being able to authenticate your application.",
+    "titleOverview": "User sources",
+    "addUserSource": "Add user source"
+  },
+  "themeSettings": {
+    "titleOverview": "Theme"
+  },
+  "generalSettings": {
+    "titleOverview": "General",
+    "labelForm": "Favicon",
+    "labelDescription": "Pick a 128x128px ICO, PNG, GIF, or JPEG.",
+    "labelButton": "Upload favicon",
+    "cantUploadFaviconTitle": "Couldn't Upload Favicon File",
+    "cantUploadFaviconDescription": "Sorry, could not upload favicon image. Please ensure the image file is unique and is a supported image format.",
+    "cantUpdateApplicationTitle": "Couldn't Update Application",
+    "cantUpdateApplicationDescription": "Sorry, could not update the Application."
+  },
+  "dnsStatus": {
+    "description": "Visit your domains' DNS settings and make the following changes",
+    "typeHeader": "Type",
+    "hostHeader": "Host",
+    "valueHeader": "Value"
+  },
+  "domainForm": {
+    "invalidDomain": "The provided domain name is invalid",
+    "notUniqueDomain": "The provided domain is already used"
+  },
+  "customDomainForm": {
+    "domainNameLabel": "Domain name"
+  },
+  "subDomainForm": {
+    "domainNameLabel": "Domain name"
+  },
+  "subDomainDetails": {
+    "text": "The DNS settings of the domain have already been configured and checked. It works without making any additional changes."
+  },
+  "domainCard": {
+    "refresh": "Refresh settings",
+    "detailLabel": "Show details",
+    "unpublishedDomainWarning": "Please publish the application to make it available on this domain."
+  },
+  "domainTypes": {
+    "customName": "Custom domain",
+    "subDomainName": "Subdomain",
+    "subDomain": "Subdomain of {domain}"
+  },
+  "linkElement": {
+    "missingValue": "Missing link text...",
+    "emptyValue": "Empty link text..."
+  },
+  "linkNavigationSelection": {
+    "navigateTo": "Navigate to",
+    "navigateToCustom": "Custom URL",
+    "paramPlaceholder": "Enter a value...",
+    "urlPlaceholder": "Enter an URL...",
+    "url": "Destination URL",
+    "paramsInErrorDescription": "The saved parameters don't match the page parameters. The page has probably been deleted or updated.",
+    "paramsInErrorButton": "Update parameters",
+    "target": "Open in...",
+    "targetSelf": "Same tab",
+    "targetNewTab": "New tab"
+  },
+  "linkElementForm": {
+    "text": "Text",
+    "textPlaceholder": "Enter text...",
+    "variant": "Variant",
+    "variantLink": "Link",
+    "variantButton": "Button",
+    "buttonColor": "Button color"
+  },
+  "widthSelector": {
+    "width": "Width",
+    "widthAuto": "Auto",
+    "widthFull": "Full width"
+  },
+  "backgroundTypes": {
+    "none": "None",
+    "color": "Color"
+  },
+  "widthTypes": {
+    "fullBleed": "Full bleed",
+    "fullWidth": "Full width",
+    "normal": "Normal",
+    "medium": "Medium",
+    "small": "Small"
+  },
+  "horizontalAlignmentSelector": {
+    "alignmentLeft": "Left",
+    "alignmentCenter": "Center",
+    "alignmentRight": "Right"
+  },
+  "verticalAlignmentSelector": {
+    "alignmentTop": "Top",
+    "alignmentCenter": "Middle",
+    "alignmentBottom": "Bottom"
+  },
+  "pageSettingsTypes": {
+    "pageName": "Page"
+  },
+  "pageVisibilitySettingsTypes": {
+    "pageName": "Visibility",
+    "logInPageWarningTitle": "The Login Page is not set",
+    "logInPagewarningMessage": "When an anonymous user attempts to access this page, they will be redirected to a login page. Please set the Login Page in the Application's General settings.",
+    "logInPageInfoTitle": "Anonymous users will be redirected",
+    "logInPageInfoMessage": "Anonymous users attempting to access this page will be redirected to the {logInPageName} page."
+  },
+  "pageSettings": {
+    "title": "Page",
+    "pageUpdatedTitle": "Changed",
+    "pageUpdatedDescription": "The page settings have been updated."
+  },
+  "pageVisibilitySettings": {
+    "title": "Visibility",
+    "allVisitors": "All visitors",
+    "loggedInVisitors": "Logged-in visitors",
+    "description": "Who can see this page"
+  },
+  "pageForm": {
+    "defaultName": "Page",
+    "nameTitle": "Name",
+    "nameSubtitle": "Unique name of the page",
+    "namePlaceholder": "Enter a name...",
+    "pathTitle": "Path",
+    "addAnotherParameter": "Add another query string parameter",
+    "addParameter": "Add query string parameter",
+    "queryParamsSubtitleTutorial": "Query parameters can be used to dynamically load data, depending on the provided parameter.",
+    "pathSubtitle": "A parameter can be added via :parameter",
+    "pathPlaceholder": "Enter a path...",
+    "pathParamsTitle": "Path parameters",
+    "queryParamsTitle": "Query string parameters",
+    "pathParamsSubtitle": "Are defined by :parameter in the path",
+    "pathParamsSubtitleTutorial": "Path parameters can be used to dynamically load data, depending on the provided parameter. Add :parameter to the path to add one."
+  },
+  "pathParamTypes": {
+    "textName": "Text",
+    "numericName": "Numeric"
+  },
+  "queryParamTypes": {
+    "textName": "Text",
+    "numericName": "Numeric"
+  },
+  "pageEditor": {
+    "pageNotFound": "Page not found"
+  },
+  "publicPage": {
+    "siteNotFound": "Site not found",
+    "pageNotFound": "Page not found",
+    "loginToastTitle": "Authentication Successful",
+    "loginToastMessage": "You have been successfully signed in.",
+    "authorizedToastTitle": "Authentication Required",
+    "authorizedToastMessage": "You must be signed in to access this page. Please log in to continue."
+  },
+  "integrationSettings": {
+    "title": "Integrations",
+    "noIntegrationMessage": "You have not yet created any integrations. They can be created by adding data source, action or user authentication.",
+    "integrationMessage": "You can create new integrations by adding data source, action or user authentication."
+  },
+  "dataSourceForm": {
+    "namePlaceholder": "Source name",
+    "nameLabel": "Name",
+    "actionLabel": "Action",
+    "integrationLabel": "Integration",
+    "servicePlaceholder": "Select a service",
+    "integrationPlaceholder": "Select an integration",
+    "errorUniqueName": "Data source name must be unique."
+  },
+  "dataSourceContext": {
+    "addDataSource": "Add new data source",
+    "noDataSourceTitle": "You have not yet added a data source.",
+    "noDataSourceMessage": "Data sources can be used to fetch data from internal or external sources and display it on the page.",
+    "sharedDataSourceTitle": "Shared between pages",
+    "pageDataSourceTitle": "For this page",
+    "sharedDataSourceDescription": "Accessible on every page and is fetched once on first page load.",
+    "pageDataSourceDescription": "Fetched when the user navigates to this page."
+  },
+  "dataSourceItem": {
+    "notConfigured": "Not configured"
+  },
+  "dataSourceItemContext": {
+    "shareBetweenPages": "Share between pages",
+    "unshareBetweenPages": "Unshare from other pages"
+  },
+  "dataSourceCreateEditModal": {
+    "editTitle": "Edit data source",
+    "createTitle": "Create data source",
+    "sharedWarning": "This data source is shared so your changes can affect multiple pages."
+  },
+  "defaultStyleForm": {
+    "boxTop": "Top",
+    "boxBottom": "Bottom",
+    "boxLeft": "Left",
+    "boxRight": "Right",
+    "backgroundLabel": "Background",
+    "backgroundColor": "Background color",
+    "widthLabel": "Width",
+    "backgroundImage": "Image",
+    "backgroundImageMode": "Fill mode",
+    "cssClasses": "CSS classes",
+    "cssClassesHelp": "Set a space separated list of classes for this element that will appear in the generated HTML.",
+    "cssClassesPlaceholder": "Enter CSS classes..."
+  },
+  "styleBoxForm": {
+    "borderColor": "Border color",
+    "borderLabel": "Size",
+    "paddingLabel": "Padding",
+    "marginLabel": "Margin"
+  },
+  "radiusStyleForm": {
+    "cornerRadiusLabel": "Corner radius",
+    "backgroundRadiusLabel": "Background",
+    "borderRadiusLabel": "Border"
+  },
+  "themeConfigBlockType": {
+    "color": "Colors",
+    "page": "Page",
+    "typography": "Typography",
+    "button": "Button",
+    "link": "Link",
+    "image": "Image",
+    "input": "Input",
+    "table": "Table"
+  },
+  "colorThemeConfigBlock": {
+    "transparent": "Transparent",
+    "primaryColor": "Primary",
+    "secondaryColor": "Secondary",
+    "borderColor": "Border",
+    "successColor": "Success",
+    "warningColor": "Warning",
+    "errorColor": "Error",
+    "customColors": "Custom colors",
+    "addCustomColor": "Add custom color",
+    "customColorPrefix": "Custom"
+  },
+  "pageThemeConfigBlock": {
+    "backgroundColor": "Background color",
+    "backgroundImage": "Background image",
+    "backgroundMode": "Background mode"
+  },
+  "colorThemeConfigBlockType": {
+    "transparent": "Transparent",
+    "primary": "Primary",
+    "secondary": "Secondary",
+    "border": "Border",
+    "success": "Success",
+    "warning": "Warning",
+    "error": "Error"
+  },
+  "typographyThemeConfigBlock": {
+    "headingLabel": "Heading {i} (h{i})",
+    "headingValue": "Heading <h{i}>",
+    "color": "Color",
+    "size": "Size",
+    "weight": "Weight",
+    "textAlignment": "Alignment",
+    "bodyLabel": "Body",
+    "decoration": "Text decoration",
+    "fontFamily": "Font"
+  },
+  "fontWeightType": {
+    "thin": "Thin",
+    "extraLight": "Extra-light",
+    "light": "Light",
+    "regular": "Regular",
+    "medium": "Medium",
+    "semiBold": "Semi-bold",
+    "bold": "Bold",
+    "extraBold": "Extra-bold",
+    "black": "Black",
+    "extraBlack": "Extra-black"
+  },
+  "buttonThemeConfigBlock": {
+    "backgroundColor": "Background color",
+    "button": "Button",
+    "defaultState": "Default state",
+    "hoverState": "Hover state",
+    "activeState": "Active state",
+    "textAlignment": "Text alignment",
+    "alignment": "Alignment",
+    "width": "Width",
+    "textColor": "Text color",
+    "borderColor": "Border color",
+    "borderSize": "Border size",
+    "borderRadius": "Border radius",
+    "padding": "Padding",
+    "fontFamily": "Font",
+    "size": "Font size",
+    "weight": "Font weight"
+  },
+  "linkThemeConfigBlock": {
+    "color": "Color",
+    "link": "Link",
+    "defaultState": "Default state",
+    "hoverState": "Hover state",
+    "activeState": "Active state",
+    "alignment": "Alignment",
+    "fontFamily": "Font",
+    "size": "Font size",
+    "weight": "Font weight",
+    "decoration": "Text decoration"
+  },
+  "inputThemeConfigBlock": {
+    "label": "Label",
+    "input": "Input",
+    "backgroundColor": "Background color",
+    "textColor": "Text color",
+    "borderColor": "Border color",
+    "borderSize": "Border size",
+    "borderRadius": "Border radius",
+    "padding": "Padding",
+    "fontFamily": "Font",
+    "size": "Font size",
+    "weight": "Font weight"
+  },
+  "imageThemeConfigBlock": {
+    "alignment": "Alignment",
+    "maxWidthLabel": "Max width",
+    "maxHeightLabel": "Max height",
+    "maxHeightPlaceholder": "Enter a max height",
+    "maxWidthPlaceholder": "Enter a max width",
+    "imageConstraintsLabel": "Constraints",
+    "imageConstraintFullWidth": "Extend to max width",
+    "imageConstraintCover": "Cover",
+    "imageConstraintCoverDisabled": "Unavailable with empty max height.",
+    "imageConstraintContain": "Contain",
+    "imageConstraintContainDisabled": "Unavailable with a max height.",
+    "imageBorderRadiusLabel": "Border radius",
+    "imageBorderRadiusPlaceholder": "Enter the image border radius."
+  },
+  "tableThemeConfigBlock": {
+    "borderColor": "Border color",
+    "backgroundAlternateColor": "Even rows color",
+    "backgroundColor": "Background color",
+    "textColor": "Text color",
+    "borderSize": "Border size",
+    "borderRadius": "Border radius",
+    "padding": "Padding",
+    "fontFamily": "Font",
+    "size": "Size",
+    "fontSize": "Font size",
+    "fontWeight": "Font weight",
+    "table": "Table",
+    "header": "Header",
+    "alignment": "Alignment",
+    "cells": "Cells",
+    "separators": "Separators",
+    "verticalSeparatorColor": "Vertical color",
+    "verticalSeparatorSize": "Vertical size",
+    "horizontalSeparatorColor": "Horizontal color",
+    "horizontalSeparatorSize": "Horizontal size"
+  },
+  "buttonElementForm": {
+    "valueLabel": "Button text",
+    "valuePlaceholder": "Enter text..."
+  },
+  "buttonElement": {
+    "missingValue": "Missing button text...",
+    "emptyValue": "Empty button text..."
+  },
+  "eventTypes": {
+    "clickLabel": "On click",
+    "submitLabel": "On submit",
+    "afterLoginLabel": "After login"
+  },
+  "getFormulaComponent": {
+    "errorTooltip": "Invalid reference"
+  },
+  "fontSidePanelForm": {
+    "label": "Font color"
+  },
+  "choiceElementForm": {
+    "multiple": "Allow multiple values",
+    "display": "Display",
+    "dropdown": "Dropdown",
+    "checkbox": "Checkbox",
+    "radio": "Radio"
+  },
+  "dropdown": {
+    "empty": "No options available"
+  },
+  "tableElementForm": {
+    "dataSource": "Data source",
+    "fields": "Fields",
+    "fieldValueLabel": "Value",
+    "addField": "add field",
+    "fieldValuePlaceholder": "Enter value...",
+    "itemsPerPage": "Items per page",
+    "fieldDefaultName": "Column",
+    "name": "Name",
+    "noName": "No name",
+    "fieldType": "Type",
+    "itemsPerPagePlaceholder": "Enter value...",
+    "selectSourceFirst": "Choose a data source and/or property to begin configuring your fields.",
+    "buttonColor": "Button color",
+    "refreshFieldsFromDataSource": "refresh fields from data source",
+    "buttonLoadMoreLabel": "Show more label",
+    "propertySelectorMissingArrays": "No multiple valued fields found to use as rows."
+  },
+  "tableElement": {
+    "showMore": "Show more"
+  },
+  "abTable": {
+    "loading": "Loading...",
+    "empty": "No items have been found."
+  },
+  "repeatElement": {
+    "empty": "No items have been found.",
+    "showMore": "Show more",
+    "missingDataSourceTooltip": "Choose a data source to begin adding elements.",
+    "missingSchemaPropertyTooltip": "Choose a property to begin adding elements.",
+    "emptyState": "No records found."
+  },
+  "collectionElementForm": {
+    "noDataSourceMessage": "Choose a data source with multiple rows to list all results, or a single row data source to choose a property inside this row.",
+    "noSchemaPropertyMessage": "Choose a property inside the data source to use as the list data of your element.",
+    "propertyOptionLabel": "User actions"
+  },
+  "propertyOptionForm": {
+    "fieldHeading": "Field",
+    "filterHeading": "Filter",
+    "sortHeading": "Sort",
+    "searchHeading": "Search",
+    "optionUnavailable": "Unavailable",
+    "noPropertiesAvailable": "No fields available.",
+    "formDescription": "Choose which properties within this element's data source page visitors can filter, sort and search upon."
+  },
+  "repeatElementForm": {
+    "dataSource": "Data source",
+    "itemsPerPage": "Items per page",
+    "itemsPerPagePlaceholder": "Enter value...",
+    "itemsPerRowLabel": "Items per row",
+    "itemsPerRowDescription": "Number of columns per row and device type.",
+    "buttonLoadMoreLabel": "Show more label",
+    "toggleEditorRepetitionsLabel": "Temporarily disable repetitions",
+    "propertySelectorMissingArrays": "No multiple valued fields found to repeat with.",
+    "gapLabel": "Space between repetitions",
+    "gapVerticalLabel": "Vertical",
+    "gapHorizontalLabel": "Horizontal"
+  },
+  "recordSelectorElement": {
+    "emptyAdhocState": "No records matching '{query}' found.",
+    "emptyState": "No records found."
+  },
+  "recordSelectorElementForm": {
+    "selectRecordsFrom": "Select records from",
+    "noDataSourceMessage": "Choose a data source with multiple rows to list all results.",
+    "optionNameSuffix": "Option name suffix",
+    "optionNameSuffixPlaceholder": "Enter a suffix...",
+    "optionNameSuffixHelper": "This suffix is appended to each option name when you open the dropdown and helps to distinguish them.",
+    "itemsPerPage": "Items per page",
+    "itemsPerPagePlaceholder": "Enter value...",
+    "multipleLabel": "Allow multiple values",
+    "record": "Record {id}"
+  },
+  "currentRecordDataProviderType": {
+    "index": "Index",
+    "firstPartName": "Data source: {name}",
+    "schemaProperty": "{prefixName}: {schemaProperty}"
+  },
+  "workflowActionTypes": {
+    "notificationLabel": "Show Notification",
+    "openPageLabel": "Open Page",
+    "logoutLabel": "Logout",
+    "refreshDataSourceLabel": "Refresh data source",
+    "httpRequest": "Send HTTP request",
+    "errorNavigateToPageMissing": "Missing Navigate to property",
+    "errorPageParameterInError": "At least one page parameter is misconfigured",
+    "errorNavigationUrlMissing": "Missing Navigation URL property",
+    "errorDataSourceMissing": "No data source selected"
+  },
+  "notificationWorkflowActionForm": {
+    "titleLabel": "Title",
+    "titlePlaceholder": "Enter text...",
+    "descriptionLabel": "Description",
+    "descriptionPlaceholder": "Enter text..."
+  },
+  "event": {
+    "addAction": "add action"
+  },
+  "collectionFieldType": {
+    "boolean": "Boolean",
+    "button": "Button",
+    "text": "Text",
+    "link": "Link",
+    "tags": "Tags",
+    "image": "Image",
+    "rating": "Rating",
+    "errorValueMissing": "Missing value property"
+  },
+  "textFieldForm": {
+    "fieldValueLabel": "Value",
+    "fieldValuePlaceholder": "Enter value..."
+  },
+  "linkFieldForm": {
+    "fieldValueLabel": "Url",
+    "fieldValuePlaceholder": "Enter value...",
+    "fieldLinkNameLabel": "Link text",
+    "fieldLinkNamePlaceholder": "Enter value...",
+    "buttonColor": "Button color"
+  },
+  "tagsFieldForm": {
+    "fieldValuesLabel": "Values",
+    "fieldValuesPlaceholder": "Enter values...",
+    "fieldColorsLabel": "Colors",
+    "fieldColorsPlaceholder": "Enter colors..."
+  },
+  "linkField": {
+    "details": "Details"
+  },
+  "imageFieldForm": {
+    "fieldSrcLabel": "Image source",
+    "fieldSrcPlaceholder": "Enter value",
+    "fieldAltLabel": "Alt text",
+    "fieldAltPlaceholder": "Enter value...",
+    "fieldAltHelp": "Is used by screen readers and displayed if the image can't load"
+  },
+  "createUserSourceForm": {
+    "userSourceType": "Type",
+    "userSourceIntegration": "Integration",
+    "userSourceName": "Name"
+  },
+  "updateUserSourceForm": {
+    "nameFieldLabel": "Name",
+    "nameFieldPlaceholder": "Enter a name...",
+    "authTitle": "Authentication",
+    "integrationFieldLabel": "Integration",
+    "addProvider": "Add provider"
+  },
+  "builderLoginPageForm": {
+    "pageDropdownLabel": "Login Page",
+    "pageDropdownPlaceholder": "Select a page",
+    "pageDropdownDescription": "Select the Login Page that non-logged in users should be redirected to when they attempt to access a restricted page."
+  },
+  "formContainerElement": {
+    "submitDeactivatedText": "Complete all required fields to submit",
+    "defaultSubmitButtonLabel": "Submit"
+  },
+  "formContainerElementForm": {
+    "submitButtonLabel": "Submit button",
+    "submitButtonPlaceholder": "Enter value...",
+    "buttonColor": "Button color",
+    "resetToInitialValuesTitle": "Reset to default values after submission",
+    "resetToInitialValuesDescription": "If checked, the form's default values will be used to reset the form after successful submission. If unchecked, the user's values will remain."
+  },
+  "choiceOptionSelector": {
+    "label": "Options",
+    "value": "Option values",
+    "valuePlaceholder": "Enter value",
+    "name": "Option names",
+    "namePlaceholder": "Enter name",
+    "addOption": "add option",
+    "addOptionDescription": "Click 'add option' to add options to your dropdown",
+    "optionType": "Options type",
+    "manual": "Manual",
+    "dataSource": "Data source",
+    "formulas": "Formulas"
+  },
+  "fieldMappingContext": {
+    "enableField": "Enable field",
+    "disableField": "Disable field"
+  },
+  "checkboxElementForm": {
+    "labelTitle": "Option name",
+    "valueTitle": "Default value",
+    "requiredTitle": "Required"
+  },
+  "choiceElement": {
+    "addOptions": "Add options to begin using this element..."
+  },
+  "userSourceUsersContext": {
+    "searchPlaceholder": "Search user",
+    "anonymous": "Anonymous",
+    "unnamed": "Unnamed",
+    "noEmail": "No email"
+  },
+  "userSelector": {
+    "viewAs": "View as: {user}",
+    "anonymous": "Anonymous",
+    "member": "{prefix} member"
+  },
+  "visibilityForm": {
+    "allVisitors": "All visitors",
+    "loggedInVisitors": "Logged-in visitors",
+    "notLoggedInVisitors": "Logged-out visitors",
+    "warningTitle": "This is a security feature",
+    "warningMessage": "Check the <a href='https://baserow.io/user-docs/application-builder-element-visibility#note-accessing-hidden-data-via-api' target='_blank'>documentation</a> to learn more about how we secure data.",
+    "excludedRolesLabel": "all roles except",
+    "switchAllowLabel": "Allow",
+    "switchDisallowLabel": "Disallow",
+    "rolesSelectAll": "Select all",
+    "rolesDeselectAll": "Deselect all",
+    "rolesSelectHint": "Select one or more roles",
+    "roleTypesHint": "Select a Role Type",
+    "roleTypeAllowAllRoles": "All roles",
+    "roleTypeAllowAllRolesExcept": "Disallow roles...",
+    "roleTypeDisallowAllRolesExcept": "Allow roles...",
+    "rolesAllMembersOf": "All members of {name}",
+    "noRole": "No role",
+    "errorFetchingRolesTitle": "Could not fetch User Roles",
+    "errorFetchingRolesMessage": "There was a problem while fetching User Roles.",
+    "visibilityCondition": "Visibility condition",
+    "visibilityConditionHelper": "If the result of this formula is true, and the visitor choice above is true, the element will be visible. This condition only affects the element’s visibility. To exclude data from the server response instead, use the user role filtering option above.",
+    "visibilityConditionPlaceholder": "Condition..."
+  },
+  "userDataProviderType": {
+    "isAuthenticated": "Is authenticated",
+    "id": "Id",
+    "email": "Email",
+    "username": "Username",
+    "role": "Role"
+  },
+  "buttonField": {
+    "noLabel": "Unnamed..."
+  },
+  "buttonFieldForm": {
+    "infoMessage": "To configure actions for this button, open the \"Events\" tab of the current element.",
+    "labelPlaceholder": "Enter a label..."
+  },
+  "resetButton": {
+    "reset": "Reset to default theme value"
+  },
+  "backgroundModes": {
+    "fill": "Fill",
+    "tile": "Tile",
+    "fit": "Fit"
+  },
+  "customStyle": {
+    "backToElement": "Back to element configuration",
+    "configureThemeOverrides": "Configure theme overrides for this element"
+  },
+  "serviceSchemaPropertySelector": {
+    "label": "Property",
+    "noProperties": "No properties available"
+  },
+  "userSourceDropdown": {
+    "label": "User source",
+    "addUserSource": "Add new user source",
+    "noUserSources": "No user sources available"
+  },
+  "dataSourceDropdown": {
+    "label": "Data source",
+    "noDataSources": "No data sources available",
+    "noSharedDataSources": "No shared data sources available",
+    "shared": "shared",
+    "pageOnly": "this page",
+    "addNew": "Add new data source"
+  },
+  "multiPageContainerElementForm": {
+    "pagePosition": "Position",
+    "behaviour": "Behaviour",
+    "display": "Display",
+    "selectAll": "Select all",
+    "deselectAll": "Deselect all"
+  },
+  "pageShareType": {
+    "all": "On all pages",
+    "only": "Only on selected pages",
+    "except": "Exclude selected pages"
+  },
+  "authProviderWithModal": {
+    "authProviderInError": "Please edit this provider to fix the error.",
+    "title": "Edit provider: {name}"
+  },
+  "textDecorationSelector": {
+    "underline": "Underline",
+    "stroke": "Stroke",
+    "italic": "Italic",
+    "uppercase": "Uppercase"
+  },
+  "ratingFieldForm": {
+    "maxValue": "Max value",
+    "color": "Color",
+    "style": "Style",
+    "star": "Star",
+    "heart": "Heart",
+    "thumbsUp": "Thumbs up",
+    "flag": "Flag",
+    "value": "Value"
+  },
+  "ratingElementForm": {
+    "maxValue": "Maximum",
+    "color": "Color",
+    "ratingStyle": "Style",
+    "star": "Star",
+    "heart": "Heart",
+    "smile": "Smile",
+    "thumbsUp": "Thumbs up",
+    "flag": "Flag"
+  },
+  "automationSettingsModal": {
+    "title": "Workflow"
+  },
+  "abFileInput": {
+    "delete": "Delete"
+  },
+  "elementsGuidedTourStep": {
+    "title": "Add elements to your page",
+    "content": "Every app needs components! Add elements like tables, forms, buttons, and more to bring your app to life."
+  },
+  "dataGuidedTourStep": {
+    "title": "Connect your data",
+    "content": "Link your Baserow tables here to display, filter, and update your data dynamically across different elements."
+  },
+  "previewGuidedTourStep": {
+    "title": "Your control center",
+    "content": "This is where you configure your app’s pages. Add elements, preview the result, and structure your app exactly how you want."
+  },
+  "devicesGuidedTourStep": {
+    "title": "Preview on different devices",
+    "content": "Switch between desktop, tablet, and mobile previews to see how your app looks on different screen sizes. Make sure your design works perfectly across all devices!"
+  },
+  "sidePanelGuidedTourStep": {
+    "title": "Side Panel: Customize Elements",
+    "content": "**General Tab** – Configure the selected element.\n\n**Style Tab** – Customize padding, margin, borders, and more.\n\n**Visibility Tab** – Control who can see this element: logged-in users, logged-out users, or specific roles.\n\n**Events Tab** – If the element supports actions, configure them here for dynamic interactivity."
+  },
+  "previewPublishGuidedTourStep": {
+    "title": "Preview & Publish Your App",
+    "content": "Click **Preview** to test your app privately. When ready, click **Publish** to share it with the public via a domain."
+  }
+}

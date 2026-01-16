@@ -1,0 +1,14 @@
+// Generate color and background classes for each defined color
+@each $color, $value in $colors {
+  .background-color--#{$color} {
+    background-color: $value;
+  }
+
+  .color--#{$color} {
+    color: $value;
+  }
+}
+
+.background-color--white {
+  background-color: white;
+}

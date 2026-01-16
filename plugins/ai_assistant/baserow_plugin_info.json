@@ -1,0 +1,11 @@
+{
+  "name": "AI 助手",
+  "version": "1.0.0",
+  "description": "表格字段的自动 AI 处理",
+  "author": "Your Name",
+  "modules": {
+    "web-frontend": "web-frontend/modules/ai_assistant"
+  },
+  "permission_levels": ["use"],
+  "admin_only": false
+}

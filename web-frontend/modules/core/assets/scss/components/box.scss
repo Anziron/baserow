@@ -1,0 +1,61 @@
+.box,
+%box {
+  background-color: $white;
+  padding: 32px 40px;
+
+  @include elevation($elevation-medium);
+  @include rounded($rounded-md);
+}
+
+.box__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid $color-neutral-200;
+}
+
+.box__head-logo {
+  height: 16px;
+  margin-bottom: 64px;
+
+  & img {
+    height: 100%;
+  }
+}
+
+.box__head-title,
+%box-head-title {
+  word-break: break-word;
+  margin: 0;
+  padding: 0;
+}
+
+.box__title,
+%box-title {
+  @extend %box-head-title;
+
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid $color-neutral-200;
+}
+
+.box__message {
+  text-align: center;
+}
+
+.box__message-icon {
+  font-size: 50px;
+  color: $color-primary-500;
+  margin-bottom: 30px;
+}
+
+.box__message-title {
+  margin-bottom: 30px;
+}
+
+.box__message-text {
+  color: $color-neutral-900;
+}

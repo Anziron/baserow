@@ -1,0 +1,70 @@
+/**
+ Menu Element Form styles.
+ */
+
+.menu-element-form__add-item-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu-element-form__add-item-context {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+  padding: 10px;
+}
+
+.menu-element-form__item-error {
+  font-size: 20px;
+  color: #ffbdb4;
+  pointer-events: none;
+  padding-right: 3px;
+}
+
+.menu-element-form__item-handle {
+  width: 10px;
+  height: 16px;
+  background-image: radial-gradient($color-neutral-400 40%, transparent 40%);
+  background-size: 5px 5px;
+  background-repeat: repeat;
+  cursor: grab;
+
+  &:hover {
+    background-image: radial-gradient($color-neutral-500 40%, transparent 40%);
+  }
+}
+
+.menu-element-form__item-title {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.menu-element-form__item-wrapper {
+  padding: 4px 0;
+}
+
+.menu-element-form__item-header--outline {
+  display: flex;
+  align-items: center;
+  padding: 18px 12px;
+  user-select: none;
+  cursor: auto;
+  font-weight: 500;
+  gap: 8px;
+  background-color: $color-neutral-10;
+  border: 1px dashed $color-neutral-200;
+
+  @include rounded($rounded);
+}
+
+.menu-element-form__item-delete {
+  cursor: pointer;
+}
+
+.menu-element-item-form__children:last-child {
+  padding-bottom: 6px;
+}

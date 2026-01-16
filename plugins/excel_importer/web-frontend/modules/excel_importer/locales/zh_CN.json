@@ -1,0 +1,19 @@
+{
+  "excelImporter": {
+    "importerType": {
+      "excel": "导入 Excel 文件"
+    },
+    "chooseFileLabel": "选择 Excel 文件",
+    "chooseFileDescription": "你可以通过上传包含表格数据的 .xlsx 或 .xls 文件来导入现有 Excel 文件。",
+    "chooseFile": "选择 Excel 文件",
+    "firstRowHeader": "第一行是标题",
+    "sheetSelection": "选择工作表",
+    "limitFileSize": "最大文件大小为 {limit}MB。",
+    "limitError": "无法导入超过 {limit} 行。",
+    "emptyFile": "此 Excel 文件没有工作表。",
+    "emptySheet": "所选工作表为空。",
+    "parseError": "无法解析 Excel 文件。请确保它是有效的 Excel 文件。",
+    "exporterName": "Excel",
+    "includeHeader": "包含标题行"
+  }
+}

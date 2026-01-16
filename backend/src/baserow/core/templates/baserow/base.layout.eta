@@ -1,0 +1,110 @@
+<%
+/* The base layout file used for all emails. https://eta.js.org/ templating is used
+* so as an initial step so the actual email eta files can correctly wrap themselves
+* using this base layout.
+*
+* See baserow/backend/email_compiler/baserowEmailCompiler.js
+* for the script which runs the eta and mjml tools over these files.
+*
+* The <%~ it.body %> tag found below is where other eta templates using
+* this one as a layout will have their contents inserted.
+*
+* We use eta as a first build time templating step because:
+*   - We can't just use django templates as they evaluate at runtime where we don't
+*     want to have to run an mjml command.
+*   - We can't just run mjml beforehand over django templates containing mjml as it
+*     cannot parse / handle partial blocks of mjml contained within django
+*     block/extend tags.
+*
+*
+* So instead by using eta as an initial templating step we can construct valid mjml
+* files which mjml then takes and produces html django templates with. By doing this
+* we can generate the email html templates at build time and not have to worry about
+* shipping and running mjml at runtime.
+*/
+%>
+<mjml>
+  <mj-raw position="file-start">
+      {% load i18n %}
+  </mj-raw>
+  <mj-head>
+    <mj-font
+            href="https://fonts.googleapis.com/css?family=Inter:400,600"
+            name="Inter"
+    ></mj-font>
+    <mj-attributes>
+      <mj-class
+              name="title"
+              font-size="22px"
+              color="#070810"
+              font-family="Inter,sans-serif"
+              font-weight="600"
+      />
+      <mj-class
+              name="text"
+              font-size="13px"
+              color="#070810"
+              font-family="Inter,sans-serif"
+              line-height="170%"
+      />
+      <mj-class
+              name="button"
+              font-size="15px"
+              color="#ffffff"
+              font-family="Inter,sans-serif"
+              font-weight="600"
+              align="left"
+              background-color="#5190ef"
+              border-radius="4px"
+              inner-padding="12px 30px"
+      />
+      <mj-class
+              name="button-url"
+              font-size="12px"
+              color="#9c9c9f"
+              font-family="Inter,sans-serif"
+      />
+      <mj-class
+              name="notification-title"
+              font-size="14px"
+              color="#070810"
+              font-family="Inter,sans-serif"
+              line-height="170%"
+      />
+      <mj-class
+              name="notification-description"
+              font-size="12px"
+              line-height="18px"
+              color="#838387"
+              font-family="Inter,sans-serif"
+      />
+      <mj-class
+              name="mb-20"
+              margin-bottom="20px"
+      />
+      <mj-class
+              name="mt-20"
+              margin-top="20px"
+      />
+    </mj-attributes>
+  </mj-head>
+  <mj-body>
+    <mj-section text-align="left">
+      <mj-column width="190px">
+        <mj-image
+            align="left"
+            width="150px"
+            src="{{ logo_url }}"
+            href="{{ baserow_embedded_share_url }}"
+            padding-bottom="0"
+        ></mj-image>
+      </mj-column>
+      <mj-column>
+        <mj-text mj-class="text" align="left" padding-left="0">
+          {{ logo_additional_text }}
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <%~ it.body %>
+  </mj-body>
+</mjml>

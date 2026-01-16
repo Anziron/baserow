@@ -1,0 +1,42 @@
+.theme-config-block__title {
+  color: $color-neutral-900;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  place-content: center space-between;
+  margin-bottom: 15px;
+  width: calc(60% - 10px);
+  padding: 0;
+  user-select: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  .theme-config-block--no-preview & {
+    width: 100%;
+  }
+}
+
+.theme-config-block__title-icon {
+  font-size: 14px;
+}
+
+.theme-config-block {
+  position: relative;
+
+  &:not(.theme-config-block--no-preview) {
+    background: linear-gradient(
+      90deg,
+      transparent calc(60% + 14px),
+      var(--page-background-color, transparent) calc(40% - 14px)
+    );
+  }
+
+  &:not(.theme-config-block--no-preview)::after {
+    @include absolute(0, calc(40% - 14px), 0, auto);
+
+    content: '';
+    border-right: 1px solid $color-neutral-200;
+  }
+}

@@ -1,0 +1,51 @@
+.user-admin-username {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.user-admin-username__avatar {
+  margin-right: 12px;
+}
+
+.user-admin-username__name {
+  @extend %ellipsis;
+
+  word-wrap: break-word;
+  line-height: 24px;
+}
+
+.user-admin-username__icon {
+  margin-left: 5px;
+  font-size: 16px;
+}
+
+.user-admin-active {
+  @include flex-align-items(5px);
+}
+
+.user-admin-active__icon {
+  font-size: 18px;
+
+  &.user-admin-active__icon--activated {
+    color: $color-success-500;
+  }
+
+  &.user-admin-active__icon--deactivated {
+    color: $color-error-500;
+  }
+}
+
+.user-admin-group__icon {
+  color: $color-neutral-700;
+  font-size: 16px;
+}
+
+.user-admin-delete__strong {
+  word-break: break-word;
+}
+
+.user-admin-edit__delete {
+  color: $color-error-500;
+  font-size: 14px;
+}

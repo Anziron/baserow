@@ -1,0 +1,144 @@
+.modal__wrapper {
+  position: fixed;
+  inset: 0;
+  overflow: auto;
+  z-index: $z-index-modal;
+  background-color: rgba($color-neutral-700, 0.16);
+  scrollbar-gutter: stable;
+}
+
+.modal__box {
+  @extend %box;
+
+  position: relative;
+  margin: 40px auto;
+  max-width: 660px;
+  background-color: $white;
+
+  @include rounded($rounded-md);
+
+  &.modal__box--with-sidebar {
+    display: flex;
+    padding: 0;
+    max-width: 960px;
+  }
+
+  &.modal__box--full-screen {
+    @include absolute(20px);
+
+    max-width: none;
+    margin: 0;
+    overflow: auto;
+  }
+
+  &.modal__box--full-height {
+    height: calc(100% - 80px);
+  }
+
+  &.modal__box--full-max-height {
+    max-height: calc(100% - 80px);
+  }
+
+  &.modal__box--wide {
+    max-width: 720px;
+  }
+
+  &.modal__box--small {
+    max-width: 520px;
+  }
+
+  &.modal__box--tiny {
+    max-width: 320px;
+    padding: 15px;
+  }
+
+  &.modal__box--no-padding {
+    padding: 0;
+  }
+
+  &.modal__box--right {
+    margin-right: 20px;
+
+    @media (max-width: 720px) {
+      max-width: calc(100% - 50px);
+    }
+  }
+
+  .box__title {
+    margin-top: 0;
+  }
+}
+
+.modal__box-sidebar {
+  position: relative;
+  background-color: $color-neutral-50;
+  flex: 0 0;
+
+  &.modal__box-sidebar--scrollable {
+    overflow-y: auto;
+  }
+
+  &.modal__box-sidebar--left {
+    flex-basis: 200px;
+    border-right: 1px solid $palette-neutral-200;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+  }
+
+  &.modal__box-sidebar--right {
+    flex-basis: 300px;
+    border-left: 1px solid $palette-neutral-200;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+
+  &.modal__box-sidebar--collapsed {
+    flex-basis: 48px;
+  }
+}
+
+.modal__box-content {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  flex: 1;
+  scrollbar-gutter: stable;
+
+  &.modal__box-content--scrollable {
+    overflow-y: auto;
+  }
+
+  &:not(.modal__box-content-no-padding) {
+    padding: 32px 40px;
+  }
+}
+
+.modal__actions {
+  @include absolute(10px, 20px, auto, auto);
+
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: baseline;
+}
+
+.modal__close,
+%modal-close {
+  font-size: 20px;
+  color: $color-neutral-400;
+
+  &:hover {
+    color: $color-neutral-800;
+  }
+}
+
+.modal__collapse {
+  @extend %modal-close;
+
+  margin-right: 4px;
+}
+
+.modal__head {
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  border-bottom: solid 1px $color-neutral-200;
+}

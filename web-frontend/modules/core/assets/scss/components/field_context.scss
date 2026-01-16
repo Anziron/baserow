@@ -1,0 +1,29 @@
+.field-context {
+  min-width: 400px;
+}
+
+.field-context__content {
+  max-height: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+.field-context__with-tabs-wrapper {
+  max-height: inherit;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.field-context__tabs {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  @include rounded($rounded-md);
+}
+
+.field-context__inner-element-width {
+  max-width: 366px;
+}

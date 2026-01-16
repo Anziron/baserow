@@ -1,0 +1,808 @@
+.grid-view {
+  @include absolute(0);
+
+  overflow: hidden;
+
+  .scrollbars__vertical-wrapper {
+    // We don't want to scrollbar to go over the header and footer.
+    top: 33 + 3px;
+    bottom: 48 + 3px;
+  }
+
+  &.grid-view--disable-selection {
+    user-select: none;
+  }
+}
+
+%grid-view-divider-width-handle {
+  width: 9px;
+  height: 26px;
+  cursor: col-resize;
+
+  &::before {
+    content: '';
+
+    @include absolute(0, 2px, 0, 2px);
+
+    border-radius: 2px;
+  }
+
+  &:hover::before,
+  &.dragging::before {
+    background-color: $color-primary-500;
+  }
+}
+
+.grid-view__left,
+.grid-view__right {
+  @include absolute(0, auto);
+
+  z-index: 1;
+  overflow: hidden;
+}
+
+.grid-view__inner {
+  @include absolute(0);
+
+  overflow: hidden;
+}
+
+// The width of the first column can be adjusted that is why it is specified in the html
+// file.
+.grid-view__left {
+  left: 0;
+  background-color: $palette-neutral-25;
+}
+
+// The width of the first column can be adjusted that is why the left offset is
+// specified in the html file.
+.grid-view__right {
+  right: 0;
+}
+
+// The divider has not left property because the width of the left column can be
+// adjusted that is why it is specified in the html file.
+.grid-view__divider {
+  @include absolute(0, auto);
+
+  z-index: 3;
+  width: 4px;
+  border-left: 1px solid $palette-neutral-400;
+  overflow: hidden;
+  pointer-events: none;
+
+  &::before {
+    display: none;
+    content: '';
+
+    @include absolute(0, auto, 0, 0);
+
+    width: 4px;
+    left: -4px;
+    background-color: black;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  &.shadow::before {
+    display: block;
+  }
+}
+
+.grid-view__divider-width {
+  @extend %grid-view-divider-width-handle;
+  @include absolute(3px, auto, auto, auto);
+
+  margin-left: -4.5px;
+  z-index: 3;
+}
+
+.grid-view__head {
+  @include absolute(0, 0, auto, 0);
+
+  display: flex;
+  height: 33px;
+  background-color: $palette-neutral-25;
+  border-bottom: 1px solid $palette-neutral-400;
+}
+
+.grid-view__head-row-identifier {
+  @include flex-align-items;
+
+  height: 100%;
+}
+
+.grid-view__head-row-identifier-dropdown {
+  position: relative;
+  z-index: 1;
+  padding-left: 8px;
+  color: $palette-neutral-600;
+
+  &:hover {
+    color: $palette-neutral-1000;
+  }
+}
+
+.grid-view__head-group {
+  position: relative;
+  height: 33px;
+}
+
+.grid-view__head-group-width-handle {
+  @extend %grid-view-divider-width-handle;
+  @include absolute(3px, auto, auto, auto);
+
+  margin-left: -4.5px;
+  z-index: 3;
+}
+
+.grid-view__body {
+  position: absolute;
+  inset: 33px 0 48px;
+  overflow: hidden;
+}
+
+.grid-view__body-inner {
+  padding-bottom: 100px;
+}
+
+.grid-view__foot {
+  @include absolute(auto, 0, 0, 0);
+
+  display: flex;
+  height: 48px;
+  background-color: $color-neutral-50;
+  border-top: 1px solid $color-neutral-200;
+}
+
+.grid-view__foot-info {
+  @extend %ellipsis;
+  @include fixed-height(32px, 13px);
+
+  min-width: 70px;
+  padding-left: 6px;
+}
+
+.grid-view__foot-logo {
+  position: fixed;
+  right: 12px;
+  bottom: 16px;
+
+  img {
+    display: block;
+    max-height: 100%;
+  }
+}
+
+.grid-view__placeholder {
+  position: relative;
+  background-color: $white;
+  background-image: linear-gradient(
+    0deg,
+    $palette-neutral-200 1px,
+    $white 1px $grid-view-row-height-small
+  );
+  background-size: 100% $grid-view-row-height-small;
+
+  .grid-view--row-height-medium & {
+    background-size: 100% $grid-view-row-height-medium;
+    background-image: linear-gradient(
+      0deg,
+      $palette-neutral-200 1px,
+      $white 1px $grid-view-row-height-medium
+    );
+  }
+
+  .grid-view--row-height-large & {
+    background-size: 100% $grid-view-row-height-large;
+    background-image: linear-gradient(
+      0deg,
+      $palette-neutral-200 1px,
+      $white 1px $grid-view-row-height-large
+    );
+  }
+}
+
+.grid-view__placeholder-groups {
+  @include absolute(0, auto, 0, 0);
+
+  background-color: $color-neutral-50;
+}
+
+.grid-view__placeholder-column {
+  @include absolute(0, auto, 0, auto);
+
+  border-right: 1px solid $palette-neutral-200;
+
+  &.grid-view__placeholder-column--no-border-right,
+  .grid-view__left & {
+    border-right: none;
+  }
+}
+
+.grid-view__filtered-no-results {
+  @include absolute(50%, auto, auto, 50%);
+
+  margin: -33px 0 0 -150px;
+  width: 300px;
+  height: 66px;
+  text-align: center;
+}
+
+.grid-view__filtered-no-results-icon {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.grid-view__filtered-no-results-content {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.grid-view__rows {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  background-color: $white;
+}
+
+.grid-view__row {
+  @extend %clearfix;
+
+  position: relative;
+  display: flex;
+  height: $grid-view-row-height-small;
+
+  .grid-view--row-height-medium & {
+    height: $grid-view-row-height-medium;
+  }
+
+  .grid-view--row-height-large & {
+    height: $grid-view-row-height-large;
+  }
+
+  &.grid-view__row--warning::before {
+    @include absolute(-1px);
+
+    content: '';
+    z-index: 2;
+    border: 2px solid $palette-yellow-500;
+    pointer-events: none;
+    border-radius: $rounded-md $rounded-md $rounded-md 0;
+
+    .grid-view__left & {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-right: 0;
+    }
+
+    .grid-view__right & {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-left: 0;
+    }
+  }
+
+  &.grid-view__row--selected {
+    background-color: $palette-neutral-25;
+  }
+}
+
+// Exception when the row decorations are enabled, we don't want to have a row selected
+// background color.
+.grid-view__row-background-wrapper .grid-view__row--selected {
+  background-color: inherit;
+}
+
+.grid-view__row-placeholder {
+  height: $grid-view-row-height-small;
+  width: 1px;
+}
+
+.grid-view__row-warning {
+  @include absolute(calc(100% - 1px), auto, -20px, 0);
+  @include fixed-height(23px, 11px);
+
+  z-index: 1;
+  background-color: $color-warning-500;
+  color: $white;
+  font-weight: 500;
+  padding: 0 6px;
+  border-radius: 0 0 $rounded-md $rounded-md;
+}
+
+// Because the width of a column can be adjusted it is specified in the html file.
+.grid-view__column {
+  position: relative;
+  height: $grid-view-row-height-small;
+  border-right: 1px solid $palette-neutral-200;
+  border-bottom: 1px solid $palette-neutral-200;
+
+  .grid-view--row-height-medium & {
+    height: $grid-view-row-height-medium;
+  }
+
+  .grid-view--row-height-large & {
+    height: $grid-view-row-height-large;
+  }
+
+  .grid-view__head & {
+    height: 32px;
+    border-bottom: none;
+    background-color: $palette-neutral-100;
+    border-right-color: $palette-neutral-400;
+  }
+
+  .grid-view__foot & {
+    border-right: 0;
+    border-bottom: 0;
+  }
+
+  &.grid-view__column--no-border-right,
+  .grid-view__left & {
+    border-right: none;
+  }
+
+  &.grid-view__column--sorted::after,
+  &.grid-view__column--grouped::after,
+  &.grid-view__column--filtered::after {
+    content: '';
+
+    @include absolute(0, 0, 0, 0);
+  }
+
+  &.grid-view__column--sorted::after {
+    background-color: rgba($color-warning-100, 0.8);
+  }
+
+  &.grid-view__column--grouped::after {
+    background-color: rgba($color-purple-100, 0.5);
+  }
+
+  &.grid-view__column--filtered::after {
+    background-color: rgba($color-success-100, 0.5);
+  }
+
+  &.grid-view__column--group-end::before {
+    @include absolute(auto, auto, -1px, 0);
+
+    content: '';
+    height: 1px;
+    background-color: $color-neutral-400;
+    width: 100%;
+    pointer-events: none;
+  }
+}
+
+.grid-view__group-by-divider {
+  @include absolute(0, auto, 0, auto);
+
+  z-index: 3;
+  width: 1px;
+  background-color: $color-neutral-400;
+}
+
+.grid-view__groups {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  display: flex;
+  background-color: $color-neutral-50;
+}
+
+.grid-view__group-span {
+  position: relative;
+
+  &::after {
+    @include absolute(auto, auto, 0, 0);
+
+    content: '';
+    height: 1px;
+    background-color: $color-neutral-400;
+    width: 100%;
+    pointer-events: none;
+  }
+}
+
+.grid-view__group {
+  position: sticky;
+  top: 0;
+  background-color: $color-neutral-50;
+  width: 100%;
+}
+
+.grid-view__group-cell {
+  display: flex;
+  height: $grid-view-row-height-small;
+  align-items: center;
+  width: 100%;
+  padding: 0 8px;
+}
+
+.grid-view__group-name {
+  @extend %ellipsis;
+
+  line-height: $grid-view-row-height-small;
+  font-size: 12px;
+  font-weight: 500;
+  color: $palette-neutral-900;
+}
+
+.grid-view__group-value {
+  min-width: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.grid-view__group-count {
+  font-size: 11px;
+  line-height: 18px;
+  font-weight: 600;
+  padding: 0 5px;
+  background-color: $color-neutral-200;
+  margin-left: 8px;
+
+  @include rounded($rounded);
+}
+
+.grid-view__row-info {
+  display: flex;
+  align-items: center;
+  line-height: $grid-view-row-height-small - 1px;
+
+  &.grid-view__row-info--matches-search {
+    background-color: $color-primary-100;
+  }
+}
+
+.grid-view__row-drag {
+  @include absolute(9px, auto, 0, 2px);
+
+  width: 16px;
+  height: 16px;
+  cursor: grab;
+  display: none;
+
+  &::before {
+    @include absolute(0);
+
+    content: '';
+    width: 11px;
+    background-image: radial-gradient(
+      $palette-neutral-500 1.5px,
+      transparent 1.5px
+    );
+    background-size: 5px 5px;
+    background-repeat: repeat;
+  }
+
+  .grid-view__row--hover & {
+    display: block;
+  }
+}
+
+.grid-view__row-checkbox {
+  flex: 1;
+  margin-left: 16px;
+  margin-top: 9px;
+  height: 24px;
+}
+
+.grid-view__row-count {
+  @extend %ellipsis;
+
+  flex: 1;
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+
+  &.grid-view__row-count--small {
+    font-size: 11px;
+  }
+
+  &::before {
+    content: '';
+    width: 10px;
+    height: 12px;
+    flex-shrink: 1;
+    min-width: 0;
+  }
+
+  .grid-view__row--loading & {
+    color: $white;
+
+    &::after {
+      @include loading;
+      @include absolute(50%, auto, auto, 6px);
+
+      content: '';
+      margin-top: -0.7rem;
+    }
+  }
+
+  .grid-view__row--hover &.grid-view__row-count--hide-on-hover {
+    visibility: hidden;
+  }
+}
+
+.grid-view__row-count-content {
+  flex-grow: 1;
+  flex-shrink: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.grid-view__row-more {
+  color: $palette-neutral-700;
+  visibility: hidden;
+  font-size: 14px;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  margin-right: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include rounded($rounded-md);
+
+  .grid-view__row--hover &,
+  .grid-view__row--selected & {
+    visibility: visible;
+  }
+
+  &:hover {
+    background-color: rgba($palette-neutral-1300, 0.06);
+    color: $palette-neutral-1200;
+  }
+}
+
+.grid-view__cell {
+  @include absolute(0);
+
+  user-select: none;
+
+  &.active {
+    @include absolute(0);
+
+    z-index: 2;
+
+    &::before {
+      content: '';
+      background: transparent;
+      pointer-events: none;
+      border: 2px solid $color-primary-400;
+      border-radius: $rounded-md;
+
+      @include absolute(-1px, -2px, -2px, -1px);
+    }
+
+    &.editing::before {
+      border-color: $color-primary-600;
+    }
+
+    &.invalid::before {
+      border-color: $color-error-400;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+  &.cell-error {
+    background-color: $color-error-100;
+    color: $color-neutral-500;
+  }
+
+  .grid-view__row--selected & {
+    &.active {
+      background-color: $white;
+    }
+
+    &.cell-error {
+      background-color: $color-error-100;
+    }
+  }
+
+  .grid-view__column--matches-search & {
+    background-color: $color-primary-100;
+
+    &.active {
+      background-color: $color-primary-100;
+    }
+  }
+
+  .grid-view__column--multi-select & {
+    background-color: rgba($palette-blue-500, 0.12);
+  }
+
+  .grid-view__cell-error {
+    @extend %ellipsis;
+    @include absolute(100%, auto, auto, -1px);
+    @include fixed-height(23px, 11px);
+
+    background-color: $color-error-500;
+    max-width: calc(100% - 4px);
+    color: $white;
+    padding: 0 6px;
+    font-weight: 500;
+    border-radius: 0 0 $rounded-md $rounded-md;
+  }
+}
+
+.grid-view__description {
+  position: relative;
+  z-index: 1;
+  padding: 0 0 0 10px;
+  height: 100%;
+
+  @include flex-align-items(5px);
+
+  .grid-view__description-icon,
+  .grid-view__description-options {
+    line-height: inherit;
+    color: $palette-neutral-600;
+  }
+
+  .grid-view__description-icon-container {
+    position: relative;
+  }
+
+  .grid-view__description-icon {
+    font-size: 14px;
+  }
+
+  .grid-view__description-extra-icon {
+    content: '';
+    font-size: 8px;
+    color: $palette-neutral-1200;
+
+    @include absolute(auto, -4px, -2px, auto);
+  }
+
+  .grid-view__description-icon-error {
+    line-height: inherit;
+    color: $color-error-400;
+    padding-right: 45px;
+    text-align: right;
+  }
+
+  .grid-view__description-options {
+    margin-left: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    vertical-align: center;
+  }
+
+  .grid-view__description-icon-trigger {
+    color: $palette-neutral-600;
+    cursor: pointer;
+    padding: 0 10px 0 2px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    vertical-align: center;
+    font-size: 14px;
+
+    &:hover {
+      color: $palette-neutral-1000;
+    }
+  }
+
+  .grid-view__description-width {
+    @extend %grid-view-divider-width-handle;
+    @include absolute(3px, -4.5px, 3px, auto);
+
+    z-index: 2;
+  }
+
+  .grid-view__description-name {
+    @extend %ellipsis;
+
+    user-select: none;
+    line-height: 15px;
+    font-size: 12px;
+    font-weight: 500;
+    color: $palette-neutral-900;
+  }
+
+  &.grid-view__description--loading {
+    &::after {
+      @include loading;
+      @include absolute(50%, 12px, auto, auto);
+
+      content: '';
+      margin-top: -0.7rem;
+    }
+
+    .grid-view__description-options {
+      display: none;
+    }
+  }
+}
+
+.grid-view__add-column {
+  @include flex-align-items;
+
+  color: $palette-neutral-600;
+  height: 100%;
+  justify-content: center;
+
+  &:hover {
+    background-color: $color-primary-100;
+  }
+}
+
+.grid-view__add-column-icon {
+  font-size: 16px;
+}
+
+.grid-view__add-column-placeholder {
+  display: none;
+
+  &.hover {
+    display: block;
+  }
+}
+
+.grid-view__add-row {
+  color: $palette-neutral-600;
+  background-color: $white;
+  padding-left: 8px;
+  height: 100%;
+
+  @include flex-align-items;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &.hover {
+    background-color: $palette-neutral-50;
+  }
+}
+
+.grid-view__field-dragging {
+  @include absolute(0, auto);
+
+  z-index: 4;
+  background-color: rgba($palette-neutral-1300, 0.04);
+}
+
+.grid-view__field-target {
+  @include absolute(0, auto, 48px, auto);
+
+  z-index: 5;
+  border-left: solid 1px $palette-neutral-700;
+}
+
+.grid-view__row-dragging-container {
+  // Compensation for the head and foot.
+  @include absolute(33px, 0, 48px, 0);
+
+  z-index: 4;
+  overflow: hidden;
+}
+
+.grid-view__row-dragging {
+  @include absolute(auto, auto, auto, 0);
+
+  background-color: rgba($palette-neutral-1300, 0.04);
+  height: $grid-view-row-height-small;
+
+  .grid-view--row-height-medium & {
+    height: $grid-view-row-height-medium;
+  }
+
+  .grid-view--row-height-large & {
+    height: $grid-view-row-height-large;
+  }
+}
+
+.grid-view__row-target {
+  @include absolute(auto, auto, auto, 0);
+
+  border-top: solid 1px $palette-neutral-700;
+}
+
+.grid-view__add-row-icon {
+  font-size: 16px;
+}

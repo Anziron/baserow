@@ -1,0 +1,31 @@
+.progress-bar {
+  @include fixed-height(9px, 12px);
+
+  width: 100%;
+  background-color: $palette-neutral-100;
+  margin-right: 30px;
+
+  @include rounded($rounded-md);
+
+  &.progress-bar--palette-neutral-200 {
+    background-color: $palette-neutral-200;
+  }
+}
+
+.progress-bar__inner {
+  background-color: $palette-green-500;
+  height: 100%;
+  transition-timing-function: linear;
+
+  @include rounded($rounded-md);
+
+  &--overflow {
+    background-color: $palette-red-400;
+  }
+}
+
+.progress-bar__status-text {
+  color: $color-neutral-400;
+  padding-top: 5px;
+  position: absolute;
+}

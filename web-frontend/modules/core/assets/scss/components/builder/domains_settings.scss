@@ -1,0 +1,12 @@
+.domain-settings__domain-type {
+  display: inline-block;
+  width: fit-content;
+
+  .dropdown__items {
+    width: min-content;
+  }
+}
+
+.domains-settings__loading {
+  margin: auto;
+}

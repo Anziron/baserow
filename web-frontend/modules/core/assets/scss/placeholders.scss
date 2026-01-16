@@ -1,0 +1,22 @@
+%first-last-no-margin {
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+%ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin contenteditable-placeholder() {
+  span[contenteditable='false'][placeholder]:empty::before {
+    color: $color-neutral-500;
+    content: attr(placeholder);
+  }
+}

@@ -1,0 +1,116 @@
+.select-row-modal {
+  .modal__box {
+    padding: 0;
+    max-width: 848px;
+  }
+
+  .modal__close {
+    z-index: 2;
+    top: 10px;
+  }
+
+  .simple-grid__left {
+    .simple-grid__cell:not(.simple-grid__cell--first):not(
+        .simple-grid__cell--single
+      ) {
+      width: 200px;
+    }
+
+    .simple-grid__field:not(.simple-grid__field--first) {
+      width: 200px;
+    }
+  }
+}
+
+.select-row-modal__initial-loading {
+  position: relative;
+  height: 44px + 33px + (33px * 10) + 44px;
+
+  &::after {
+    content: '';
+    z-index: 5;
+    margin: -7px auto auto -7px;
+
+    @include loading(14px);
+    @include absolute(50%, auto, auto, 50%);
+  }
+}
+
+.select-row-modal__head {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  border-bottom: solid 2px $color-neutral-200;
+}
+
+.select-row-modal__search {
+  position: relative;
+  z-index: 1;
+  border-right: solid 1px $color-neutral-200;
+  padding: 0 0 0 15px;
+  min-width: 0;
+  flex-grow: 1;
+  flex-shrink: 1;
+
+  @include flex-align-items(15px);
+}
+
+.select-row-modal__fields {
+  position: relative;
+  padding: 0 64px 0 16px;
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  &::after {
+    content: '';
+    background-color: $color-neutral-200;
+    width: 1px;
+
+    @include absolute(8px, 48px, 6px, auto);
+  }
+}
+
+.select-row-modal__search-icon {
+  color: $color-neutral-400;
+  font-size: 16px;
+}
+
+.select-row-modal__search-input {
+  position: relative;
+  z-index: 1;
+  border: 0;
+  width: 100%;
+  border-top-right-radius: $rounded-md;
+
+  @include fixed-height(44px, 14px);
+}
+
+.select-row-modal__rows {
+  position: relative;
+  height: 33px + (33px * 11) + 44px;
+  background-color: $color-neutral-100;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  overflow: hidden;
+}
+
+.select-row-modal__rows--loading {
+  position: relative;
+
+  &::before {
+    content: '';
+    z-index: 4;
+    background-color: rgba(0, 0, 0, 0.2);
+
+    @include absolute(0, 0, 0, 0);
+  }
+
+  &::after {
+    content: '';
+    z-index: 5;
+    margin: -7px auto auto -7px;
+
+    @include loading(14px);
+    @include absolute(50%, auto, auto, 50%);
+  }
+}

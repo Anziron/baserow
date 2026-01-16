@@ -1,0 +1,8 @@
+.edit-role-context__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-role-context__header-link {
+  @include flex-align-items(4px);
+}

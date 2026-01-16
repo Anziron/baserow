@@ -1,0 +1,1555 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GridView component with decoration Default component with first_cell decoration 1`] = `
+<div
+  class="grid-view grid-view--row-height-small"
+>
+  <div
+    class="scrollbars"
+    style="left: 72px;"
+  >
+    <!---->
+     
+    <!---->
+  </div>
+   
+  <div
+    class="grid-view__left"
+    style="width: 72px;"
+  >
+      
+    <div
+      class="grid-view__inner"
+      style="min-width: 72px;"
+    >
+      <div
+        class="grid-view__head"
+      >
+         
+        <div
+          class="grid-view__column grid-view__column--no-border-right"
+          style="width: 72px;"
+        >
+          <div
+            class="grid-view__head-row-identifier"
+          >
+            <i
+              class="grid-view__head-row-identifier-dropdown iconoir-numbered-list-left"
+            />
+             
+          </div>
+        </div>
+          
+        <!---->
+      </div>
+       
+      <div
+        class="grid-view__body"
+      >
+        <div
+          class="grid-view__body-inner"
+        >
+          <div
+            class="grid-view__placeholder"
+            style="height: 66px; width: 72px;"
+          >
+            <div
+              class="grid-view__placeholder-groups"
+              style="width: 0px;"
+            />
+             
+          </div>
+           
+          <!---->
+           
+          <div
+            class="grid-view__rows"
+            style="transform: translateY(0px) translateX(0px); left: 0px;"
+          >
+            <div
+              class="grid-view__row"
+            >
+              <!---->
+               
+              <div
+                class="grid-view__column grid-view__column--no-border-right"
+                style="width: 72px;"
+              >
+                <div
+                  class="grid-view__row-info"
+                >
+                  <div
+                    class="grid-view__row-count grid-view__row-count--hide-on-hover"
+                    title="2"
+                  >
+                    <div
+                      class="grid-view__row-count-content"
+                    >
+                      
+              2
+            
+                    </div>
+                  </div>
+                   
+                  <div
+                    class="grid-view__row-drag"
+                  />
+                   
+                  <a
+                    class="grid-view__row-more"
+                  >
+                    <i
+                      class="baserow-icon-enlarge-row"
+                    />
+                  </a>
+                   
+                  <div>
+                    fake_decoration: fake_value
+                  </div>
+                  <div>
+                    fake_decoration: fake_value
+                  </div>
+                </div>
+              </div>
+               
+            </div>
+          </div>
+           
+          <div
+            class="grid-view__row"
+            style="width: 72px; height: 33px;"
+          >
+            <div
+              class="grid-view__column"
+              style="width: 72px; height: 33px;"
+            >
+              <a
+                class="grid-view__add-row"
+              >
+                <i
+                  class="grid-view__add-row-icon iconoir-plus"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+       
+      <div
+        class="grid-view__foot"
+      >
+        <div
+          class="grid-view__foot-info"
+        >
+          
+        gridView.rowCount - 2
+      
+        </div>
+         
+      </div>
+    </div>
+     
+    <div
+      style="display: none;"
+    >
+      <div
+        class="grid-view__field-dragging"
+        style="width: 0px; left: 0px;"
+      />
+       
+      <div
+        class="grid-view__field-target"
+        style="left: 0px;"
+      />
+    </div>
+  </div>
+   
+   
+  <div
+    class="grid-view__divider"
+    style="left: 72px;"
+  />
+   
+  <!---->
+   
+  <div
+    class="grid-view__right"
+    style="left: 72px;"
+  >
+      
+    <div
+      class="grid-view__inner"
+      style="min-width: 800px;"
+    >
+      <div
+        class="grid-view__head"
+      >
+         
+        <!---->
+         
+        <div
+          class="grid-view__column"
+          filters=""
+          style="width: 200px;"
+        >
+          <div
+            class="grid-view__description"
+          >
+            <div
+              class="grid-view__description-icon-container"
+            >
+              <i
+                class="grid-view__description-icon iconoir-text"
+              />
+               
+              <!---->
+            </div>
+             
+            <div
+              class="grid-view__description-name"
+              title="Name"
+            >
+              <span>
+                
+        Name
+      
+              </span>
+            </div>
+             
+            <!---->
+             
+            <span
+              class="grid-view__description-options"
+            >
+               
+              <!---->
+               
+              <a
+                class="grid-view__description-icon-trigger"
+              >
+                <i
+                  class="iconoir-nav-arrow-down"
+                />
+              </a>
+            </span>
+             
+             
+            <div
+              class="grid-view__description-width"
+            />
+          </div>
+        </div>
+        <div
+          class="grid-view__column"
+          filters=""
+          style="width: 200px;"
+        >
+          <div
+            class="grid-view__description"
+          >
+            <div
+              class="grid-view__description-icon-container"
+            >
+              <i
+                class="grid-view__description-icon iconoir-text"
+              />
+               
+              <!---->
+            </div>
+             
+            <div
+              class="grid-view__description-name"
+              title="Surname"
+            >
+              <span>
+                
+        Surname
+      
+              </span>
+            </div>
+             
+            <!---->
+             
+            <span
+              class="grid-view__description-options"
+            >
+               
+              <!---->
+               
+              <a
+                class="grid-view__description-icon-trigger"
+              >
+                <i
+                  class="iconoir-nav-arrow-down"
+                />
+              </a>
+            </span>
+             
+             
+            <div
+              class="grid-view__description-width"
+            />
+          </div>
+        </div>
+        <div
+          class="grid-view__column"
+          filters=""
+          style="width: 200px;"
+        >
+          <div
+            class="grid-view__description"
+          >
+            <div
+              class="grid-view__description-icon-container"
+            >
+              <i
+                class="grid-view__description-icon iconoir-text"
+              />
+               
+              <!---->
+            </div>
+             
+            <div
+              class="grid-view__description-name"
+              title="Address"
+            >
+              <span>
+                
+        Address
+      
+              </span>
+            </div>
+             
+            <!---->
+             
+            <span
+              class="grid-view__description-options"
+            >
+               
+              <!---->
+               
+              <a
+                class="grid-view__description-icon-trigger"
+              >
+                <i
+                  class="iconoir-nav-arrow-down"
+                />
+              </a>
+            </span>
+             
+             
+            <div
+              class="grid-view__description-width"
+            />
+          </div>
+        </div>
+         
+        <div
+          class="grid-view__column"
+          style="width: 100px;"
+        >
+          <a
+            class="grid-view__add-column"
+            data-highlight="add-field"
+          >
+            <i
+              class="grid-view__add-column-icon iconoir-plus"
+            />
+          </a>
+           
+        </div>
+      </div>
+       
+      <div
+        class="grid-view__body"
+      >
+        <div
+          class="grid-view__body-inner"
+        >
+          <div
+            class="grid-view__placeholder"
+            style="height: 66px; width: 600px;"
+          >
+            <!---->
+             
+            <div
+              class="grid-view__placeholder-column"
+              style="left: 199px;"
+            />
+            <div
+              class="grid-view__placeholder-column"
+              style="left: 399px;"
+            />
+            <div
+              class="grid-view__placeholder-column"
+              style="left: 599px;"
+            />
+          </div>
+           
+          <!---->
+           
+          <div
+            class="grid-view__rows"
+            style="transform: translateY(0px) translateX(0px); left: 0px;"
+          >
+            <div
+              class="grid-view__row"
+            >
+              <!---->
+               
+              <div
+                class="grid-view__column"
+                style="width: 200px;"
+              >
+                <div
+                  class="grid-view__cell"
+                >
+                  <div
+                    class="grid-field-text"
+                  >
+                    first
+                  </div>
+                </div>
+              </div>
+              <div
+                class="grid-view__column"
+                style="width: 200px;"
+              >
+                <div
+                  class="grid-view__cell"
+                >
+                  <div
+                    class="grid-field-text"
+                  >
+                    Bram
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+           
+          <div
+            class="grid-view__row"
+            style="width: 600px; height: 33px;"
+          >
+            <div
+              class="grid-view__column"
+              style="width: 600px; height: 33px;"
+            >
+              <a
+                class="grid-view__add-row"
+              >
+                <!---->
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+       
+      <div
+        class="grid-view__foot"
+      >
+        <!---->
+         
+        <div
+          style="width: 200px;"
+        >
+          <div
+            class="grid-view-aggregation"
+          >
+            <div
+              class="grid-view-aggregation__empty"
+            >
+              <i
+                class="grid-view-aggregation__empty-icon iconoir-plus"
+              />
+              
+    common.summarize
+  
+            </div>
+             
+          </div>
+        </div>
+        <div
+          style="width: 200px;"
+        >
+          <div
+            class="grid-view-aggregation"
+          >
+            <div
+              class="grid-view-aggregation__empty"
+            >
+              <i
+                class="grid-view-aggregation__empty-icon iconoir-plus"
+              />
+              
+    common.summarize
+  
+            </div>
+             
+          </div>
+        </div>
+        <div
+          style="width: 200px;"
+        >
+          <div
+            class="grid-view-aggregation"
+          >
+            <div
+              class="grid-view-aggregation__empty"
+            >
+              <i
+                class="grid-view-aggregation__empty-icon iconoir-plus"
+              />
+              
+    common.summarize
+  
+            </div>
+             
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <div
+      style="display: none;"
+    >
+      <div
+        class="grid-view__field-dragging"
+        style="width: 0px; left: 0px;"
+      />
+       
+      <div
+        class="grid-view__field-target"
+        style="left: 0px;"
+      />
+    </div>
+  </div>
+   
+  <div
+    class="grid-view__row-dragging-container"
+    style="left: 0px; display: none;"
+  >
+    <div
+      class="grid-view__row-dragging"
+      style="width: 672px; top: 0px;"
+    />
+     
+    <div
+      class="grid-view__row-target"
+      style="width: 672px; top: 0px;"
+    />
+  </div>
+   
+   
+</div>
+`;
+
+exports[`GridView component with decoration Default component with row wrapper decoration 1`] = `
+<div
+  class="grid-view grid-view--row-height-small"
+>
+  <div
+    class="scrollbars"
+    style="left: 72px;"
+  >
+    <!---->
+     
+    <!---->
+  </div>
+   
+  <div
+    class="grid-view__left"
+    style="width: 72px;"
+  >
+      
+    <div
+      class="grid-view__inner"
+      style="min-width: 72px;"
+    >
+      <div
+        class="grid-view__head"
+      >
+         
+        <div
+          class="grid-view__column grid-view__column--no-border-right"
+          style="width: 72px;"
+        >
+          <div
+            class="grid-view__head-row-identifier"
+          >
+            <i
+              class="grid-view__head-row-identifier-dropdown iconoir-numbered-list-left"
+            />
+             
+          </div>
+        </div>
+          
+        <!---->
+      </div>
+       
+      <div
+        class="grid-view__body"
+      >
+        <div
+          class="grid-view__body-inner"
+        >
+          <div
+            class="grid-view__placeholder"
+            style="height: 66px; width: 72px;"
+          >
+            <div
+              class="grid-view__placeholder-groups"
+              style="width: 0px;"
+            />
+             
+          </div>
+           
+          <!---->
+           
+          <div
+            class="grid-view__rows"
+            style="transform: translateY(0px) translateX(0px); left: 0px;"
+          >
+            <div
+              class="test-wrapper"
+            />
+          </div>
+           
+          <div
+            class="grid-view__row"
+            style="width: 72px; height: 33px;"
+          >
+            <div
+              class="grid-view__column"
+              style="width: 72px; height: 33px;"
+            >
+              <a
+                class="grid-view__add-row"
+              >
+                <i
+                  class="grid-view__add-row-icon iconoir-plus"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+       
+      <div
+        class="grid-view__foot"
+      >
+        <div
+          class="grid-view__foot-info"
+        >
+          
+        gridView.rowCount - 2
+      
+        </div>
+         
+      </div>
+    </div>
+     
+    <div
+      style="display: none;"
+    >
+      <div
+        class="grid-view__field-dragging"
+        style="width: 0px; left: 0px;"
+      />
+       
+      <div
+        class="grid-view__field-target"
+        style="left: 0px;"
+      />
+    </div>
+  </div>
+   
+   
+  <div
+    class="grid-view__divider"
+    style="left: 72px;"
+  />
+   
+  <!---->
+   
+  <div
+    class="grid-view__right"
+    style="left: 72px;"
+  >
+      
+    <div
+      class="grid-view__inner"
+      style="min-width: 800px;"
+    >
+      <div
+        class="grid-view__head"
+      >
+         
+        <!---->
+         
+        <div
+          class="grid-view__column"
+          filters=""
+          style="width: 200px;"
+        >
+          <div
+            class="grid-view__description"
+          >
+            <div
+              class="grid-view__description-icon-container"
+            >
+              <i
+                class="grid-view__description-icon iconoir-text"
+              />
+               
+              <!---->
+            </div>
+             
+            <div
+              class="grid-view__description-name"
+              title="Name"
+            >
+              <span>
+                
+        Name
+      
+              </span>
+            </div>
+             
+            <!---->
+             
+            <span
+              class="grid-view__description-options"
+            >
+               
+              <!---->
+               
+              <a
+                class="grid-view__description-icon-trigger"
+              >
+                <i
+                  class="iconoir-nav-arrow-down"
+                />
+              </a>
+            </span>
+             
+             
+            <div
+              class="grid-view__description-width"
+            />
+          </div>
+        </div>
+        <div
+          class="grid-view__column"
+          filters=""
+          style="width: 200px;"
+        >
+          <div
+            class="grid-view__description"
+          >
+            <div
+              class="grid-view__description-icon-container"
+            >
+              <i
+                class="grid-view__description-icon iconoir-text"
+              />
+               
+              <!---->
+            </div>
+             
+            <div
+              class="grid-view__description-name"
+              title="Surname"
+            >
+              <span>
+                
+        Surname
+      
+              </span>
+            </div>
+             
+            <!---->
+             
+            <span
+              class="grid-view__description-options"
+            >
+               
+              <!---->
+               
+              <a
+                class="grid-view__description-icon-trigger"
+              >
+                <i
+                  class="iconoir-nav-arrow-down"
+                />
+              </a>
+            </span>
+             
+             
+            <div
+              class="grid-view__description-width"
+            />
+          </div>
+        </div>
+        <div
+          class="grid-view__column"
+          filters=""
+          style="width: 200px;"
+        >
+          <div
+            class="grid-view__description"
+          >
+            <div
+              class="grid-view__description-icon-container"
+            >
+              <i
+                class="grid-view__description-icon iconoir-text"
+              />
+               
+              <!---->
+            </div>
+             
+            <div
+              class="grid-view__description-name"
+              title="Address"
+            >
+              <span>
+                
+        Address
+      
+              </span>
+            </div>
+             
+            <!---->
+             
+            <span
+              class="grid-view__description-options"
+            >
+               
+              <!---->
+               
+              <a
+                class="grid-view__description-icon-trigger"
+              >
+                <i
+                  class="iconoir-nav-arrow-down"
+                />
+              </a>
+            </span>
+             
+             
+            <div
+              class="grid-view__description-width"
+            />
+          </div>
+        </div>
+         
+        <div
+          class="grid-view__column"
+          style="width: 100px;"
+        >
+          <a
+            class="grid-view__add-column"
+            data-highlight="add-field"
+          >
+            <i
+              class="grid-view__add-column-icon iconoir-plus"
+            />
+          </a>
+           
+        </div>
+      </div>
+       
+      <div
+        class="grid-view__body"
+      >
+        <div
+          class="grid-view__body-inner"
+        >
+          <div
+            class="grid-view__placeholder"
+            style="height: 66px; width: 600px;"
+          >
+            <!---->
+             
+            <div
+              class="grid-view__placeholder-column"
+              style="left: 199px;"
+            />
+            <div
+              class="grid-view__placeholder-column"
+              style="left: 399px;"
+            />
+            <div
+              class="grid-view__placeholder-column"
+              style="left: 599px;"
+            />
+          </div>
+           
+          <!---->
+           
+          <div
+            class="grid-view__rows"
+            style="transform: translateY(0px) translateX(0px); left: 0px;"
+          >
+            <div
+              class="test-wrapper"
+            />
+          </div>
+           
+          <div
+            class="grid-view__row"
+            style="width: 600px; height: 33px;"
+          >
+            <div
+              class="grid-view__column"
+              style="width: 600px; height: 33px;"
+            >
+              <a
+                class="grid-view__add-row"
+              >
+                <!---->
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+       
+      <div
+        class="grid-view__foot"
+      >
+        <!---->
+         
+        <div
+          style="width: 200px;"
+        >
+          <div
+            class="grid-view-aggregation"
+          >
+            <div
+              class="grid-view-aggregation__empty"
+            >
+              <i
+                class="grid-view-aggregation__empty-icon iconoir-plus"
+              />
+              
+    common.summarize
+  
+            </div>
+             
+          </div>
+        </div>
+        <div
+          style="width: 200px;"
+        >
+          <div
+            class="grid-view-aggregation"
+          >
+            <div
+              class="grid-view-aggregation__empty"
+            >
+              <i
+                class="grid-view-aggregation__empty-icon iconoir-plus"
+              />
+              
+    common.summarize
+  
+            </div>
+             
+          </div>
+        </div>
+        <div
+          style="width: 200px;"
+        >
+          <div
+            class="grid-view-aggregation"
+          >
+            <div
+              class="grid-view-aggregation__empty"
+            >
+              <i
+                class="grid-view-aggregation__empty-icon iconoir-plus"
+              />
+              
+    common.summarize
+  
+            </div>
+             
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <div
+      style="display: none;"
+    >
+      <div
+        class="grid-view__field-dragging"
+        style="width: 0px; left: 0px;"
+      />
+       
+      <div
+        class="grid-view__field-target"
+        style="left: 0px;"
+      />
+    </div>
+  </div>
+   
+  <div
+    class="grid-view__row-dragging-container"
+    style="left: 0px; display: none;"
+  >
+    <div
+      class="grid-view__row-dragging"
+      style="width: 672px; top: 0px;"
+    />
+     
+    <div
+      class="grid-view__row-target"
+      style="width: 672px; top: 0px;"
+    />
+  </div>
+   
+   
+</div>
+`;
+
+exports[`GridView component with decoration Default component with unavailable decoration 1`] = `
+<div
+  class="grid-view grid-view--row-height-small"
+>
+  <div
+    class="scrollbars"
+    style="left: 72px;"
+  >
+    <!---->
+     
+    <!---->
+  </div>
+   
+  <div
+    class="grid-view__left"
+    style="width: 72px;"
+  >
+      
+    <div
+      class="grid-view__inner"
+      style="min-width: 72px;"
+    >
+      <div
+        class="grid-view__head"
+      >
+         
+        <div
+          class="grid-view__column grid-view__column--no-border-right"
+          style="width: 72px;"
+        >
+          <div
+            class="grid-view__head-row-identifier"
+          >
+            <i
+              class="grid-view__head-row-identifier-dropdown iconoir-numbered-list-left"
+            />
+             
+          </div>
+        </div>
+          
+        <!---->
+      </div>
+       
+      <div
+        class="grid-view__body"
+      >
+        <div
+          class="grid-view__body-inner"
+        >
+          <div
+            class="grid-view__placeholder"
+            style="height: 66px; width: 72px;"
+          >
+            <div
+              class="grid-view__placeholder-groups"
+              style="width: 0px;"
+            />
+             
+          </div>
+           
+          <!---->
+           
+          <div
+            class="grid-view__rows"
+            style="transform: translateY(0px) translateX(0px); left: 0px;"
+          >
+            <div
+              class="grid-view__row"
+            >
+              <!---->
+               
+              <div
+                class="grid-view__column grid-view__column--no-border-right"
+                style="width: 72px;"
+              >
+                <div
+                  class="grid-view__row-info"
+                >
+                  <div
+                    class="grid-view__row-count grid-view__row-count--hide-on-hover"
+                    title="2"
+                  >
+                    <div
+                      class="grid-view__row-count-content"
+                    >
+                      
+              2
+            
+                    </div>
+                  </div>
+                   
+                  <div
+                    class="grid-view__row-drag"
+                  />
+                   
+                  <a
+                    class="grid-view__row-more"
+                  >
+                    <i
+                      class="baserow-icon-enlarge-row"
+                    />
+                  </a>
+                   
+                </div>
+              </div>
+               
+            </div>
+          </div>
+           
+          <div
+            class="grid-view__row"
+            style="width: 72px; height: 33px;"
+          >
+            <div
+              class="grid-view__column"
+              style="width: 72px; height: 33px;"
+            >
+              <a
+                class="grid-view__add-row"
+              >
+                <i
+                  class="grid-view__add-row-icon iconoir-plus"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+       
+      <div
+        class="grid-view__foot"
+      >
+        <div
+          class="grid-view__foot-info"
+        >
+          
+        gridView.rowCount - 2
+      
+        </div>
+         
+      </div>
+    </div>
+     
+    <div
+      style="display: none;"
+    >
+      <div
+        class="grid-view__field-dragging"
+        style="width: 0px; left: 0px;"
+      />
+       
+      <div
+        class="grid-view__field-target"
+        style="left: 0px;"
+      />
+    </div>
+  </div>
+   
+   
+  <div
+    class="grid-view__divider"
+    style="left: 72px;"
+  />
+   
+  <!---->
+   
+  <div
+    class="grid-view__right"
+    style="left: 72px;"
+  >
+      
+    <div
+      class="grid-view__inner"
+      style="min-width: 800px;"
+    >
+      <div
+        class="grid-view__head"
+      >
+         
+        <!---->
+         
+        <div
+          class="grid-view__column"
+          filters=""
+          style="width: 200px;"
+        >
+          <div
+            class="grid-view__description"
+          >
+            <div
+              class="grid-view__description-icon-container"
+            >
+              <i
+                class="grid-view__description-icon iconoir-text"
+              />
+               
+              <!---->
+            </div>
+             
+            <div
+              class="grid-view__description-name"
+              title="Name"
+            >
+              <span>
+                
+        Name
+      
+              </span>
+            </div>
+             
+            <!---->
+             
+            <span
+              class="grid-view__description-options"
+            >
+               
+              <!---->
+               
+              <a
+                class="grid-view__description-icon-trigger"
+              >
+                <i
+                  class="iconoir-nav-arrow-down"
+                />
+              </a>
+            </span>
+             
+             
+            <div
+              class="grid-view__description-width"
+            />
+          </div>
+        </div>
+        <div
+          class="grid-view__column"
+          filters=""
+          style="width: 200px;"
+        >
+          <div
+            class="grid-view__description"
+          >
+            <div
+              class="grid-view__description-icon-container"
+            >
+              <i
+                class="grid-view__description-icon iconoir-text"
+              />
+               
+              <!---->
+            </div>
+             
+            <div
+              class="grid-view__description-name"
+              title="Surname"
+            >
+              <span>
+                
+        Surname
+      
+              </span>
+            </div>
+             
+            <!---->
+             
+            <span
+              class="grid-view__description-options"
+            >
+               
+              <!---->
+               
+              <a
+                class="grid-view__description-icon-trigger"
+              >
+                <i
+                  class="iconoir-nav-arrow-down"
+                />
+              </a>
+            </span>
+             
+             
+            <div
+              class="grid-view__description-width"
+            />
+          </div>
+        </div>
+        <div
+          class="grid-view__column"
+          filters=""
+          style="width: 200px;"
+        >
+          <div
+            class="grid-view__description"
+          >
+            <div
+              class="grid-view__description-icon-container"
+            >
+              <i
+                class="grid-view__description-icon iconoir-text"
+              />
+               
+              <!---->
+            </div>
+             
+            <div
+              class="grid-view__description-name"
+              title="Address"
+            >
+              <span>
+                
+        Address
+      
+              </span>
+            </div>
+             
+            <!---->
+             
+            <span
+              class="grid-view__description-options"
+            >
+               
+              <!---->
+               
+              <a
+                class="grid-view__description-icon-trigger"
+              >
+                <i
+                  class="iconoir-nav-arrow-down"
+                />
+              </a>
+            </span>
+             
+             
+            <div
+              class="grid-view__description-width"
+            />
+          </div>
+        </div>
+         
+        <div
+          class="grid-view__column"
+          style="width: 100px;"
+        >
+          <a
+            class="grid-view__add-column"
+            data-highlight="add-field"
+          >
+            <i
+              class="grid-view__add-column-icon iconoir-plus"
+            />
+          </a>
+           
+        </div>
+      </div>
+       
+      <div
+        class="grid-view__body"
+      >
+        <div
+          class="grid-view__body-inner"
+        >
+          <div
+            class="grid-view__placeholder"
+            style="height: 66px; width: 600px;"
+          >
+            <!---->
+             
+            <div
+              class="grid-view__placeholder-column"
+              style="left: 199px;"
+            />
+            <div
+              class="grid-view__placeholder-column"
+              style="left: 399px;"
+            />
+            <div
+              class="grid-view__placeholder-column"
+              style="left: 599px;"
+            />
+          </div>
+           
+          <!---->
+           
+          <div
+            class="grid-view__rows"
+            style="transform: translateY(0px) translateX(0px); left: 0px;"
+          >
+            <div
+              class="grid-view__row"
+            >
+              <!---->
+               
+              <div
+                class="grid-view__column"
+                style="width: 200px;"
+              >
+                <div
+                  class="grid-view__cell"
+                >
+                  <div
+                    class="grid-field-text"
+                  >
+                    first
+                  </div>
+                </div>
+              </div>
+              <div
+                class="grid-view__column"
+                style="width: 200px;"
+              >
+                <div
+                  class="grid-view__cell"
+                >
+                  <div
+                    class="grid-field-text"
+                  >
+                    Bram
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+           
+          <div
+            class="grid-view__row"
+            style="width: 600px; height: 33px;"
+          >
+            <div
+              class="grid-view__column"
+              style="width: 600px; height: 33px;"
+            >
+              <a
+                class="grid-view__add-row"
+              >
+                <!---->
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+       
+      <div
+        class="grid-view__foot"
+      >
+        <!---->
+         
+        <div
+          style="width: 200px;"
+        >
+          <div
+            class="grid-view-aggregation"
+          >
+            <div
+              class="grid-view-aggregation__empty"
+            >
+              <i
+                class="grid-view-aggregation__empty-icon iconoir-plus"
+              />
+              
+    common.summarize
+  
+            </div>
+             
+          </div>
+        </div>
+        <div
+          style="width: 200px;"
+        >
+          <div
+            class="grid-view-aggregation"
+          >
+            <div
+              class="grid-view-aggregation__empty"
+            >
+              <i
+                class="grid-view-aggregation__empty-icon iconoir-plus"
+              />
+              
+    common.summarize
+  
+            </div>
+             
+          </div>
+        </div>
+        <div
+          style="width: 200px;"
+        >
+          <div
+            class="grid-view-aggregation"
+          >
+            <div
+              class="grid-view-aggregation__empty"
+            >
+              <i
+                class="grid-view-aggregation__empty-icon iconoir-plus"
+              />
+              
+    common.summarize
+  
+            </div>
+             
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <div
+      style="display: none;"
+    >
+      <div
+        class="grid-view__field-dragging"
+        style="width: 0px; left: 0px;"
+      />
+       
+      <div
+        class="grid-view__field-target"
+        style="left: 0px;"
+      />
+    </div>
+  </div>
+   
+  <div
+    class="grid-view__row-dragging-container"
+    style="left: 0px; display: none;"
+  >
+    <div
+      class="grid-view__row-dragging"
+      style="width: 672px; top: 0px;"
+    />
+     
+    <div
+      class="grid-view__row-target"
+      style="width: 672px; top: 0px;"
+    />
+  </div>
+   
+   
+</div>
+`;

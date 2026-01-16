@@ -1,0 +1,12 @@
+{
+  "name": "@baserow/ai-assistant-web-frontend",
+  "version": "1.0.0",
+  "description": "AI Assistant plugin frontend for Baserow",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --ext .js,.vue modules",
+    "lint:fix": "eslint --fix --ext .js,.vue modules"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

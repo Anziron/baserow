@@ -1,0 +1,19 @@
+.auto-expandable-textarea {
+  resize: none;
+  width: 100%;
+  line-height: 22px;
+  font-size: 13px;
+  padding: 6px 14px 8px 12px;
+
+  &--input-formula {
+    font-family: monospace;
+    color: $color-neutral-900;
+    height: 22px;
+    background-color: transparent;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    resize: none;
+    padding: 0;
+  }
+}

@@ -1,0 +1,166 @@
+.button {
+  cursor: pointer;
+  margin-bottom: 0;
+  white-space: nowrap;
+  text-decoration: none;
+  user-select: none;
+  color: #fff;
+  border: 1px solid transparent;
+  text-align: center;
+  display: inline-flex;
+  max-width: 100%;
+  align-items: center;
+  line-height: 20px;
+  font-size: 13px;
+  transition: padding 0.05s ease-in-out;
+  padding: 12px 20px;
+  font-weight: 600;
+  box-shadow: 0 1px 2px 0 rgba(7, 8, 16, 0.1);
+  gap: 10px;
+  position: relative;
+  vertical-align: middle;
+
+  @include rounded($rounded-md);
+  @include button-size; // regular size
+  @include button-style; // primary style
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:active:not(.button--loading):not([disabled]) {
+    box-shadow: none !important;
+  }
+
+  &[disabled]:not(.button--loading) {
+    cursor: not-allowed;
+    background: $palette-neutral-100 !important;
+    color: $palette-neutral-700;
+    border: none;
+  }
+}
+
+.button--loading {
+  cursor: wait;
+  user-select: none;
+  box-shadow: none;
+
+  @include loading-spinner($white, 14px);
+
+  &::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: calc(14px / 2 * -1);
+  }
+
+  &.button--upload,
+  &.button--secondary {
+    @include loading-spinner($palette-neutral-700);
+  }
+}
+
+.button--secondary {
+  border: 1px solid $palette-neutral-400;
+
+  @include button-style(
+    $white,
+    $palette-neutral-25,
+    $palette-neutral-50,
+    $palette-neutral-1300,
+    $palette-neutral-1100
+  );
+
+  &.button--active {
+    background: $palette-blue-50;
+  }
+}
+
+.button--ghost {
+  border: 1px solid rgba($white, 0.24);
+
+  @include button-style(transparent, rgba($white, 0.1), rgba($white, 0.15));
+}
+
+.button--danger {
+  @include button-style(
+    $palette-red-600,
+    $palette-red-700,
+    $palette-red-800,
+    $white,
+    $palette-red-200
+  );
+}
+
+.button--large {
+  @include button-size(
+    $button-large-height,
+    $button-large-top-bottom-padding,
+    $button-large-right-left-padding
+  );
+}
+
+.button--tiny {
+  font-size: 11px;
+
+  @include button-size(
+    $button-tiny-height,
+    $button-tiny-top-bottom-padding,
+    $button-tiny-right-left-padding
+  );
+}
+
+.button--small {
+  font-size: 11px;
+
+  @include button-size(
+    $button-small-height,
+    $button-small-top-bottom-padding,
+    $button-small-right-left-padding
+  );
+}
+
+.button--xlarge {
+  font-size: 16px;
+
+  @include button-size(
+    $button-xlarge-height,
+    $button-xlarge-top-bottom-padding,
+    $button-xlarge-right-left-padding
+  );
+}
+
+.button__icon {
+  font-size: 16px;
+
+  .button.button--loading & {
+    visibility: hidden;
+  }
+}
+
+.button__label {
+  @extend %ellipsis;
+  @include flex-align-items;
+
+  .button.button--loading & {
+    visibility: hidden;
+  }
+}
+
+.button--full-width {
+  width: 100%;
+  justify-content: center;
+}
+
+.button--upload {
+  border: 1px dashed $palette-neutral-400;
+  box-shadow: none;
+
+  @include button-style(
+    $palette-neutral-25,
+    $white,
+    $palette-neutral-25,
+    $palette-neutral-900,
+    $palette-neutral-900
+  );
+}

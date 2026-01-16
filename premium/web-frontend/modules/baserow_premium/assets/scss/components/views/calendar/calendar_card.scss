@@ -1,0 +1,42 @@
+.calendar-card {
+  border: 1px solid $color-neutral-200;
+  color: $color-neutral-900;
+  height: 26px;
+  margin-bottom: 2px;
+
+  @include rounded($rounded);
+  @include elevation($elevation-low);
+
+  > div {
+    @include rounded($rounded);
+  }
+
+  &:hover {
+    &:not(.calendar-card--disabled):not(.calendar-card--dragging) {
+      cursor: pointer;
+      background-color: $color-neutral-100;
+    }
+  }
+}
+
+.calendar-card__content {
+  display: flex;
+  margin: 0 8px;
+  gap: 6px;
+  height: 24px;
+
+  > :first-child {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.calendar-card__labels {
+  @extend %ellipsis;
+
+  min-width: 0;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 24px;
+  text-align: left;
+}

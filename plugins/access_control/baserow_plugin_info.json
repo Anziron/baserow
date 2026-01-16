@@ -1,0 +1,10 @@
+{
+  "name": "Access Control",
+  "version": "1.0.0",
+  "description": "Fine-grained access control for workspaces, databases, tables, fields, and rows",
+  "author": "Baserow Community",
+  "license": "MIT",
+  "modules": {
+    "web-frontend": "web-frontend/modules/access-control"
+  }
+}

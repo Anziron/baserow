@@ -1,0 +1,163 @@
+{
+  "accessControl": {
+    "pluginName": "访问控制",
+    "pluginDescription": "工作空间、数据库、表、字段和行的细粒度访问控制",
+    
+    "workspace": {
+      "pluginPermissions": "插件权限",
+      "pluginPermissionsDescription": "控制此成员可以使用或配置哪些插件。",
+      "structurePermissions": "结构权限",
+      "structurePermissionsDescription": "控制此成员是否可以创建或删除数据库和表。",
+      "canCreateDatabase": "可创建数据库",
+      "canCreateDatabaseDescription": "允许此成员在此工作空间中创建新数据库。",
+      "canDeleteDatabase": "可删除数据库",
+      "canDeleteDatabaseDescription": "允许此成员删除此工作空间中的数据库。",
+      "canCreateTable": "可创建表",
+      "canCreateTableDescription": "允许此成员在此工作空间的数据库中创建新表。",
+      "canDeleteTable": "可删除表",
+      "canDeleteTableDescription": "允许此成员删除此工作空间的数据库中的表。",
+      "permissions": "权限",
+      "managePermissions": "管理权限",
+      "memberPermissions": "成员权限",
+      "pluginName": "插件",
+      "permissionLevel": "权限级别",
+      "noPluginsInstalled": "此工作空间中没有安装任何插件。"
+    },
+    
+    "database": {
+      "memberCollaboration": "成员协作",
+      "accessibleTables": "可访问的表",
+      "accessibleTablesDescription": "选择此成员可以访问的表。",
+      "canCreateTable": "可创建表",
+      "canCreateTableDescription": "允许此成员在此数据库中创建新表。",
+      "canDeleteTable": "可删除表",
+      "canDeleteTableDescription": "允许此成员删除此数据库中的表。",
+      "structurePermissions": "结构权限",
+      "selectMember": "选择成员",
+      "noMembers": "此工作空间中没有可管理的成员。",
+      "noTables": "此数据库中没有表。",
+      "selectAll": "全选",
+      "deselectAll": "取消全选",
+      "tablesAccessible": "可访问 {count} 个表"
+    },
+    
+    "table": {
+      "permissionSettings": "权限设置",
+      "selectMember": "选择成员",
+      "noCollaboratingMembers": "没有成员拥有此表的协作权限。请先设置数据库协作。",
+      "dataPermissions": "数据权限",
+      "dataPermissionsDescription": "控制此成员如何与表数据交互。",
+      "readOnly": "只读",
+      "readOnlyDescription": "成员只能查看表数据,不能编辑。",
+      "editable": "可编辑",
+      "editableDescription": "成员可以查看和编辑表数据。",
+      "structurePermissions": "结构权限",
+      "canCreateField": "可创建字段",
+      "canCreateFieldDescription": "允许此成员在此表中创建新字段。",
+      "canDeleteField": "可删除字段",
+      "canDeleteFieldDescription": "允许此成员删除此表中的字段。"
+    },
+    
+    "field": {
+      "fieldPermissions": "字段权限",
+      "fieldPermissionsDescription": "控制此成员如何与此字段交互。",
+      "hidden": "内容不可见",
+      "hiddenDescription": "字段显示但内容被遮蔽,成员无法查看或编辑字段内容。",
+      "readOnly": "只读",
+      "readOnlyDescription": "成员只能查看此字段,不能编辑。",
+      "editable": "可编辑",
+      "editableDescription": "成员可以查看和编辑此字段。",
+      "permissionRestricted": "权限受限"
+    },
+    
+    "row": {
+      "permissions": "权限",
+      "permissionsDescription": "控制此成员如何与此行交互。",
+      "invisible": "内容不可见",
+      "invisibleDescription": "行显示但内容被遮蔽,成员无法查看或编辑行内容。",
+      "readOnly": "只读",
+      "readOnlyDescription": "成员只能查看此行,不能编辑或删除。这是最严格的权限设置。",
+      "editable": "可编辑",
+      "editableDescription": "成员可以查看、编辑和删除此行。"
+    },
+    
+    "conditionRules": {
+      "title": "条件规则",
+      "description": "定义规则以根据条件自动应用行权限。",
+      "creator": "创建者匹配",
+      "fieldMatch": "字段值匹配",
+      "collaborator": "协作者包含",
+      "noRules": "未定义条件规则。添加规则以自动应用行权限。",
+      "addRule": "添加规则",
+      "editRule": "编辑规则",
+      "ruleName": "规则名称",
+      "ruleNamePlaceholder": "输入规则名称",
+      "ruleDescription": "描述",
+      "ruleDescriptionPlaceholder": "输入规则描述(可选)",
+      "conditionType": "条件类型",
+      "selectField": "选择字段",
+      "selectCollaboratorField": "选择协作者字段",
+      "noCollaboratorFields": "此表中没有可用的协作者字段。",
+      "operator": "运算符",
+      "operatorEquals": "等于",
+      "operatorNotEquals": "不等于",
+      "operatorContains": "包含",
+      "operatorGreaterThan": "大于",
+      "operatorLessThan": "小于",
+      "value": "值",
+      "valuePlaceholder": "输入要匹配的值",
+      "permissionLevel": "应用的权限",
+      "appliedPermission": "权限",
+      "priority": "优先级",
+      "priorityPlaceholder": "0",
+      "priorityHint": "优先级越高的规则越先被评估。",
+      "logicOperator": "逻辑运算符",
+      "creatorDescription": "此规则将匹配当前用户是行创建者的行。",
+      "deleteConfirmTitle": "删除条件规则",
+      "deleteConfirmMessage": "确定要删除此条件规则吗?此操作无法撤销。"
+    },
+    
+    "plugin": {
+      "noPermission": "无权限",
+      "canUse": "可使用",
+      "canConfigure": "可配置"
+    },
+    
+    "preview": {
+      "title": "预览模式",
+      "previewAs": "预览为",
+      "exitPreview": "退出预览",
+      "selectMember": "选择要预览的成员",
+      "previewDescription": "以该成员的视角查看表格",
+      "noMembers": "没有可预览的成员",
+      "previewModeActive": "您正在以其他成员的视角查看此表格。所有编辑功能已禁用。",
+      "startPreview": "开始预览"
+    },
+    
+    "errors": {
+      "noTableAccess": "您没有访问此表的权限",
+      "tableReadOnly": "此表为只读",
+      "rowInvisible": "此行对您不可见",
+      "rowReadOnly": "此行为只读",
+      "rowNotDeletable": "您无法删除此行",
+      "fieldHidden": "此字段内容不可见",
+      "fieldReadOnly": "此字段为只读",
+      "failedToLoadData": "加载数据失败",
+      "failedToSavePermission": "保存权限失败",
+      "failedToLoadPluginPermissions": "加载插件权限失败",
+      "failedToUpdatePermission": "更新权限失败",
+      "failedToLoadStructurePermissions": "加载结构权限失败",
+      "failedToSaveCollaboration": "保存协作设置失败",
+      "failedToLoadConditionRules": "加载条件规则失败",
+      "failedToSaveConditionRule": "保存条件规则失败",
+      "failedToToggleRule": "切换规则状态失败",
+      "failedToDeleteRule": "删除规则失败"
+    },
+    
+    "common": {
+      "loading": "加载中...",
+      "saving": "保存中...",
+      "noData": "暂无数据"
+    }
+  }
+}

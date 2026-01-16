@@ -1,0 +1,86 @@
+.tooltip {
+  position: relative;
+  padding-top: 8px;
+
+  &::after {
+    content: '';
+    margin-left: -6px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 6px 8px;
+    border-color: transparent transparent $color-neutral-800 transparent;
+    position: absolute;
+    top: 0;
+    left: var(--tooltip-cursor-position-left, 50%);
+    right: var(--tooltip-cursor-position-right, auto);
+  }
+
+  &.tooltip--top {
+    padding-top: 0;
+    padding-bottom: 8px;
+
+    &::after {
+      top: auto;
+      bottom: 0;
+      border-width: 8px 6px 0;
+      border-color: $color-neutral-800 transparent transparent transparent;
+    }
+  }
+
+  &.tooltip--body {
+    position: absolute;
+    z-index: $z-index-tooltip;
+  }
+
+  &.tooltip--center {
+    transform: translateX(-50%);
+  }
+}
+
+.tooltip__content {
+  background-color: $palette-neutral-1200;
+  color: $white;
+  padding: 0 8px;
+  text-align: center;
+
+  @include fixed-height(26px, 12px);
+  @include rounded($rounded-md);
+
+  &--expandable {
+    padding: 12px;
+    text-align: left;
+    max-height: 320px;
+    line-height: 20px;
+    font-size: 12px;
+    overflow: auto;
+    height: auto;
+    max-width: 320px;
+
+    @include rounded($rounded);
+
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      border-radius: 10px;
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background: $color-neutral-500;
+      background-clip: content-box;
+      border: 2px solid transparent;
+    }
+  }
+
+  &--expandable-plain-text {
+    white-space: pre-wrap;
+  }
+
+  &--align-right {
+    transform: translateX(calc(50% - 20px));
+  }
+}

@@ -1,0 +1,101 @@
+.calendar-month-day {
+  font-size: 13px;
+  color: $color-neutral-900;
+  border-bottom: 1px solid $color-neutral-200;
+  border-right: 1px solid $color-neutral-200;
+  position: relative;
+  display: flex;
+  flex-flow: column wrap;
+  align-content: flex-start;
+  padding: 8px;
+
+  &:hover a {
+    visibility: visible;
+  }
+}
+
+.calendar-month-day__cards {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin-top: 6px;
+  width: 100%;
+}
+
+.calendar-month-day--weekend {
+  background-color: $color-neutral-50;
+}
+
+.calendar-month-day__week-day {
+  border-top: solid 1px $color-neutral-200;
+  border-bottom: solid 1px $color-neutral-200;
+  height: 32px;
+  line-height: 32px;
+  color: $color-neutral-900;
+  text-align: right;
+  padding-right: 15px;
+  font-size: 13px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: $white;
+}
+
+.calendar-month-day__date-label {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  line-height: 24px;
+}
+
+.calendar-month-day__create-row-btn {
+  border: 1px solid $color-neutral-200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $color-neutral-400;
+  background-color: $white;
+  text-decoration: none;
+  visibility: hidden;
+  font-size: 16px;
+
+  @include rounded($rounded);
+  @include elevation($elevation-low);
+
+  &:hover {
+    text-decoration: none;
+    background-color: $color-neutral-50;
+    color: $color-neutral-600;
+  }
+
+  @include center-text(24px, 13px);
+}
+
+.calendar-month-day__read-only-filler {
+  height: 24px;
+}
+
+.calendar-month-day--not-current {
+  color: $color-neutral-400;
+}
+
+.calendar-month-day--today .calendar-month-day__date-label {
+  border-radius: 100%;
+  background-color: $color-primary-500;
+  color: $white;
+  top: 6px;
+
+  @include center-text(24px, 13px);
+}
+
+.calendar-month-day__more {
+  @extend %ellipsis;
+
+  max-height: 16px;
+  font-size: 11px;
+  line-height: 12px;
+  color: $color-neutral-600;
+  padding-left: 8px;
+  padding-top: 5px;
+  margin-bottom: auto;
+}

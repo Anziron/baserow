@@ -1,0 +1,28 @@
+@mixin baserow-icon($name) {
+  &::before {
+    mask-image: url('@baserow/modules/core/assets/icons/' + $name + '.svg');
+  }
+}
+
+/* prettier-ignore */
+%icon {
+  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder, scss/operator-no-unspaced */
+  @extend *[class^="iconoir-"];
+}
+
+/* prettier-ignore */
+*[class^="baserow-icon-"],
+*[class*=" baserow-icon-"] {
+  @extend %icon;
+}
+
+@each $icon in $baserow-icons {
+  .#{$baserow-icon-prefix}#{$icon} {
+    @include baserow-icon($icon);
+  }
+}
+
+*[class^='iconoir-'],
+*[class*=' iconoir-'] {
+  vertical-align: middle;
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Row Author Tracker",
+  "version": "1.0.0",
+  "description": "Automatically track who filled in or modified a row, with configurable excluded fields",
+  "author": "Baserow Plugin",
+  "modules": {
+    "web-frontend": "web-frontend/modules/row-author-tracker"
+  },
+  "permission_levels": [],
+  "admin_only": true
+}

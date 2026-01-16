@@ -1,0 +1,44 @@
+.grid-field-text,
+%grid-field-text {
+  @extend %ellipsis;
+  @include fixed-height($grid-view-row-height-small - 1px, 13px);
+
+  padding: 5px 10px;
+  user-select: none;
+  line-height: 22px;
+
+  .grid-view--row-height-medium &,
+  .grid-view--row-height-large & {
+    white-space: wrap;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+
+  .grid-view--row-height-medium & {
+    height: $grid-view-row-height-medium - 1px;
+    -webkit-line-clamp: 2;
+  }
+
+  .grid-view--row-height-large & {
+    height: $grid-view-row-height-large - 1px;
+    -webkit-line-clamp: 4;
+  }
+}
+
+.grid-field-text__input,
+%grid-field-text-input {
+  @include fixed-height(32px, 13px);
+
+  width: 100%;
+  margin: 0;
+  padding: 0 10px;
+  border: 0;
+  display: inline-block;
+  vertical-align: middle;
+  background: none;
+  white-space: normal;
+
+  &:focus {
+    outline: 0;
+  }
+}

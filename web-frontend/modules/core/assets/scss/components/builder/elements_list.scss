@@ -1,0 +1,25 @@
+.elements-list {
+  position: relative;
+  list-style: none;
+  padding: 0;
+  margin: 4px 0;
+  padding-bottom: 4px;
+  min-height: 0;
+  border-bottom: 1px solid $palette-neutral-200;
+
+  .elements-list & {
+    margin: 4px 0 4px 18px;
+    padding: 0;
+    border-bottom: none;
+    border-left: 1px solid $palette-neutral-100;
+  }
+
+  .elements-context__elements &:last-child {
+    border-bottom: none;
+  }
+
+  &--empty {
+    padding: 32px 0;
+    text-align: center;
+  }
+}

@@ -1,0 +1,163 @@
+{
+  "accessControl": {
+    "pluginName": "Access Control",
+    "pluginDescription": "Fine-grained access control for workspaces, databases, tables, fields, and rows",
+    
+    "workspace": {
+      "pluginPermissions": "Plugin Permissions",
+      "pluginPermissionsDescription": "Control which plugins this member can use or configure.",
+      "structurePermissions": "Structure Permissions",
+      "structurePermissionsDescription": "Control whether this member can create or delete databases and tables.",
+      "canCreateDatabase": "Can Create Database",
+      "canCreateDatabaseDescription": "Allow this member to create new databases in this workspace.",
+      "canDeleteDatabase": "Can Delete Database",
+      "canDeleteDatabaseDescription": "Allow this member to delete databases in this workspace.",
+      "canCreateTable": "Can Create Table",
+      "canCreateTableDescription": "Allow this member to create new tables in databases of this workspace.",
+      "canDeleteTable": "Can Delete Table",
+      "canDeleteTableDescription": "Allow this member to delete tables in databases of this workspace.",
+      "permissions": "Permissions",
+      "managePermissions": "Manage Permissions",
+      "memberPermissions": "Member Permissions",
+      "pluginName": "Plugin",
+      "permissionLevel": "Permission Level",
+      "noPluginsInstalled": "No plugins are installed in this workspace."
+    },
+    
+    "database": {
+      "memberCollaboration": "Member Collaboration",
+      "accessibleTables": "Accessible Tables",
+      "accessibleTablesDescription": "Select which tables this member can access.",
+      "canCreateTable": "Can Create Table",
+      "canCreateTableDescription": "Allow this member to create new tables in this database.",
+      "canDeleteTable": "Can Delete Table",
+      "canDeleteTableDescription": "Allow this member to delete tables in this database.",
+      "structurePermissions": "Structure Permissions",
+      "selectMember": "Select Member",
+      "noMembers": "No members available to manage in this workspace.",
+      "noTables": "No tables in this database.",
+      "selectAll": "Select All",
+      "deselectAll": "Deselect All",
+      "tablesAccessible": "{count} tables accessible"
+    },
+    
+    "table": {
+      "permissionSettings": "Permission Settings",
+      "selectMember": "Select Member",
+      "noCollaboratingMembers": "No members have collaboration access to this table. Please set up database collaboration first.",
+      "dataPermissions": "Data Permissions",
+      "dataPermissionsDescription": "Control how this member can interact with table data.",
+      "readOnly": "Read Only",
+      "readOnlyDescription": "Member can only view table data, cannot edit.",
+      "editable": "Editable",
+      "editableDescription": "Member can view and edit table data.",
+      "structurePermissions": "Structure Permissions",
+      "canCreateField": "Can Create Field",
+      "canCreateFieldDescription": "Allow this member to create new fields in this table.",
+      "canDeleteField": "Can Delete Field",
+      "canDeleteFieldDescription": "Allow this member to delete fields in this table."
+    },
+    
+    "field": {
+      "fieldPermissions": "Field Permissions",
+      "fieldPermissionsDescription": "Control how this member can interact with this field.",
+      "hidden": "Content Masked",
+      "hiddenDescription": "Field is visible but content is masked, member cannot view or edit field content.",
+      "readOnly": "Read Only",
+      "readOnlyDescription": "Member can only view this field, cannot edit.",
+      "editable": "Editable",
+      "editableDescription": "Member can view and edit this field.",
+      "permissionRestricted": "Permission Restricted"
+    },
+    
+    "row": {
+      "permissions": "Permissions",
+      "permissionsDescription": "Control how this member can interact with this row.",
+      "invisible": "Content Masked",
+      "invisibleDescription": "Row is visible but content is masked, member cannot view or edit row content.",
+      "readOnly": "Read Only",
+      "readOnlyDescription": "Member can only view this row, cannot edit or delete. This is the strictest permission.",
+      "editable": "Editable",
+      "editableDescription": "Member can view, edit, and delete this row."
+    },
+    
+    "conditionRules": {
+      "title": "Condition Rules",
+      "description": "Define rules to automatically apply row permissions based on conditions.",
+      "creator": "Creator Match",
+      "fieldMatch": "Field Value Match",
+      "collaborator": "Collaborator Contains",
+      "noRules": "No condition rules defined. Add a rule to automatically apply row permissions.",
+      "addRule": "Add Rule",
+      "editRule": "Edit Rule",
+      "ruleName": "Rule Name",
+      "ruleNamePlaceholder": "Enter rule name",
+      "ruleDescription": "Description",
+      "ruleDescriptionPlaceholder": "Enter rule description (optional)",
+      "conditionType": "Condition Type",
+      "selectField": "Select Field",
+      "selectCollaboratorField": "Select Collaborator Field",
+      "noCollaboratorFields": "No collaborator fields available in this table.",
+      "operator": "Operator",
+      "operatorEquals": "Equals",
+      "operatorNotEquals": "Not Equals",
+      "operatorContains": "Contains",
+      "operatorGreaterThan": "Greater Than",
+      "operatorLessThan": "Less Than",
+      "value": "Value",
+      "valuePlaceholder": "Enter value to match",
+      "permissionLevel": "Applied Permission",
+      "appliedPermission": "Permission",
+      "priority": "Priority",
+      "priorityPlaceholder": "0",
+      "priorityHint": "Higher priority rules are evaluated first.",
+      "logicOperator": "Logic Operator",
+      "creatorDescription": "This rule will match rows where the current user is the creator of the row.",
+      "deleteConfirmTitle": "Delete Condition Rule",
+      "deleteConfirmMessage": "Are you sure you want to delete this condition rule? This action cannot be undone."
+    },
+    
+    "plugin": {
+      "noPermission": "No Permission",
+      "canUse": "Can Use",
+      "canConfigure": "Can Configure"
+    },
+    
+    "preview": {
+      "title": "Preview Mode",
+      "previewAs": "Preview as",
+      "exitPreview": "Exit Preview",
+      "selectMember": "Select a member to preview",
+      "previewDescription": "View the table as this member would see it",
+      "noMembers": "No members available for preview",
+      "previewModeActive": "You are viewing this table as another member. All editing is disabled.",
+      "startPreview": "Start Preview"
+    },
+    
+    "errors": {
+      "noTableAccess": "You do not have access to this table",
+      "tableReadOnly": "This table is read-only",
+      "rowInvisible": "This row is not visible to you",
+      "rowReadOnly": "This row is read-only",
+      "rowNotDeletable": "You cannot delete this row",
+      "fieldHidden": "This field content is masked",
+      "fieldReadOnly": "This field is read-only",
+      "failedToLoadData": "Failed to load data",
+      "failedToSavePermission": "Failed to save permission",
+      "failedToLoadPluginPermissions": "Failed to load plugin permissions",
+      "failedToUpdatePermission": "Failed to update permission",
+      "failedToLoadStructurePermissions": "Failed to load structure permissions",
+      "failedToSaveCollaboration": "Failed to save collaboration",
+      "failedToLoadConditionRules": "Failed to load condition rules",
+      "failedToSaveConditionRule": "Failed to save condition rule",
+      "failedToToggleRule": "Failed to toggle rule",
+      "failedToDeleteRule": "Failed to delete rule"
+    },
+    
+    "common": {
+      "loading": "Loading...",
+      "saving": "Saving...",
+      "noData": "No data available"
+    }
+  }
+}

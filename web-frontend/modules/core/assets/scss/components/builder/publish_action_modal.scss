@@ -1,0 +1,26 @@
+.publish-action-modal__container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.publish-action-modal__domain-name {
+  margin-right: 1em;
+}
+
+.publish-action-modal__copy-domain {
+  position: relative;
+  color: $color-neutral-900;
+  font-size: 12px;
+  margin-right: 6px;
+}
+
+.publish-action-modal__domain-link {
+  color: $color-neutral-900;
+  font-size: 12px;
+}
+
+.publish-action-modal__last-update {
+  margin: 6px 0 0 24px;
+  font-size: 12px;
+}

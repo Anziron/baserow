@@ -1,0 +1,391 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GridViewRows component with decoration Default component 1`] = `
+<div
+  class="context"
+  style="top: auto; right: auto; bottom: auto; left: auto; max-height: none;"
+>
+  <div
+    class="decorator-list"
+  >
+    <div
+      class="decorator-list__item"
+    >
+      <div
+        class="decorator-item"
+      >
+        <img
+          class="decorator-item__image"
+          src="fake/url.png"
+        />
+         
+        <div
+          class="decorator-item__content"
+        >
+          <div
+            class="decorator-item__title"
+          >
+            
+      Fake decorator
+      
+            <!---->
+          </div>
+           
+          <div
+            class="decorator-item__description"
+          >
+            
+      Fake decorator description
+    
+          </div>
+        </div>
+      </div>
+       
+      <!---->
+    </div>
+  </div>
+</div>
+`;
+
+exports[`GridViewRows component with decoration Should show cant add decorator tooltip 1`] = `
+<body>
+  <div
+    class="tooltip tooltip--body tooltip--center"
+    style="top: 4px; left: 0px;"
+  >
+    <div
+      class="tooltip__content"
+    >
+      can't be added reason
+    </div>
+  </div>
+  <div
+    class="context"
+    style="top: auto; right: auto; bottom: auto; left: auto; max-height: none;"
+  >
+    <div
+      class="decorator-list"
+    >
+      <div
+        class="decorator-list__item decorator-list__item--disabled"
+      >
+        <div
+          class="decorator-item"
+        >
+          <img
+            class="decorator-item__image"
+            src="fake/url.png"
+          />
+           
+          <div
+            class="decorator-item__content"
+          >
+            <div
+              class="decorator-item__title"
+            >
+              
+      Fake decorator
+      
+              <!---->
+            </div>
+             
+            <div
+              class="decorator-item__description"
+            >
+              
+      Fake decorator description
+    
+            </div>
+          </div>
+        </div>
+         
+        <!---->
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`GridViewRows component with decoration Should show unavailable decorator tooltip 1`] = `
+<body>
+  <div
+    class="tooltip tooltip--body tooltip--center"
+    style="top: 4px; left: 0px;"
+  >
+    <div
+      class="tooltip__content"
+    >
+      unavailability reason
+    </div>
+  </div>
+  <div
+    class="context"
+    style="top: auto; right: auto; bottom: auto; left: auto; max-height: none;"
+  >
+    <div
+      class="decorator-list"
+    >
+      <div
+        class="decorator-list__item"
+      >
+        <div
+          class="decorator-item"
+        >
+          <img
+            class="decorator-item__image"
+            src="fake/url.png"
+          />
+           
+          <div
+            class="decorator-item__content"
+          >
+            <div
+              class="decorator-item__title"
+            >
+              
+      Fake decorator
+      
+              <div
+                class="deactivated-label"
+              >
+                <i
+                  class="iconoir-lock"
+                />
+              </div>
+            </div>
+             
+            <div
+              class="decorator-item__description"
+            >
+              
+      Fake decorator description
+    
+            </div>
+          </div>
+        </div>
+         
+        <!---->
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`GridViewRows component with decoration View with decoration configured 1`] = `
+<div
+  class="context"
+  style="top: auto; right: auto; bottom: auto; left: auto; max-height: none;"
+>
+  <div
+    class="decorator-context"
+  >
+    <div
+      class="decorator-context__list"
+    >
+      <div
+        class="decorator-context__decorator"
+      >
+        <div
+          class="decorator-context__decorator-header"
+        >
+          <div
+            class="decorator-context__decorator-header-info"
+          >
+            <div
+              class="decorator-item"
+            >
+              <img
+                class="decorator-item__image"
+                src="fake/url.png"
+              />
+               
+              <div
+                class="decorator-item__content"
+              >
+                <div
+                  class="decorator-item__title"
+                >
+                  
+      Fake decorator
+      
+                  <!---->
+                </div>
+                 
+                <div
+                  class="decorator-item__description"
+                >
+                  
+      Fake decorator description
+    
+                </div>
+              </div>
+            </div>
+          </div>
+           
+          <div
+            class="decorator-context__decorator-header-select"
+          >
+            <div
+              class="dropdown"
+            >
+              <a
+                class="dropdown__selected"
+              >
+                <i
+                  class="dropdown__selected-icon iconoir-filter"
+                />
+                 
+                <span
+                  class="dropdown__selected-text"
+                >
+                  Fake value provider
+                </span>
+                 
+                <i
+                  class="dropdown__toggle-icon iconoir-nav-arrow-down"
+                />
+              </a>
+               
+            </div>
+          </div>
+           
+          <div
+            class="decorator-context__decorator-header-trash"
+          >
+            <button
+              class="button-icon"
+            >
+              <i
+                class="button-icon__icon iconoir-bin"
+              />
+            </button>
+          </div>
+        </div>
+         
+        <div>
+          fake_value_provider_form
+        </div>
+      </div>
+      <div
+        class="decorator-context__decorator"
+      >
+        <div
+          class="decorator-context__decorator-header"
+        >
+          <div
+            class="decorator-context__decorator-header-info"
+          >
+            <div
+              class="decorator-item"
+            >
+              <img
+                class="decorator-item__image"
+                src="fake/url.png"
+              />
+               
+              <div
+                class="decorator-item__content"
+              >
+                <div
+                  class="decorator-item__title"
+                >
+                  
+      Fake decorator
+      
+                  <!---->
+                </div>
+                 
+                <div
+                  class="decorator-item__description"
+                >
+                  
+      Fake decorator description
+    
+                </div>
+              </div>
+            </div>
+          </div>
+           
+          <div
+            class="decorator-context__decorator-header-select"
+            style="display: none;"
+          >
+            <!---->
+          </div>
+           
+          <div
+            class="decorator-context__decorator-header-trash"
+          >
+            <button
+              class="button-icon"
+            >
+              <i
+                class="button-icon__icon iconoir-bin"
+              />
+            </button>
+          </div>
+        </div>
+         
+        <div
+          class="value-provider-list value-provider-list--row"
+        >
+          <div
+            class="value-provider-list__item"
+          >
+            <div
+              class="value-provider-item"
+            >
+              <div
+                class="value-provider-item__title"
+              >
+                <i
+                  class="iconoir-filter value-provider-item__icon"
+                />
+                 
+                <span
+                  class="value-provider-item__title-text"
+                >
+                  Fake value provider
+                </span>
+              </div>
+               
+              <div
+                class="value-provider-item__description"
+              >
+                
+    Fake value provider description.
+  
+              </div>
+            </div>
+             
+            <!---->
+          </div>
+        </div>
+      </div>
+    </div>
+     
+    <div
+      class="context__footer"
+    >
+      <button
+        class="button-text choose-select-field__link margin-right-auto"
+      >
+        <i
+          class="button-text__icon iconoir-plus"
+        />
+         
+        <!---->
+         
+        <span
+          class="button-text__label"
+        >
+          
+        viewDecoratorContext.addDecorator
+      
+        </span>
+      </button>
+       
+    </div>
+  </div>
+</div>
+`;

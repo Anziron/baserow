@@ -1,0 +1,124 @@
+.switch {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+
+  &.switch--static {
+    cursor: initial;
+    user-select: initial;
+  }
+
+  &::before {
+    content: '';
+    width: 40px;
+    height: 24px;
+
+    @include rounded($rounded-xl);
+  }
+
+  &::after {
+    content: '';
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    background-color: $white;
+    transition: left 0.1s ease-in;
+
+    @include elevation($elevation-medium);
+    @include absolute(2px, auto, auto, 2px);
+  }
+
+  &.switch--active {
+    &::after {
+      left: 17px;
+    }
+  }
+
+  &.switch--indeterminate {
+    &::after {
+      left: 10px;
+    }
+  }
+
+  &.switch--disabled {
+    cursor: not-allowed;
+
+    &::after {
+      box-shadow: none;
+    }
+  }
+
+  &.switch--small {
+    line-height: 16px;
+
+    &::before {
+      height: 16px;
+      width: 24px;
+    }
+
+    &::after {
+      top: 2px;
+      width: 12px;
+      height: 12px;
+    }
+
+    &.switch--active::after {
+      left: 10px;
+    }
+
+    &.switch--indeterminate::after {
+      left: 6px;
+    }
+  }
+
+  .control--horizontal & {
+    align-self: end;
+  }
+}
+
+.switch--color-green {
+  @include switch-color(
+    $palette-green-500,
+    $palette-green-800,
+    $palette-yellow-500,
+    $palette-yellow-800,
+    $palette-neutral-400,
+    $palette-neutral-500
+  );
+}
+
+.switch--color-neutral {
+  @include switch-color(
+    $palette-neutral-1200,
+    $palette-neutral-1300,
+    $palette-neutral-800,
+    $palette-neutral-900,
+    $palette-neutral-400,
+    $palette-neutral-500
+  );
+}
+
+.switch__label {
+  flex: 1;
+  margin-left: 8px;
+  font-weight: 500;
+  color: $palette-neutral-900;
+  font-size: 13px;
+  line-height: 16px;
+
+  @extend %ellipsis;
+
+  i {
+    font-size: 16px;
+  }
+
+  .switch--active & {
+    color: $palette-neutral-1200;
+  }
+
+  .switch--disabled & {
+    color: $palette-neutral-700;
+  }
+}

@@ -1,0 +1,172 @@
+.grid-field-file__cell.active {
+  bottom: auto;
+  right: auto;
+  height: auto;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.grid-field-file__dragging {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: dashed 2px $color-primary-500;
+  background-color: $white;
+  text-align: center;
+  color: $color-neutral-500;
+  font-size: 12px;
+  z-index: 1;
+
+  @include absolute(0, 0, 0, 0);
+}
+
+.grid-field-file__list {
+  overflow: hidden;
+  display: flex;
+  flex-flow: row;
+  flex-wrap: nowrap;
+  list-style: none;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 2px;
+  margin: 0;
+  padding: 5px;
+  user-select: none;
+
+  .grid-view--row-height-medium &,
+  .grid-view--row-height-large & {
+    height: auto;
+    flex-wrap: wrap;
+  }
+
+  .grid-view--row-height-medium & {
+    height: $grid-view-row-height-medium - 1px;
+    gap: 3px;
+    padding: 4px 5px;
+  }
+
+  .grid-view--row-height-large & {
+    height: $grid-view-row-height-large - 1px;
+    gap: 5px;
+  }
+
+  .grid-field-file__cell.active & {
+    height: auto;
+    flex-wrap: wrap;
+  }
+}
+
+%grid-field-file-border {
+  border: solid 1px $color-neutral-400;
+
+  @include rounded($rounded);
+
+  .grid-field-file__cell.active & {
+    border-color: $color-neutral-500;
+  }
+}
+
+.grid-field-file__item {
+  white-space: nowrap;
+  display: flex;
+  height: 22px;
+
+  .grid-view--row-height-large & {
+    height: 26px;
+  }
+}
+
+.grid-field-file__link {
+  cursor: initial;
+
+  // The link is not clickable when the cell is not active.
+  .active & {
+    cursor: pointer;
+  }
+}
+
+.grid-field-file__image {
+  @extend %grid-field-file-border;
+
+  display: block;
+  width: auto;
+  height: 22px;
+
+  .grid-view--row-height-large & {
+    height: 26px;
+  }
+}
+
+.grid-field-file__icon {
+  @extend %grid-field-file-border;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-neutral-600;
+  width: 22px;
+  height: 22px;
+
+  .grid-view--row-height-large & {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+.grid-field-file__loading {
+  @extend %grid-field-file-border;
+
+  position: relative;
+  width: 22px;
+  height: 22px;
+
+  &::before {
+    content: '';
+    margin: -6px 0 0 -6px;
+
+    @include loading(12px);
+    @include absolute(50%, auto, auto, 50%);
+  }
+}
+
+.grid-field-file__item-add {
+  color: $color-neutral-900;
+  background-color: $color-primary-100;
+  width: 22px;
+  height: 22px;
+  justify-content: center;
+
+  @include rounded($rounded);
+  @include flex-align-items;
+
+  .grid-view__column--matches-search & {
+    background-color: $color-primary-200;
+  }
+
+  .grid-view--row-height-large & {
+    width: 26px;
+    height: 26px;
+  }
+
+  &:hover {
+    background-color: $color-primary-200;
+
+    .grid-view__column--matches-search & {
+      background-color: $color-primary-300;
+    }
+  }
+}
+
+.grid-field-file__drop {
+  display: none;
+  line-height: 22px;
+  color: $color-neutral-500;
+  margin-left: 8px;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.grid-field-file__drop-icon {
+  margin-right: 4px;
+  font-size: 10px;
+}

@@ -1,0 +1,675 @@
+.form-view {
+  @include absolute(0);
+
+  background-color: $palette-neutral-25;
+}
+
+.form-view__sidebar {
+  @include absolute(0, auto, 0, 0);
+
+  width: 300px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.form-view__sidebar-fields {
+  padding: 30px;
+}
+
+.form-view__sidebar-fields-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-view__sidebar-fields-title {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.form-view__sidebar-fields-actions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: inline;
+
+    &:not(:last-child) {
+      margin-right: 12px;
+    }
+  }
+
+  a {
+    font-size: 12px;
+    color: $palette-neutral-900;
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: none;
+      color: $palette-neutral-1200;
+    }
+  }
+}
+
+.form-view__sidebar-fields-description {
+  font-size: 12px;
+  line-height: 20px;
+  margin: 18px 0;
+  padding: 18px;
+  text-align: center;
+  border: dashed 1px $palette-neutral-400;
+  color: $palette-neutral-900;
+
+  @include rounded($rounded-md);
+}
+
+.form-view__sidebar-fields-list {
+  position: relative;
+  margin: 12px 0;
+}
+
+.form-view__sidebar-fields-item-wrapper {
+  padding: 6px 0;
+}
+
+.form-view__sidebar-fields-item {
+  position: relative;
+  border: solid 1px $palette-neutral-400;
+  background-color: $white;
+  padding: 0 30px 0 12px;
+
+  @include rounded($rounded-md);
+  @include elevation($elevation-low);
+  @include flex-align-items;
+
+  &:hover {
+    text-decoration: none;
+    border-color: $palette-neutral-500;
+  }
+
+  &.form-view__sidebar-fields-item--disabled,
+  &.form-view__sidebar-fields-item--incompatible {
+    cursor: inherit;
+    background-color: $palette-neutral-100;
+    box-shadow: none;
+  }
+}
+
+.form-view__sidebar-fields-hover-arrow {
+  color: $color-neutral-900;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 5px;
+  display: none;
+
+  .form-view__sidebar-fields-item:not(
+      .form-view__sidebar-fields-item--incompatible
+    ):not(.form-view__sidebar-fields-item--disabled):hover
+    & {
+    display: block;
+  }
+}
+
+.form-view__sidebar-fields-icon {
+  flex: 0 0 20px;
+  line-height: 36px;
+  font-size: 14px;
+  color: $palette-neutral-600;
+
+  .form-view__sidebar-fields-item--incompatible &,
+  .form-view__sidebar-fields-item--disabled & {
+    color: $palette-neutral-500;
+  }
+}
+
+.form-view__sidebar-fields-name {
+  @extend %ellipsis;
+
+  width: 100%;
+  line-height: 34px;
+  font-size: 13px;
+  font-weight: 500;
+  color: $palette-neutral-1200;
+}
+
+.form-view__control-notification-on-submit {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.form-view__sidebar-prefill-or-hide-link {
+  padding: 0 30px 30px;
+}
+
+.form-view__preview {
+  @include absolute(0, 0, 0, 300px);
+
+  overflow: auto;
+  padding: 30px;
+}
+
+// This container is needed to mimic the way the tool works. This is needed so that the
+// contexts menus are positioned the right way.
+.form-view__page-container {
+  @include absolute(0);
+
+  overflow: auto;
+
+  @media print {
+    overflow: visible;
+    position: relative;
+  }
+}
+
+.form-view__page {
+  min-height: 100%;
+  background-color: $white;
+
+  &.form-view__page--rounded {
+    position: relative;
+    overflow: hidden;
+
+    @include rounded($rounded-md);
+    @include elevation($elevation-low);
+  }
+}
+
+.form-view__file-container {
+  position: relative;
+}
+
+.form-view__file {
+  position: relative;
+  display: inline-block;
+  line-height: 36px;
+  padding: 0 20px;
+  background-color: $palette-neutral-25;
+  border: 1px dashed $palette-neutral-400;
+  font-size: 13px;
+  font-weight: 500;
+  color: $palette-neutral-900;
+  overflow: hidden;
+
+  @include rounded($rounded-md);
+
+  &:hover {
+    text-decoration: none;
+    color: $palette-neutral-1200;
+    border-color: $palette-neutral-600;
+  }
+
+  * {
+    pointer-events: none;
+  }
+
+  &.form-view__file--dragging,
+  &.form-view__file--uploading {
+    border-color: $palette-neutral-600;
+    color: transparent;
+  }
+
+  &.form-view__file--error {
+    background-color: $palette-red-50;
+    color: transparent;
+  }
+}
+
+.form-view__file-progress {
+  @include absolute(auto, auto, 0, 0);
+
+  height: 6px;
+  background-color: $color-primary-500;
+}
+
+.form-view__file-dragging,
+.form-view__file-uploading,
+.form-view__file-error {
+  @include absolute(50%, auto, auto, 50%);
+
+  display: none;
+  width: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 14px;
+  text-align: center;
+  margin-left: -50px;
+  margin-top: -6.5px;
+  color: $color-neutral-900;
+}
+
+.form-view__file-dragging {
+  .form-view__file--dragging & {
+    display: block;
+  }
+}
+
+.form-view__file-uploading {
+  .form-view__file--uploading & {
+    display: block;
+  }
+}
+
+.form-view__file-error {
+  color: $color-error-500;
+
+  .form-view__file--error & {
+    display: block;
+  }
+}
+
+.form-view__file-delete {
+  @include absolute(0, 0, 0, 0);
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: $color-error-500;
+  font-size: 14px;
+  font-weight: 600;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  :hover > & {
+    display: flex;
+  }
+
+  i {
+    margin-right: 6px;
+  }
+}
+
+.form-view__file-floating-error {
+  @include absolute(auto, auto, -40px, auto);
+}
+
+.form-view__edit-icon {
+  color: $color-neutral-500;
+  font-size: 18px;
+}
+
+.form-view__edit {
+  line-height: 14px;
+  color: $color-neutral-700;
+  padding-left: 8px;
+
+  &:hover {
+    .form-view__edit-icon {
+      color: $color-neutral-900;
+    }
+  }
+
+  &.form-view__edit--hidden {
+    visibility: hidden;
+  }
+}
+
+.form-view__cover {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: $palette-neutral-200;
+}
+
+.form-view__body {
+  padding: 16px;
+  max-width: 100%;
+  width: 680px;
+  margin: 0 auto;
+}
+
+.form-view__heading {
+  padding: 20px 20px 10px;
+
+  // If we're in the form heading, the span.contenteditable
+  // is false, and there's no text value, show the placeholder.
+  @include contenteditable-placeholder;
+}
+
+.form-view__title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 20px;
+  line-height: 28px;
+
+  @include flex-align-items(5px);
+}
+
+.form-view__description {
+  font-size: 13px;
+  margin: 0;
+  display: inline-block;
+  line-height: 20px;
+
+  @include flex-align-items(5px);
+}
+
+.form-view__no-fields {
+  margin-top: 30px;
+  padding: 30px;
+  border: dashed 1px $color-neutral-200;
+  font-size: 16px;
+  color: $color-neutral-600;
+  line-height: 160%;
+  text-align: center;
+
+  @include rounded($rounded-md);
+}
+
+.form-view__no-fields-title {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: $palette-neutral-1200;
+}
+
+.form-view__no-fields-content {
+  font-size: 12px;
+  font-weight: 400;
+  color: $palette-neutral-900;
+}
+
+.form-view__fields {
+  position: relative;
+}
+
+.form-view__field-wrapper {
+  padding: 7px 0;
+}
+
+.form-view__field {
+  position: relative;
+
+  @include rounded($rounded-xl);
+
+  &.form-view__field--editable {
+    border: 1px solid transparent;
+
+    &.form-view__field--selected {
+      z-index: 2;
+      border-color: $palette-neutral-200;
+
+      // If we've selected a form field, the span.contenteditable
+      // is false, and there's no text value, show the placeholder.
+      @include contenteditable-placeholder;
+    }
+
+    &:not(.form-view__field--selected) {
+      &::before {
+        content: '';
+        z-index: 1;
+
+        @include absolute(0);
+      }
+
+      &:hover {
+        cursor: pointer;
+        background-color: $palette-neutral-25;
+      }
+    }
+  }
+}
+
+.form-view__field-head {
+  @include flex-align-items(5px);
+
+  background-color: $palette-neutral-100;
+  line-height: 52px;
+  padding: 0 20px;
+  width: 100%;
+  justify-content: left;
+  border-top-left-radius: 13px;
+  border-top-right-radius: 13px;
+  display: none;
+
+  .form-view__field--selected & {
+    display: flex;
+  }
+}
+
+.form-view__field-head-handle {
+  width: 11px;
+  height: 15px;
+  background-image: radial-gradient(
+    $palette-neutral-700 1.5px,
+    transparent 1.5px
+  );
+  background-size: 5px 5px;
+  background-repeat: repeat;
+
+  &:hover {
+    background-image: radial-gradient(
+      $palette-neutral-900 1.5px,
+      transparent 1.5px
+    );
+  }
+}
+
+.form-view__field-head-icon {
+  font-size: 14px;
+  color: $palette-neutral-600;
+  margin-left: 10px;
+}
+
+.form-view__field-head-name {
+  @extend %ellipsis;
+
+  max-width: 100%;
+  font-size: 13px;
+  font-weight: 500;
+  color: $palette-neutral-1200;
+}
+
+.form-view__field-head-options {
+  margin: 0 12px 0 8px;
+  color: $color-neutral-600;
+
+  &:hover {
+    color: $color-neutral-900;
+  }
+}
+
+.form-view__field-head-hide {
+  margin-left: auto;
+  color: $palette-neutral-700;
+  font-size: 16px;
+
+  &:hover {
+    color: $palette-neutral-900;
+  }
+}
+
+.form-view__field-inner {
+  padding: 20px;
+}
+
+.form-view__field-name {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 14px;
+  line-height: 20px;
+}
+
+.form-view__field-required {
+  color: $palette-red-600;
+}
+
+.form-view__field-description {
+  font-size: 13px;
+  line-height: 160%;
+  margin-bottom: 20px;
+  color: $color-neutral-500;
+  display: inline-block;
+}
+
+.form-view-field-edit {
+  display: none;
+
+  .form-view__field--selected & {
+    display: inline;
+  }
+}
+
+.form-view__field-read-only {
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.form-view__field-options {
+  display: none;
+  margin-top: 20px;
+
+  .form-view__field--selected & {
+    display: block;
+  }
+}
+
+.form-view__add-condition {
+  margin-top: 6px;
+  color: $palette-neutral-900;
+  margin-right: 16px;
+
+  @include flex-align-items(4px, inline-flex);
+
+  &:hover {
+    text-decoration: none;
+    color: $palette-neutral-1100;
+  }
+
+  i {
+    font-size: 20px;
+  }
+}
+
+.form-view__conditions {
+  margin-top: 12px;
+}
+
+.form-view__condition-actions {
+  border-top: 1px solid rgba(217, 219, 222, 0.5);
+  margin-top: 12px;
+  padding-top: 8px;
+}
+
+.form-view__allowed-select-options {
+  padding: 0 0 16px 30px;
+}
+
+.form-view__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  font-size: 13px;
+
+  &--single {
+    justify-content: flex-end;
+  }
+}
+
+.form-view__powered-by {
+  display: flex;
+  justify-content: center;
+}
+
+.form-view__submit {
+  @include flex-align-items(5px);
+}
+
+.form-view__submit-button-editing {
+  cursor: inherit;
+
+  &:hover,
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.form-view__powered-by-logo {
+  max-width: 92px;
+  margin-left: 8px;
+}
+
+.form-view__meta-email {
+  padding-left: 36px;
+  margin-top: 4px;
+}
+
+.form-view__meta-message-textarea {
+  line-height: 160%;
+}
+
+.form-view__meta-controls {
+  padding: 20px;
+}
+
+.form-view__meta-controls-help {
+  margin-top: 20px;
+}
+
+.form-view__submitted {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-view__submitted-message {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 160%;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.form-view__redirecting-description {
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.form-view__redirecting-loading {
+  position: relative;
+  height: 14px;
+  margin-bottom: 20px;
+}
+
+.public-view-auth__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 13px;
+}
+
+.form-view__add-field {
+  display: inline-block;
+  margin: 12px 0 6px 4px;
+
+  @include flex-align-items(4px);
+
+  &:hover {
+    text-decoration: none;
+    color: $color-neutral-900;
+  }
+}
+
+.form-view__add-field-icon {
+  font-size: 20px;
+}

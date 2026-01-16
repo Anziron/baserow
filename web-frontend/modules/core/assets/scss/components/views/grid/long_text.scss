@@ -1,0 +1,62 @@
+.grid-field-long-text__cell,
+%grid-field-long-text-cell {
+  &.active {
+    &.editing {
+      bottom: auto;
+      right: auto;
+      height: auto;
+      min-width: calc(100% + 6px);
+    }
+  }
+}
+
+.grid-field-long-text,
+%grid-field-long-text {
+  @extend %ellipsis;
+  @include fixed-height(32px, 13px);
+
+  padding: 5px 10px;
+  user-select: none;
+  line-height: 22px;
+
+  .grid-view--row-height-medium &,
+  .grid-view--row-height-large & {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    white-space: pre-line;
+  }
+
+  .grid-view--row-height-medium & {
+    height: $grid-view-row-height-medium - 1px;
+    -webkit-line-clamp: 2;
+  }
+
+  .grid-view--row-height-large & {
+    height: $grid-view-row-height-large - 1px;
+    -webkit-line-clamp: 4;
+  }
+}
+
+.grid-field-long-text__textarea,
+%grid-field-long-text-textarea {
+  line-height: 22px;
+  font-size: 13px;
+  padding: 5px 10px;
+  border: 0;
+  background: none;
+  min-height: 22px * 5 + 10px;
+  min-width: 100%;
+  background-color: $white;
+
+  &:focus {
+    outline: 0;
+  }
+
+  .grid-view__column--matches-search & {
+    background-color: $color-primary-100;
+  }
+
+  &::-webkit-scrollbar-thumb:window-inactive {
+    background-color: $color-neutral-500;
+  }
+}

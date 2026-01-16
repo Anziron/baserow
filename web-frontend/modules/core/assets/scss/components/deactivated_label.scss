@@ -1,0 +1,12 @@
+.deactivated-label {
+  background-color: $color-primary-200;
+  color: $color-primary-500;
+  padding: 2px;
+  font-size: 14px;
+  width: 17px;
+  height: 17px;
+  justify-content: center;
+
+  @include flex-align-items(0, inline-flex);
+  @include rounded($rounded);
+}

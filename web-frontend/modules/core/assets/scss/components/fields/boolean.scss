@@ -1,0 +1,27 @@
+.field-boolean__checkbox {
+  color: $color-success-600;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  font-size: 18px;
+  justify-content: center;
+  border: 1px solid $color-neutral-200;
+
+  @include rounded($rounded);
+  @include flex-align-items;
+
+  &.field-boolean__checkbox--disabled {
+    cursor: initial;
+    background-color: $color-neutral-100;
+  }
+
+  .field-boolean__checkbox-icon {
+    visibility: hidden;
+  }
+
+  &.active .field-boolean__checkbox-icon {
+    visibility: visible;
+  }
+}
+
+// @TODO add the to use a checkbox input here.

@@ -1,0 +1,29 @@
+.image-input {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.image-input__image-placeholder {
+  position: relative;
+}
+
+.image-input__image-placeholder-img {
+  object-fit: contain;
+  width: 60px;
+  height: 60px;
+}
+
+.image-input__image-upload {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.image-input__image-upload-description {
+  color: $palette-neutral-900;
+  margin-bottom: 0;
+  line-height: 1em;
+}

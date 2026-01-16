@@ -1,0 +1,197 @@
+.file-field-modal__wrapper {
+  background-color: rgba($black, 0.78);
+}
+
+.file-field-modal {
+  overflow: hidden;
+
+  @include absolute(0, 0, 0, 0);
+}
+
+.file-field-modal__head {
+  @include absolute(0, 0, auto, 0);
+}
+
+.file-field-modal__name {
+  @extend %ellipsis;
+
+  padding: 0 60px;
+  text-align: center;
+  font-weight: 600;
+  color: $white;
+
+  @include fixed-height($file-field-modal-head-height, 14px);
+}
+
+.file-field-modal__rename {
+  font-size: 12px;
+  margin-left: 4px;
+  color: $white;
+}
+
+.file-field-modal__close {
+  color: $white;
+
+  @include center-text(32px, 20px);
+  @include absolute(17px, 17px, auto, auto);
+  @include rounded($rounded);
+
+  &:hover {
+    background-color: $color-neutral-700;
+  }
+}
+
+.file-field-modal__body {
+  @include absolute(
+    $file-field-modal-head-height,
+    0,
+    $file-field-modal-foot-height,
+    0
+  );
+}
+
+.file-field-modal__body-nav {
+  width: $file-field-modal-body-nav-width;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-neutral-500;
+  font-size: 60px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+
+  &:hover {
+    color: $white;
+    text-decoration: none;
+  }
+
+  &.file-field-modal__body-nav--previous {
+    left: 0;
+  }
+
+  &.file-field-modal__body-nav--next {
+    right: 0;
+  }
+}
+
+.file-field-modal__preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include absolute(
+    0,
+    $file-field-modal-body-nav-width,
+    0,
+    $file-field-modal-body-nav-width
+  );
+}
+
+.file-field-modal__preview-icon {
+  font-size: 40vmin;
+  color: $white;
+  line-height: 1em;
+
+  .preview-select & {
+    font-size: 28vmin;
+  }
+}
+
+.file-field-modal__foot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 100px;
+  height: $file-field-modal-foot-height;
+
+  @include absolute(auto, 0, 0, 0);
+}
+
+.file-field-modal__nav {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 10px 0;
+  overflow-x: auto;
+}
+
+.file-field-modal__nav-item:not(:last-child) {
+  margin-right: 20px;
+}
+
+.file-field-modal__nav-link {
+  display: block;
+  border: solid 3px transparent;
+  overflow: hidden;
+  justify-content: center;
+  background-color: $color-neutral-600;
+
+  @include center-text(48px, 22px);
+  @include rounded($rounded);
+  @include flex-align-items;
+
+  &.active {
+    border-color: $white;
+  }
+}
+
+.file-field-modal__nav-image {
+  display: block;
+  height: 48px;
+
+  @include rounded($rounded);
+
+  .file-field-modal__nav-link.active & {
+    border-radius: 0;
+  }
+}
+
+.file-field-modal__nav-icon {
+  color: $white;
+
+  .file-field-modal__nav-link.active & {
+    border-radius: 0;
+  }
+}
+
+.file-field-modal__actions {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  @include absolute(42px, 25px, auto, auto);
+}
+
+.file-field-modal__action {
+  position: relative;
+  color: $white;
+  justify-content: center;
+  font-size: 20px;
+  width: 32px;
+  height: 32px;
+
+  @include rounded($rounded);
+  @include flex-align-items;
+
+  &:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  &:hover {
+    background-color: $color-neutral-700;
+  }
+
+  &.file-field-modal__action--loading {
+    // Prevent interactions while loading file
+    pointer-events: none;
+
+    &::after {
+      content: '';
+
+      @include loading(16px);
+      @include absolute(8px, 8px, auto, auto);
+    }
+  }
+}

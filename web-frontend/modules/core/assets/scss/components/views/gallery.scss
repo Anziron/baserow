@@ -1,0 +1,56 @@
+.gallery-view {
+  overflow: hidden;
+  background-color: $white;
+
+  @include absolute(0);
+}
+
+.gallery-view__scroll {
+  overflow-y: auto;
+  z-index: 1;
+
+  @include absolute(0);
+}
+
+.gallery-view__cards {
+  position: relative;
+}
+
+.gallery-view__card {
+  @include absolute(0, auto, auto, 0);
+
+  &:not(.gallery-view__card--disabled) * {
+    pointer-events: none;
+    user-select: none;
+  }
+
+  &--dragging-clone {
+    pointer-events: none;
+    left: 0;
+    right: 0;
+    opacity: 0.9;
+    transform: none !important;
+  }
+
+  &.gallery-view__card--dragging {
+    visibility: hidden;
+  }
+
+  &.gallery-view__card--dragging-clone {
+    @include elevation($elevation-high);
+  }
+
+  .gallery-view__cards--dragging & {
+    // Must be kept in sync with the timeout of bufferedRowsDragAndDrop.js::rowMoved
+    transition: transform 0.1s ease-out 0s;
+  }
+
+  &:hover {
+    &:not(.card--loading):not(.gallery-view__card--disabled):not(
+        .gallery-view__card--dragging
+      ) {
+      cursor: pointer;
+      border-color: $palette-neutral-300;
+    }
+  }
+}
