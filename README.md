@@ -220,6 +220,41 @@ baserow migrate
 baserow sync_templates  # 可选,需要几分钟
 ```
 
+### 3.4 邮件配置
+
+Baserow 在用户注册、密码重置等场景会发送邮件。如果不配置邮件服务器,Celery 会报错:
+`gaierror(-3, 'Temporary failure in name resolution')`
+
+**方案一: 禁用邮件发送 (开发环境推荐)**
+
+将邮件输出到控制台而不是实际发送,在启动后端和 Celery 时添加:
+
+```bash
+export EMAIL_BACKEND="django.core.mail.backends.console.EmailBackend"
+```
+
+**方案二: 配置 SMTP 服务器 (生产环境)**
+
+```bash
+export EMAIL_SMTP="smtp.你的邮件服务商.com"
+export EMAIL_SMTP_PORT="587"
+export EMAIL_SMTP_USER="你的邮箱"
+export EMAIL_SMTP_PASSWORD="你的密码"
+export EMAIL_SMTP_USE_TLS="true"
+export FROM_EMAIL="noreply@你的域名.com"
+```
+
+常用 SMTP 服务商配置示例:
+
+| 服务商 | SMTP 地址 | 端口 | TLS |
+|--------|-----------|------|-----|
+| QQ 邮箱 | smtp.qq.com | 587 | true |
+| 163 邮箱 | smtp.163.com | 465 | true |
+| Gmail | smtp.gmail.com | 587 | true |
+| 阿里企业邮箱 | smtp.qiye.aliyun.com | 465 | true |
+
+**注意**: QQ/163 邮箱需要使用授权码而非登录密码。
+
 ---
 
 ## 四、前端安装
