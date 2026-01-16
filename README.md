@@ -4,6 +4,43 @@
 
 ---
 
+## ⚠️ WSL 用户重要提示
+
+如果你在 Windows 上使用 WSL (Windows Subsystem for Linux),请务必注意以下事项:
+
+**不要在 Windows 文件系统路径下运行项目!**
+
+❌ 错误做法: 在 `/mnt/c/Users/xxx/projects/baserow` 下工作
+
+✅ 正确做法: 将项目克隆到 WSL 的 Linux 原生文件系统,如 `~/projects/baserow`
+
+**为什么?**
+
+在 `/mnt/c/...` 路径下运行会导致以下问题:
+- 文件权限冲突 - Windows 和 Linux 权限模型不兼容
+- 文件监听失效 - `inotify` 无法跨文件系统工作,导致热重载失败
+- 性能严重下降 - 跨文件系统 I/O 非常慢
+- 换行符问题 - Windows (CRLF) 与 Linux (LF) 冲突
+
+**正确的操作流程:**
+
+```bash
+# 1. 打开 WSL 终端
+wsl
+
+# 2. 进入 Linux 原生文件系统
+cd ~
+mkdir -p projects
+cd projects
+
+# 3. 克隆项目到 Linux 文件系统
+git clone https://github.com/Anziron/baserow.git
+cd baserow
+
+```
+
+---
+
 ## 目录
 
 1. [环境依赖安装](#一环境依赖安装)
