@@ -59,6 +59,16 @@ class TableImportConfiguration(serializers.Serializer):
         default=None,
         help_text="A list of field IDs that should not be overwritten during upsert operations.",
     )
+    replace_existing_data = serializers.BooleanField(
+        default=False,
+        required=False,
+        help_text=(
+            "If true, all existing rows in the table will be deleted before importing "
+            "new data. This allows you to replace the entire table content while "
+            "preserving the table structure, field configurations, and related settings. "
+            "Cannot be used together with upsert_fields."
+        ),
+    )
 
     def validate(self, attrs):
         if attrs.get("upsert_fields") and not len(attrs.get("upsert_values") or []):
@@ -70,6 +80,18 @@ class TableImportConfiguration(serializers.Serializer):
                     )
                 }
             )
+        
+        # 替换模式和 upsert 模式不能同时使用
+        if attrs.get("replace_existing_data") and attrs.get("upsert_fields"):
+            raise ValidationError(
+                {
+                    "replace_existing_data": (
+                        "replace_existing_data cannot be used together with upsert_fields. "
+                        "Please choose either replace mode or upsert mode."
+                    )
+                }
+            )
+        
         return attrs
 
 

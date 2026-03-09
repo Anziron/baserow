@@ -21,6 +21,7 @@ class FileImportConfiguration(TypedDict):
     upsert_fields: list[int]
     upsert_values: list[list[Any]]
     skipped_fields: list[int]
+    replace_existing_data: bool
 
 
 class FileImportDict(TypedDict):

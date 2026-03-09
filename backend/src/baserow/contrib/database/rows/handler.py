@@ -1903,10 +1903,21 @@ class RowHandler(metaclass=baserow_trace_methods(tracer)):
             workspace=workspace,
             context=table,
         )
+        
+        configuration = configuration or {}
+        
+        # 如果启用了替换模式，先删除所有现有数据
+        if configuration.get('replace_existing_data', False):
+            model = table.get_model()
+            # 获取所有行 ID
+            all_row_ids = list(model.objects.values_list('id', flat=True))
+            if all_row_ids:
+                # 批量删除所有行（不触发信号，避免影响性能）
+                model.objects.filter(id__in=all_row_ids).delete()
+        
         model = table.get_model()
 
         error_report = RowErrorReport(data)
-        configuration = configuration or {}
         update_handler = UpsertRowsMappingHandler(
             table=table,
             upsert_fields=configuration.get("upsert_fields") or [],
