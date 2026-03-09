@@ -73,12 +73,18 @@ def on_rows_created(sender, rows, before, user, table, model, **kwargs):
     """
     监听行创建事件
     当创建新行时，如果所有匹配字段都有值，触发映射处理
+    支持批量导入场景
     """
     from table_mapper.models import TableMappingConfig
     from table_mapper.tasks import process_mapping_task
     
+    # 检查是否是批量导入（通过 send_realtime_update 参数判断）
+    send_realtime_update = kwargs.get('send_realtime_update', True)
+    is_bulk_import = not send_realtime_update
+    
     logger.info(
         f"[Table Mapper] 收到 rows_created 信号, 表 {table.id}, {len(rows)} 行"
+        f"{' (批量导入)' if is_bulk_import else ''}"
     )
     
     # 查找该表作为源表的所有启用的映射配置
