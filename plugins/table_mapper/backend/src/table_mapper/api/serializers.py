@@ -72,11 +72,16 @@ class TableMappingConfigSerializer(serializers.ModelSerializer):
     
     def validate(self, data):
         """验证数据"""
-        # 验证源表和目标表不能相同
+        # 获取源表和目标表（可能是对象或ID）
         source_table = data.get('source_table')
         target_table = data.get('target_table')
         
-        if source_table and target_table and source_table.id == target_table.id:
+        # 获取表ID
+        source_table_id = source_table.id if hasattr(source_table, 'id') else source_table
+        target_table_id = target_table.id if hasattr(target_table, 'id') else target_table
+        
+        # 验证源表和目标表不能相同
+        if source_table_id and target_table_id and source_table_id == target_table_id:
             raise serializers.ValidationError({
                 'target_table': '目标表不能与源表相同'
             })
@@ -93,10 +98,10 @@ class TableMappingConfigSerializer(serializers.ModelSerializer):
             target_field_id = pair.get('target_field_id')
             
             # 验证源字段属于源表
-            if source_field_id and source_table:
+            if source_field_id and source_table_id:
                 try:
                     field = Field.objects.get(id=source_field_id)
-                    if field.table_id != source_table.id:
+                    if field.table_id != source_table_id:
                         raise serializers.ValidationError({
                             'match_field_pairs': f'字段 {source_field_id} 不属于源表'
                         })
@@ -106,10 +111,10 @@ class TableMappingConfigSerializer(serializers.ModelSerializer):
                     })
             
             # 验证目标字段属于目标表
-            if target_field_id and target_table:
+            if target_field_id and target_table_id:
                 try:
                     field = Field.objects.get(id=target_field_id)
-                    if field.table_id != target_table.id:
+                    if field.table_id != target_table_id:
                         raise serializers.ValidationError({
                             'match_field_pairs': f'字段 {target_field_id} 不属于目标表'
                         })
@@ -130,10 +135,10 @@ class TableMappingConfigSerializer(serializers.ModelSerializer):
             target_field_id = mapping.get('target_field_id')
             
             # 验证源字段属于源表
-            if source_field_id and source_table:
+            if source_field_id and source_table_id:
                 try:
                     field = Field.objects.get(id=source_field_id)
-                    if field.table_id != source_table.id:
+                    if field.table_id != source_table_id:
                         raise serializers.ValidationError({
                             'field_mappings': f'字段 {source_field_id} 不属于源表'
                         })
@@ -143,10 +148,10 @@ class TableMappingConfigSerializer(serializers.ModelSerializer):
                     })
             
             # 验证目标字段属于目标表
-            if target_field_id and target_table:
+            if target_field_id and target_table_id:
                 try:
                     field = Field.objects.get(id=target_field_id)
-                    if field.table_id != target_table.id:
+                    if field.table_id != target_table_id:
                         raise serializers.ValidationError({
                             'field_mappings': f'字段 {target_field_id} 不属于目标表'
                         })
