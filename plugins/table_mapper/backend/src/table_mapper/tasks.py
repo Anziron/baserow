@@ -37,10 +37,10 @@ def process_mapping_task(self, config_id: int, row_id: int, table_id: int):
             logger.error(f"[Table Mapper] 表 {table_id} 不存在")
             return
         
-        # 获取行对象
+        # 获取行对象（使用 enhance_by_fields 确保所有字段值都被加载）
         model = table.get_model()
         try:
-            source_row = model.objects.get(id=row_id)
+            source_row = model.objects.all().enhance_by_fields().get(id=row_id)
         except model.DoesNotExist:
             logger.warning(f"[Table Mapper] 行 {row_id} 不存在")
             return

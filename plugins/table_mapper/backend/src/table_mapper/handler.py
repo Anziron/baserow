@@ -74,7 +74,7 @@ class TableMappingHandler:
         
         # 执行查询（所有条件都必须满足 - AND 逻辑）
         try:
-            queryset = model.objects.filter(**filters)
+            queryset = model.objects.all().enhance_by_fields().filter(**filters)
             
             # 处理多个匹配的情况
             count = queryset.count()
@@ -237,14 +237,15 @@ class TableMappingHandler:
                     field_id = int(field_name.replace("field_", ""))
                     values[f"field_{field_id}"] = value
             
-            # 使用 RowHandler 更新行（会自动触发 WebSocket 广播）
+            logger.debug(f"[Table Mapper] 准备更新值: {values}")
+            
+            # 使用 RowHandler 更新行
             RowHandler().update_row_by_id(
                 user=user,
                 table=config.source_table,
                 row_id=source_row.id,
                 values=values,
-                model=config.source_table.get_model(),
-                values_already_prepared=True  # 值已经准备好，不需要再处理
+                model=config.source_table.get_model()
             )
             
             logger.info(

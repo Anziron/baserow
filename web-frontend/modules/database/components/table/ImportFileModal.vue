@@ -86,6 +86,27 @@
                 />
               </Dropdown>
             </div>
+            
+            <div class="control margin-top-2">
+              <label class="control__label control__label--small">
+                {{ $t('importFileModal.replaceExistingData') }}
+                <HelpIcon
+                  :icon="'info-empty'"
+                  :tooltip="$t('importFileModal.replaceExistingDataTooltip')"
+                />
+              </label>
+              <div class="control__elements">
+                <Checkbox
+                  v-model="replaceExistingData"
+                  :disabled="useUpsertField"
+                  >{{ $t('common.yes') }}</Checkbox
+                >
+              </div>
+              <div v-if="replaceExistingData" class="control__description margin-top-1">
+                <i class="iconoir-warning-triangle"></i>
+                {{ $t('importFileModal.replaceExistingDataWarning') }}
+              </div>
+            </div>
           </template>
         </component>
       </div>
@@ -238,6 +259,7 @@ export default {
       dataLoaded: false,
       useUpsertField: false,
       upsertField: undefined,
+      replaceExistingData: false,
     }
   },
   computed: {
@@ -407,6 +429,18 @@ export default {
       return this.job && Object.keys(this.job.report.failing_rows).length > 0
     },
   },
+  watch: {
+    useUpsertField(newValue) {
+      if (newValue && this.replaceExistingData) {
+        this.replaceExistingData = false
+      }
+    },
+    replaceExistingData(newValue) {
+      if (newValue && this.useUpsertField) {
+        this.useUpsertField = false
+      }
+    },
+  },
   beforeDestroy() {
     this.stopPollIfRunning()
   },
@@ -473,6 +507,10 @@ export default {
       this.reset(false)
       let data = null
       const importConfiguration = {}
+
+      if (this.replaceExistingData) {
+        importConfiguration.replace_existing_data = true
+      }
 
       if (this.upsertField) {
         // at the moment we use only one field, but the key may be composed of several
@@ -599,7 +637,7 @@ export default {
           {
             onUploadProgress,
           },
-          importConfiguration.upsert_fields ? importConfiguration : null
+          importConfiguration.upsert_fields || importConfiguration.replace_existing_data ? importConfiguration : null
         )
         this.startJobPoller(job)
       } catch (error) {

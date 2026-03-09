@@ -473,6 +473,9 @@
     "importPreview": "Import preview",
     "useUpsertField": "Update rows if they already exist",
     "upsertTooltip": "Match existing rows using a unique field to overwrite data with imported values.",
+    "replaceExistingData": "Replace all existing data",
+    "replaceExistingDataTooltip": "Delete all existing rows before importing new data. This preserves table structure and configurations but removes all current data.",
+    "replaceExistingDataWarning": "⚠️ Warning: This will permanently delete all existing rows in the table before importing.",
     "stateRowCreation": "Importing...",
     "statePreValidation": "Validating data...",
     "stateCreateTable": "Creating table..."
