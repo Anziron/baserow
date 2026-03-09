@@ -208,24 +208,12 @@ class TableMappingHandler:
             return False
         
         try:
-            from baserow.contrib.database.rows.handler import RowHandler
-            
-            # 将字段名转换为字段 ID 格式的值字典
-            values = {}
+            # 直接更新模型实例，绕过权限检查
             for field_name, value in updates.items():
-                # field_name 格式为 "field_123"，提取字段 ID
-                if field_name.startswith("field_"):
-                    field_id = int(field_name.replace("field_", ""))
-                    values[f"field_{field_id}"] = value
+                setattr(source_row, field_name, value)
             
-            # 使用 RowHandler 更新行
-            RowHandler().update_row_by_id(
-                user=None,  # 系统操作
-                table=config.source_table,
-                row_id=source_row.id,
-                values=values,
-                model=config.source_table.get_model()
-            )
+            # 保存到数据库
+            source_row.save()
             
             logger.info(
                 f"[Table Mapper] 成功更新行 {source_row.id}，更新了 {len(updates)} 个字段"
