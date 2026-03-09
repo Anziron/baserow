@@ -21,32 +21,26 @@ class TableMappingConfig(models.Model):
         help_text="是否启用此映射配置"
     )
     
-    # === 源表配置 ===
+    # === 源表和目标表 ===
     source_table = models.ForeignKey(
         Table,
         on_delete=models.CASCADE,
         related_name="mapping_configs_as_source",
         help_text="源表（触发映射的表）"
     )
-    source_match_field = models.ForeignKey(
-        Field,
-        on_delete=models.CASCADE,
-        related_name="source_match_fields",
-        help_text="源表中用于匹配的字段"
-    )
-    
-    # === 目标表配置 ===
     target_table = models.ForeignKey(
         Table,
         on_delete=models.CASCADE,
         related_name="mapping_configs_as_target",
         help_text="目标表（被查询的表）"
     )
-    target_match_field = models.ForeignKey(
-        Field,
-        on_delete=models.CASCADE,
-        related_name="target_match_fields",
-        help_text="目标表中用于匹配的字段"
+    
+    # === 匹配字段配置（多字段匹配）===
+    # 格式：[{"source_field_id": 1, "target_field_id": 2}, ...]
+    # 所有字段对都必须匹配才触发映射（AND 逻辑）
+    match_field_pairs = models.JSONField(
+        default=list,
+        help_text="匹配字段对列表，所有字段对都必须匹配才触发映射"
     )
     
     # === 字段映射配置 ===

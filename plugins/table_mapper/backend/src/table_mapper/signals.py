@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 def on_rows_updated(sender, rows, user, table, model, updated_field_ids, **kwargs):
     """
     监听行更新事件
-    当源表的匹配字段被更新时，触发映射处理
+    当源表的任一匹配字段被更新时，触发映射处理
     """
     from table_mapper.models import TableMappingConfig
     from table_mapper.tasks import process_mapping_task
@@ -27,7 +27,7 @@ def on_rows_updated(sender, rows, user, table, model, updated_field_ids, **kwarg
     configs = TableMappingConfig.objects.filter(
         source_table=table,
         enabled=True
-    ).select_related('source_match_field', 'target_table', 'target_match_field')
+    ).select_related('source_table', 'target_table')
     
     if not configs.exists():
         logger.debug(f"[Table Mapper] 表 {table.id} 没有映射配置")
@@ -35,11 +35,16 @@ def on_rows_updated(sender, rows, user, table, model, updated_field_ids, **kwarg
     
     # 遍历每个配置
     for config in configs:
-        # 检查是否更新了匹配字段
-        if config.source_match_field.id not in updated_field_ids:
+        # 检查是否更新了任一匹配字段
+        match_field_ids = [
+            pair.get('source_field_id') 
+            for pair in config.match_field_pairs 
+            if pair.get('source_field_id')
+        ]
+        
+        if not any(field_id in updated_field_ids for field_id in match_field_ids):
             logger.debug(
-                f"[Table Mapper] 配置 {config.id} 的匹配字段 "
-                f"{config.source_match_field.id} 未更新，跳过"
+                f"[Table Mapper] 配置 {config.id} 的匹配字段未更新，跳过"
             )
             continue
         
@@ -67,7 +72,7 @@ def on_rows_updated(sender, rows, user, table, model, updated_field_ids, **kwarg
 def on_rows_created(sender, rows, before, user, table, model, **kwargs):
     """
     监听行创建事件
-    当创建新行时，如果匹配字段有值，触发映射处理
+    当创建新行时，如果所有匹配字段都有值，触发映射处理
     """
     from table_mapper.models import TableMappingConfig
     from table_mapper.tasks import process_mapping_task
@@ -80,7 +85,7 @@ def on_rows_created(sender, rows, before, user, table, model, **kwargs):
     configs = TableMappingConfig.objects.filter(
         source_table=table,
         enabled=True
-    ).select_related('source_match_field', 'target_table', 'target_match_field')
+    ).select_related('source_table', 'target_table')
     
     if not configs.exists():
         logger.debug(f"[Table Mapper] 表 {table.id} 没有映射配置")
@@ -88,13 +93,20 @@ def on_rows_created(sender, rows, before, user, table, model, **kwargs):
     
     # 遍历每个配置
     for config in configs:
-        match_field_name = f"field_{config.source_match_field.id}"
-        
-        # 检查哪些行的匹配字段有值
+        # 检查哪些行的所有匹配字段都有值
         rows_to_process = []
         for row in rows:
-            match_value = getattr(row, match_field_name, None)
-            if match_value:
+            all_fields_have_value = True
+            for pair in config.match_field_pairs:
+                source_field_id = pair.get('source_field_id')
+                if source_field_id:
+                    match_field_name = f"field_{source_field_id}"
+                    match_value = getattr(row, match_field_name, None)
+                    if not match_value:
+                        all_fields_have_value = False
+                        break
+            
+            if all_fields_have_value:
                 rows_to_process.append(row)
         
         if not rows_to_process:

@@ -19,47 +19,75 @@ class TableMappingHandler:
     """处理表间映射逻辑"""
     
     @staticmethod
-    def find_matching_row(config, match_value) -> Optional[Any]:
+    def find_matching_row(config, source_row) -> Optional[Any]:
         """
-        在目标表中查找匹配的行
+        在目标表中查找匹配的行（支持多字段匹配）
         
         :param config: TableMappingConfig 实例
-        :param match_value: 要匹配的值
+        :param source_row: 源表行对象
         :return: 匹配的行对象，如果没有匹配则返回 None
         :raises MultipleMatchesError: 当找到多个匹配且配置为报错时
         """
-        if not match_value:
+        if not config.match_field_pairs:
+            logger.warning(f"[Table Mapper] 配置 {config.name} 没有匹配字段对")
             return None
         
         target_table = config.target_table
-        target_field = config.target_match_field
         
         # 获取目标表的模型
         model = target_table.get_model()
-        field_name = f"field_{target_field.id}"
         
-        # 根据匹配模式构建查询
-        try:
+        # 构建多字段匹配查询
+        filters = {}
+        
+        for pair in config.match_field_pairs:
+            source_field_id = pair.get('source_field_id')
+            target_field_id = pair.get('target_field_id')
+            
+            if not source_field_id or not target_field_id:
+                logger.warning(f"[Table Mapper] 无效的字段对: {pair}")
+                continue
+            
+            # 获取源表字段的值
+            source_field_name = f"field_{source_field_id}"
+            match_value = getattr(source_row, source_field_name, None)
+            
+            if match_value is None or match_value == '':
+                logger.debug(f"[Table Mapper] 源字段 {source_field_id} 值为空，跳过匹配")
+                return None
+            
+            # 根据匹配模式构建查询条件
+            target_field_name = f"field_{target_field_id}"
+            
             if config.match_mode == config.MATCH_MODE_EXACT:
-                queryset = model.objects.filter(**{field_name: match_value})
+                filters[target_field_name] = match_value
             elif config.match_mode == config.MATCH_MODE_CASE_INSENSITIVE:
-                queryset = model.objects.filter(**{f"{field_name}__iexact": match_value})
+                filters[f"{target_field_name}__iexact"] = match_value
             elif config.match_mode == config.MATCH_MODE_CONTAINS:
-                queryset = model.objects.filter(**{f"{field_name}__icontains": match_value})
+                filters[f"{target_field_name}__icontains"] = match_value
             else:
-                queryset = model.objects.filter(**{field_name: match_value})
+                filters[target_field_name] = match_value
+        
+        if not filters:
+            logger.debug(f"[Table Mapper] 没有有效的匹配条件")
+            return None
+        
+        # 执行查询（所有条件都必须满足 - AND 逻辑）
+        try:
+            queryset = model.objects.filter(**filters)
             
             # 处理多个匹配的情况
             count = queryset.count()
             
             if count == 0:
-                logger.debug(f"[Table Mapper] 没有找到匹配: {match_value}")
+                logger.debug(f"[Table Mapper] 没有找到匹配: {filters}")
                 return None
             elif count == 1:
+                logger.debug(f"[Table Mapper] 找到唯一匹配")
                 return queryset.first()
             else:
                 # 多个匹配
-                logger.info(f"[Table Mapper] 找到 {count} 个匹配: {match_value}")
+                logger.info(f"[Table Mapper] 找到 {count} 个匹配: {filters}")
                 if config.multi_match_behavior == config.MULTI_MATCH_FIRST:
                     return queryset.first()
                 elif config.multi_match_behavior == config.MULTI_MATCH_LAST:
@@ -210,28 +238,20 @@ class TableMappingHandler:
     @staticmethod
     def process_mapping(config, source_row) -> bool:
         """
-        处理单个映射
+        处理单个映射（支持多字段匹配）
         
         :param config: TableMappingConfig 实例
         :param source_row: 源表行对象
         :return: 是否处理成功
         """
         try:
-            # 获取匹配字段的值
-            match_field_name = f"field_{config.source_match_field.id}"
-            match_value = getattr(source_row, match_field_name, None)
-            
-            if not match_value:
-                logger.debug(f"[Table Mapper] 匹配字段为空，跳过处理")
-                return False
-            
             logger.info(
                 f"[Table Mapper] 开始处理映射: 配置 {config.id} ({config.name}), "
-                f"行 {source_row.id}, 匹配值: {match_value}"
+                f"行 {source_row.id}"
             )
             
-            # 查找匹配的行
-            target_row = TableMappingHandler.find_matching_row(config, match_value)
+            # 查找匹配的行（使用多字段匹配）
+            target_row = TableMappingHandler.find_matching_row(config, source_row)
             
             if target_row:
                 # 应用映射
@@ -250,4 +270,5 @@ class TableMappingHandler:
             return False
         except Exception as e:
             logger.error(f"[Table Mapper] 映射处理失败: {e}", exc_info=True)
+            return False
             return False
