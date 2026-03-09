@@ -1,0 +1,334 @@
+<template>
+  <div class="table-mapper-config-form">
+    <h3>{{ isNew ? $t('tableMapper.addConfig') : $t('tableMapper.editConfig') }}</h3>
+
+    <!-- 基本信息 -->
+    <FormGroup :label="$t('tableMapper.configName')" required>
+      <FormInput
+        v-model="localConfig.name"
+        :placeholder="$t('tableMapper.configName')"
+      />
+    </FormGroup>
+
+    <FormGroup>
+      <Checkbox v-model="localConfig.enabled">
+        {{ $t('tableMapper.enabled') }}
+      </Checkbox>
+    </FormGroup>
+
+    <!-- 匹配字段配置 -->
+    <div class="form-section">
+      <h4>{{ $t('tableMapper.matchMode') }}</h4>
+
+      <FormGroup :label="$t('tableMapper.sourceMatchField')" required>
+        <Dropdown
+          v-model="localConfig.source_match_field"
+          :options="sourceFields"
+          :placeholder="$t('tableMapper.selectField')"
+        />
+      </FormGroup>
+
+      <FormGroup :label="$t('tableMapper.targetTable')" required>
+        <Dropdown
+          v-model="localConfig.target_table"
+          :options="tables"
+          :placeholder="$t('tableMapper.selectTable')"
+          @input="onTargetTableChange"
+        />
+      </FormGroup>
+
+      <FormGroup
+        v-if="localConfig.target_table"
+        :label="$t('tableMapper.targetMatchField')"
+        required
+      >
+        <Dropdown
+          v-model="localConfig.target_match_field"
+          :options="targetFields"
+          :placeholder="$t('tableMapper.selectField')"
+        />
+      </FormGroup>
+    </div>
+
+    <!-- 字段映射 -->
+    <div class="form-section">
+      <h4>{{ $t('tableMapper.fieldMappings') }}</h4>
+
+      <div
+        v-for="(mapping, index) in localConfig.field_mappings"
+        :key="index"
+        class="field-mapping-row"
+      >
+        <Dropdown
+          v-model="mapping.target_field_id"
+          :options="targetFields"
+          :placeholder="$t('tableMapper.targetField')"
+          class="field-mapping-row__field"
+        />
+        <span class="field-mapping-row__arrow">
+          {{ $t('tableMapper.mappingArrow') }}
+        </span>
+        <Dropdown
+          v-model="mapping.source_field_id"
+          :options="sourceFields"
+          :placeholder="$t('tableMapper.sourceField')"
+          class="field-mapping-row__field"
+        />
+        <Button
+          type="danger"
+          size="small"
+          @click="removeMapping(index)"
+        >
+          {{ $t('tableMapper.removeMapping') }}
+        </Button>
+      </div>
+
+      <Button
+        type="secondary"
+        size="small"
+        @click="addMapping"
+      >
+        {{ $t('tableMapper.addMapping') }}
+      </Button>
+    </div>
+
+    <!-- 匹配模式 -->
+    <div class="form-section">
+      <h4>{{ $t('tableMapper.matchMode') }}</h4>
+
+      <FormGroup>
+        <RadioGroup v-model="localConfig.match_mode">
+          <Radio value="exact">
+            {{ $t('tableMapper.matchModeExact') }}
+          </Radio>
+          <Radio value="case_insensitive">
+            {{ $t('tableMapper.matchModeCaseInsensitive') }}
+          </Radio>
+          <Radio value="contains">
+            {{ $t('tableMapper.matchModeContains') }}
+          </Radio>
+        </RadioGroup>
+      </FormGroup>
+    </div>
+
+    <!-- 行为配置 -->
+    <div class="form-section">
+      <h4>{{ $t('tableMapper.multiMatchBehavior') }}</h4>
+
+      <FormGroup>
+        <RadioGroup v-model="localConfig.multi_match_behavior">
+          <Radio value="first">
+            {{ $t('tableMapper.multiMatchFirst') }}
+          </Radio>
+          <Radio value="last">
+            {{ $t('tableMapper.multiMatchLast') }}
+          </Radio>
+          <Radio value="error">
+            {{ $t('tableMapper.multiMatchError') }}
+          </Radio>
+        </RadioGroup>
+      </FormGroup>
+
+      <h4>{{ $t('tableMapper.noMatchBehavior') }}</h4>
+
+      <FormGroup>
+        <RadioGroup v-model="localConfig.no_match_behavior">
+          <Radio value="keep">
+            {{ $t('tableMapper.noMatchKeep') }}
+          </Radio>
+          <Radio value="clear">
+            {{ $t('tableMapper.noMatchClear') }}
+          </Radio>
+          <Radio value="default">
+            {{ $t('tableMapper.noMatchDefault') }}
+          </Radio>
+        </RadioGroup>
+      </FormGroup>
+    </div>
+
+    <!-- 执行条件 -->
+    <div class="form-section">
+      <h4>{{ $t('tableMapper.executionCondition') }}</h4>
+
+      <FormGroup>
+        <RadioGroup v-model="localConfig.execution_condition">
+          <Radio value="target_empty">
+            {{ $t('tableMapper.execTargetEmpty') }}
+          </Radio>
+          <Radio value="always">
+            {{ $t('tableMapper.execAlways') }}
+          </Radio>
+        </RadioGroup>
+      </FormGroup>
+
+      <FormGroup v-if="localConfig.execution_condition === 'always'">
+        <Checkbox v-model="localConfig.allow_overwrite">
+          {{ $t('tableMapper.allowOverwrite') }}
+        </Checkbox>
+      </FormGroup>
+    </div>
+
+    <!-- 操作按钮 -->
+    <div class="form-actions">
+      <Button
+        type="primary"
+        :disabled="!isValid"
+        @click="save"
+      >
+        {{ $t('tableMapper.saveConfig') }}
+      </Button>
+      <Button @click="cancel">
+        {{ $t('tableMapper.cancel') }}
+      </Button>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'TableMapperConfigForm',
+  props: {
+    config: {
+      type: Object,
+      required: true,
+    },
+    table: {
+      type: Object,
+      required: true,
+    },
+    database: {
+      type: Object,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      localConfig: { ...this.config },
+      tables: [],
+      sourceFields: [],
+      targetFields: [],
+    }
+  },
+  computed: {
+    isNew() {
+      return !this.config.id
+    },
+    isValid() {
+      return (
+        this.localConfig.name &&
+        this.localConfig.source_match_field &&
+        this.localConfig.target_table &&
+        this.localConfig.target_match_field &&
+        this.localConfig.field_mappings.length > 0
+      )
+    },
+  },
+  async mounted() {
+    await this.loadData()
+  },
+  methods: {
+    async loadData() {
+      // 加载数据库中的所有表
+      this.tables = this.database.tables
+        .filter((t) => t.id !== this.table.id)
+        .map((t) => ({
+          value: t.id,
+          label: t.name,
+        }))
+
+      // 加载源表字段
+      this.sourceFields = this.table.fields.map((f) => ({
+        value: f.id,
+        label: f.name,
+      }))
+
+      // 如果已选择目标表，加载目标表字段
+      if (this.localConfig.target_table) {
+        await this.loadTargetFields()
+      }
+    },
+    async loadTargetFields() {
+      const targetTable = this.database.tables.find(
+        (t) => t.id === this.localConfig.target_table
+      )
+      if (targetTable) {
+        this.targetFields = targetTable.fields.map((f) => ({
+          value: f.id,
+          label: f.name,
+        }))
+      }
+    },
+    async onTargetTableChange() {
+      // 清空目标匹配字段和字段映射
+      this.localConfig.target_match_field = null
+      this.localConfig.field_mappings = []
+      await this.loadTargetFields()
+    },
+    addMapping() {
+      this.localConfig.field_mappings.push({
+        source_field_id: null,
+        target_field_id: null,
+      })
+    },
+    removeMapping(index) {
+      this.localConfig.field_mappings.splice(index, 1)
+    },
+    save() {
+      this.$emit('save', this.localConfig)
+    },
+    cancel() {
+      this.$emit('cancel')
+    },
+  },
+}
+</script>
+
+<style lang="scss" scoped>
+.table-mapper-config-form {
+  max-width: 800px;
+
+  h3 {
+    margin-bottom: 24px;
+  }
+
+  h4 {
+    margin-top: 24px;
+    margin-bottom: 12px;
+    font-size: 16px;
+  }
+}
+
+.form-section {
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e0e0e0;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+}
+
+.field-mapping-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+
+  &__field {
+    flex: 1;
+  }
+
+  &__arrow {
+    font-size: 18px;
+    color: #666;
+  }
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e0e0e0;
+}
+</style>

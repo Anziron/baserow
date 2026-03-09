@@ -1,0 +1,11 @@
+{
+  "name": "表间映射",
+  "version": "1.0.0",
+  "description": "实现两张表之间的字段自动映射功能",
+  "author": "Baserow Community",
+  "modules": {
+    "web-frontend": "web-frontend/modules/table_mapper"
+  },
+  "permission_levels": ["use"],
+  "admin_only": false
+}

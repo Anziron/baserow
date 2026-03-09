@@ -195,6 +195,9 @@ pip install -e ../plugins/excel_importer/backend/ -i https://pypi.tuna.tsinghua.
 
 # Row Author Tracker 插件 - 行填写人追踪
 pip install -e ../plugins/row_author_tracker/backend/ -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+# Table Mapper 插件 - 表间字段自动映射
+pip install -e ../plugins/table_mapper/backend/ -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
 ### 3.3 数据库迁移 (首次安装)

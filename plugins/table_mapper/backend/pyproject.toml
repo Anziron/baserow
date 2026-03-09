@@ -1,0 +1,11 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "baserow-table-mapper"
+version = "1.0.0"
+description = "Baserow plugin for automatic field mapping between tables"
+authors = [{name = "Baserow Community"}]
+license = {text = "MIT"}
+requires-python = ">=3.9"

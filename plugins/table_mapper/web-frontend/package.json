@@ -1,0 +1,8 @@
+{
+  "name": "@baserow/table-mapper",
+  "version": "1.0.0",
+  "description": "Baserow Table Mapper Plugin",
+  "author": "Baserow Community",
+  "license": "MIT",
+  "private": true
+}
