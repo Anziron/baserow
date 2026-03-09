@@ -16,7 +16,7 @@ def on_rows_updated(sender, rows, user, table, model, updated_field_ids, **kwarg
     当源表的任一匹配字段被更新时，触发映射处理
     """
     from table_mapper.models import TableMappingConfig
-    from table_mapper.tasks import process_mapping_task
+    from table_mapper.tasks import batch_process_mapping_task
     
     logger.info(
         f"[Table Mapper] 收到 rows_updated 信号, 表 {table.id}, "
@@ -48,34 +48,35 @@ def on_rows_updated(sender, rows, user, table, model, updated_field_ids, **kwarg
             )
             continue
         
+        # 收集所有行的 ID
+        row_ids = [row.id for row in rows]
+        
         logger.info(
             f"[Table Mapper] 配置 {config.id} ({config.name}) 的匹配字段已更新，"
-            f"提交 {len(rows)} 个映射任务"
+            f"提交批量映射任务: {len(row_ids)} 行"
         )
         
-        # 为每一行提交异步任务
-        for row in rows:
-            try:
-                process_mapping_task.delay(
-                    config_id=config.id,
-                    row_id=row.id,
-                    table_id=table.id
-                )
-            except Exception as e:
-                logger.error(
-                    f"[Table Mapper] 提交任务失败: 配置 {config.id}, "
-                    f"行 {row.id}, 错误: {e}"
-                )
+        # 提交一个批量任务处理所有行
+        try:
+            batch_process_mapping_task.delay(
+                config_id=config.id,
+                row_ids=row_ids,
+                table_id=table.id
+            )
+        except Exception as e:
+            logger.error(
+                f"[Table Mapper] 提交批量任务失败: 配置 {config.id}, 错误: {e}"
+            )
 
 
 @receiver(rows_created)
 def on_rows_created(sender, rows, before, user, table, model, **kwargs):
     """
     监听行创建事件
-    当创建新行时，如果所有匹配字段都有值，触发映射处理
+    当创建新行时，触发映射处理（字段值检查在任务中进行）
     """
     from table_mapper.models import TableMappingConfig
-    from table_mapper.tasks import process_mapping_task
+    from table_mapper.tasks import batch_process_mapping_task
     
     logger.info(f"[Table Mapper] 收到 rows_created 信号, 表 {table.id}, {len(rows)} 行")
     
@@ -89,47 +90,24 @@ def on_rows_created(sender, rows, before, user, table, model, **kwargs):
         logger.debug(f"[Table Mapper] 表 {table.id} 没有映射配置")
         return
     
-    # 遍历每个配置
+    # 收集所有行的 ID（不在这里检查字段值，因为批量导入时字段值可能未加载）
+    row_ids = [row.id for row in rows]
+    
+    # 遍历每个配置，提交批量任务
     for config in configs:
-        # 检查哪些行的所有匹配字段都有值
-        rows_to_process = []
-        for row in rows:
-            all_fields_have_value = True
-            
-            for pair in config.match_field_pairs:
-                source_field_id = pair.get('source_field_id')
-                if source_field_id:
-                    match_field_name = f"field_{source_field_id}"
-                    match_value = getattr(row, match_field_name, None)
-                    
-                    if not match_value:
-                        all_fields_have_value = False
-                        break
-            
-            if all_fields_have_value:
-                rows_to_process.append(row)
-        
-        if not rows_to_process:
-            logger.debug(
-                f"[Table Mapper] 配置 {config.id} 没有行需要处理（匹配字段为空）"
-            )
-            continue
-        
         logger.info(
-            f"[Table Mapper] 配置 {config.id} ({config.name}) 提交 "
-            f"{len(rows_to_process)} 个映射任务"
+            f"[Table Mapper] 配置 {config.id} ({config.name}) 提交批量映射任务: "
+            f"{len(row_ids)} 行"
         )
         
-        # 为每一行提交异步任务
-        for row in rows_to_process:
-            try:
-                process_mapping_task.delay(
-                    config_id=config.id,
-                    row_id=row.id,
-                    table_id=table.id
-                )
-            except Exception as e:
-                logger.error(
-                    f"[Table Mapper] 提交任务失败: 配置 {config.id}, "
-                    f"行 {row.id}, 错误: {e}"
-                )
+        # 提交一个批量任务处理所有行（任务中会检查字段值）
+        try:
+            batch_process_mapping_task.delay(
+                config_id=config.id,
+                row_ids=row_ids,
+                table_id=table.id
+            )
+        except Exception as e:
+            logger.error(
+                f"[Table Mapper] 提交批量任务失败: 配置 {config.id}, 错误: {e}"
+            )
