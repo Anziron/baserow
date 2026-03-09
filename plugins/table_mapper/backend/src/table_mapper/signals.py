@@ -97,26 +97,42 @@ def on_rows_created(sender, rows, before, user, table, model, **kwargs):
         logger.debug(f"[Table Mapper] 表 {table.id} 没有映射配置")
         return
     
+    logger.info(f"[Table Mapper] 找到 {configs.count()} 个映射配置")
+    
     # 遍历每个配置
     for config in configs:
+        logger.info(
+            f"[Table Mapper] 处理配置 {config.id} ({config.name}), "
+            f"匹配字段对: {config.match_field_pairs}"
+        )
+        
         # 检查哪些行的所有匹配字段都有值
         rows_to_process = []
         for row in rows:
             all_fields_have_value = True
+            field_values_debug = {}
+            
             for pair in config.match_field_pairs:
                 source_field_id = pair.get('source_field_id')
                 if source_field_id:
                     match_field_name = f"field_{source_field_id}"
                     match_value = getattr(row, match_field_name, None)
+                    field_values_debug[source_field_id] = match_value
+                    
                     if not match_value:
                         all_fields_have_value = False
                         break
+            
+            logger.debug(
+                f"[Table Mapper] 行 {row.id} 匹配字段值: {field_values_debug}, "
+                f"是否处理: {all_fields_have_value}"
+            )
             
             if all_fields_have_value:
                 rows_to_process.append(row)
         
         if not rows_to_process:
-            logger.debug(
+            logger.info(
                 f"[Table Mapper] 配置 {config.id} 没有行需要处理（匹配字段为空）"
             )
             continue
@@ -134,8 +150,12 @@ def on_rows_created(sender, rows, before, user, table, model, **kwargs):
                     row_id=row.id,
                     table_id=table.id
                 )
+                logger.debug(
+                    f"[Table Mapper] 已提交任务: 配置 {config.id}, 行 {row.id}"
+                )
             except Exception as e:
                 logger.error(
                     f"[Table Mapper] 提交任务失败: 配置 {config.id}, "
-                    f"行 {row.id}, 错误: {e}"
+                    f"行 {row.id}, 错误: {e}",
+                    exc_info=True
                 )
