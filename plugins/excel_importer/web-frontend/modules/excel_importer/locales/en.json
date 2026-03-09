@@ -14,6 +14,7 @@
     "emptySheet": "The selected sheet is empty.",
     "parseError": "Failed to parse the Excel file. Please ensure it is a valid Excel file.",
     "exporterName": "Excel",
-    "includeHeader": "Include header row"
+    "includeHeader": "Include header row",
+    "excludeIdColumn": "Exclude ID column"
   }
 }

@@ -27,6 +27,7 @@ class ExcelQuerysetSerializer(QuerysetSerializer):
         file_writer: FileWriter,
         export_charset: str = None,
         excel_include_header: bool = True,
+        excel_exclude_id_column: bool = False,
     ):
         """
         Writes the queryset to the provided file in Excel format.
@@ -34,6 +35,7 @@ class ExcelQuerysetSerializer(QuerysetSerializer):
         :param file_writer: The FileWriter instance to write to.
         :param export_charset: Not used for Excel, but required by interface.
         :param excel_include_header: Whether or not to include a header row.
+        :param excel_exclude_id_column: Whether or not to exclude the ID column.
         """
 
         from openpyxl import Workbook
@@ -41,11 +43,18 @@ class ExcelQuerysetSerializer(QuerysetSerializer):
         workbook = Workbook(write_only=True)
         worksheet = workbook.create_sheet()
 
+        # Prepare headers based on exclude_id_column option
+        headers_to_write = self.headers.copy()
+        if excel_exclude_id_column and "id" in headers_to_write:
+            del headers_to_write["id"]
+
         if excel_include_header:
-            worksheet.append(list(self.headers.values()))
+            worksheet.append(list(headers_to_write.values()))
 
         def write_row(row, _):
             data = []
+            if not excel_exclude_id_column:
+                data.append(str(row.id))
             for field_serializer in self.field_serializers:
                 _, _, field_human_value = field_serializer(row)
                 data.append(str(field_human_value))

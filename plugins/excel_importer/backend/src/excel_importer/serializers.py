@@ -11,3 +11,7 @@ class ExcelExporterOptionsSerializer(BaseExporterOptionsSerializer):
         help_text="Whether or not to generate the field names as header row at the top "
         "of the Excel file.",
     )
+    excel_exclude_id_column = fields.BooleanField(
+        default=True,
+        help_text="Whether or not to exclude the ID column from the Excel export.",
+    )

@@ -14,6 +14,7 @@
     "emptySheet": "所选工作表为空。",
     "parseError": "无法解析 Excel 文件。请确保它是有效的 Excel 文件。",
     "exporterName": "Excel",
-    "includeHeader": "包含标题行"
+    "includeHeader": "包含标题行",
+    "excludeIdColumn": "排除 ID 列"
   }
 }

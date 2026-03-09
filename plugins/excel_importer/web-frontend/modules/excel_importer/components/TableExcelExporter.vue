@@ -12,6 +12,17 @@
           }}</Checkbox>
         </FormGroup>
       </div>
+      <div class="col col-6">
+        <FormGroup
+          small-label
+          :label="$t('excelImporter.excludeIdColumn')"
+          required
+        >
+          <Checkbox v-model="values.excel_exclude_id_column" :disabled="loading">{{
+            $t('common.yes')
+          }}</Checkbox>
+        </FormGroup>
+      </div>
     </div>
   </div>
 </template>
@@ -32,6 +43,7 @@ export default {
     return {
       values: {
         excel_include_header: true,
+        excel_exclude_id_column: true,
       },
     }
   },
