@@ -31,6 +31,8 @@ export default function (
     base + '/../plugins/row_author_tracker/web-frontend/modules/row-author-tracker/module.js',
     // Access Control 插件 - 细粒度访问控制
     base + '/../plugins/access_control/web-frontend/modules/access-control/module.js',
+    // Table Mapper 插件 - 表间字段自动映射
+    base + '/../plugins/table_mapper/web-frontend/modules/table_mapper/module.js',
   ]
   if (!process.env.BASEROW_OSS_ONLY) {
     baseModules.push(
