@@ -25,6 +25,8 @@ urlpatterns = (
         path("api/ai-assistant/", include("ai_assistant.api.urls", namespace="ai_assistant")),
         # Access Control Plugin - 细粒度访问控制
         path("api/access-control/", include("access_control.api.urls", namespace="access_control")),
+        # Table Mapper Plugin - 表间字段自动映射
+        path("api/table-mapper/", include("table_mapper.api.urls", namespace="table_mapper")),
     ]
     + plugin_registry.urls
     + static(settings.MEDIA_URL_PATH, document_root=settings.MEDIA_ROOT)

@@ -1,87 +1,90 @@
 <template>
-  <Modal
-    :title="$t('tableMapper.configureMapping')"
-    @hidden="$emit('hidden')"
-  >
-    <div class="table-mapper-config-modal">
-      <!-- 配置列表 -->
-      <div v-if="!editingConfig" class="config-list">
-        <div class="config-list__header">
-          <h3>{{ $t('tableMapper.title') }}</h3>
-          <Button
-            type="primary"
-            size="small"
-            @click="startCreate"
-          >
-            {{ $t('tableMapper.addConfig') }}
-          </Button>
-        </div>
+  <Modal>
+    <template #content>
+      <div class="table-mapper-config-modal">
+        <!-- 配置列表 -->
+        <div v-if="!editingConfig" class="config-list">
+          <div class="config-list__header">
+            <h2>{{ $t('tableMapper.title') }}</h2>
+            <Button type="primary" size="small" @click="startCreate">
+              {{ $t('tableMapper.addConfig') }}
+            </Button>
+          </div>
 
-        <div v-if="configs.length === 0" class="config-list__empty">
-          <p>{{ $t('tableMapper.noConfigs') }}</p>
-        </div>
+          <div v-if="configs.length === 0" class="config-list__empty">
+            <p>{{ $t('tableMapper.noConfigs') }}</p>
+          </div>
 
-        <div v-else class="config-list__items">
-          <div
-            v-for="config in configs"
-            :key="config.id"
-            class="config-item"
-          >
-            <div class="config-item__header">
-              <h4>{{ config.name }}</h4>
-              <Badge :color="config.enabled ? 'green' : 'gray'">
-                {{ config.enabled ? $t('tableMapper.enabled') : $t('tableMapper.disabled') }}
-              </Badge>
-            </div>
-            <div class="config-item__info">
-              <p>
-                <strong>{{ $t('tableMapper.sourceMatchField') }}:</strong>
-                {{ config.source_match_field_info.name }}
-              </p>
-              <p>
-                <strong>{{ $t('tableMapper.targetTable') }}:</strong>
-                {{ config.target_table_info.name }}
-              </p>
-              <p>
-                <strong>{{ $t('tableMapper.fieldMappings') }}:</strong>
-                {{ config.field_mappings.length }} {{ $t('tableMapper.mappingArrow') }}
-              </p>
-            </div>
-            <div class="config-item__actions">
-              <Button
-                size="small"
-                @click="startEdit(config)"
-              >
-                {{ $t('tableMapper.editConfig') }}
-              </Button>
-              <Button
-                size="small"
-                type="danger"
-                @click="confirmDelete(config)"
-              >
-                {{ $t('tableMapper.delete') }}
-              </Button>
+          <div v-else class="config-list__items">
+            <div
+              v-for="config in configs"
+              :key="config.id"
+              class="config-item"
+            >
+              <div class="config-item__header">
+                <h3>{{ config.name }}</h3>
+                <span
+                  class="badge"
+                  :class="config.enabled ? 'badge--success' : 'badge--neutral'"
+                >
+                  {{
+                    config.enabled
+                      ? $t('tableMapper.enabled')
+                      : $t('tableMapper.disabled')
+                  }}
+                </span>
+              </div>
+              <div class="config-item__info">
+                <p>
+                  <strong>{{ $t('tableMapper.sourceMatchField') }}:</strong>
+                  {{ config.source_match_field_info.name }}
+                </p>
+                <p>
+                  <strong>{{ $t('tableMapper.targetTable') }}:</strong>
+                  {{ config.target_table_info.name }}
+                </p>
+                <p>
+                  <strong>{{ $t('tableMapper.fieldMappings') }}:</strong>
+                  {{ config.field_mappings.length }}
+                  {{ $t('tableMapper.mappingArrow') }}
+                </p>
+              </div>
+              <div class="config-item__actions">
+                <Button size="small" @click="startEdit(config)">
+                  {{ $t('tableMapper.editConfig') }}
+                </Button>
+                <Button size="small" type="danger" @click="confirmDelete(config)">
+                  {{ $t('tableMapper.delete') }}
+                </Button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- 配置表单 -->
-      <TableMapperConfigForm
-        v-else
-        :config="editingConfig"
-        :table="table"
-        :database="database"
-        @save="handleSave"
-        @cancel="cancelEdit"
-      />
-    </div>
+        <!-- 配置表单 -->
+        <TableMapperConfigForm
+          v-else
+          :config="editingConfig"
+          :table="table"
+          :database="database"
+          @save="handleSave"
+          @cancel="cancelEdit"
+        />
+      </div>
+    </template>
   </Modal>
 </template>
 
 <script>
+import modal from '@baserow/modules/core/mixins/modal'
+import TableMapperConfigForm from '@table_mapper/components/TableMapperConfigForm'
+
 export default {
   name: 'TableMapperConfigModal',
+  components: {
+    TableMapperConfigForm,
+  },
+  mixins: [modal],
   props: {
     table: {
       type: Object,
@@ -109,8 +112,10 @@ export default {
         const { data } = await this.$client.tableMapper.fetchConfigs(this.table.id)
         this.configs = data
       } catch (error) {
-        this.$notifier.error(this.$t('tableMapper.error'))
-        console.error('Failed to load configs:', error)
+        this.$store.dispatch('toast/error', {
+          title: this.$t('tableMapper.error'),
+          message: error.message,
+        })
       } finally {
         this.loading = false
       }
@@ -141,38 +146,47 @@ export default {
     async handleSave(config) {
       try {
         if (config.id) {
-          // 更新
           await this.$client.tableMapper.updateConfig(config.id, config)
-          this.$notifier.success(this.$t('tableMapper.updateSuccess'))
+          this.$store.dispatch('toast/success', {
+            title: this.$t('tableMapper.updateSuccess'),
+          })
         } else {
-          // 创建
           await this.$client.tableMapper.createConfig(this.table.id, config)
-          this.$notifier.success(this.$t('tableMapper.createSuccess'))
+          this.$store.dispatch('toast/success', {
+            title: this.$t('tableMapper.createSuccess'),
+          })
         }
         await this.loadConfigs()
         this.editingConfig = null
       } catch (error) {
-        this.$notifier.error(this.$t('tableMapper.error'))
-        console.error('Failed to save config:', error)
+        this.$store.dispatch('toast/error', {
+          title: this.$t('tableMapper.error'),
+          message: error.message,
+        })
       }
     },
     async confirmDelete(config) {
-      const confirmed = await this.$confirm(
-        this.$t('tableMapper.confirmDelete'),
-        this.$t('tableMapper.deleteConfig')
-      )
-      if (confirmed) {
+      const result = await this.$store.dispatch('modal/open', {
+        type: 'confirm',
+        title: this.$t('tableMapper.deleteConfig'),
+        content: this.$t('tableMapper.confirmDelete'),
+      })
+      if (result) {
         await this.deleteConfig(config)
       }
     },
     async deleteConfig(config) {
       try {
         await this.$client.tableMapper.deleteConfig(config.id)
-        this.$notifier.success(this.$t('tableMapper.deleteSuccess'))
+        this.$store.dispatch('toast/success', {
+          title: this.$t('tableMapper.deleteSuccess'),
+        })
         await this.loadConfigs()
       } catch (error) {
-        this.$notifier.error(this.$t('tableMapper.error'))
-        console.error('Failed to delete config:', error)
+        this.$store.dispatch('toast/error', {
+          title: this.$t('tableMapper.error'),
+          message: error.message,
+        })
       }
     },
   },
@@ -182,6 +196,7 @@ export default {
 <style lang="scss" scoped>
 .table-mapper-config-modal {
   min-height: 400px;
+  padding: 20px;
 }
 
 .config-list {
@@ -191,7 +206,7 @@ export default {
     align-items: center;
     margin-bottom: 20px;
 
-    h3 {
+    h2 {
       margin: 0;
     }
   }
@@ -221,7 +236,7 @@ export default {
     align-items: center;
     margin-bottom: 12px;
 
-    h4 {
+    h3 {
       margin: 0;
     }
   }
@@ -239,6 +254,23 @@ export default {
   &__actions {
     display: flex;
     gap: 8px;
+  }
+}
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+
+  &--success {
+    background: #d4edda;
+    color: #155724;
+  }
+
+  &--neutral {
+    background: #e2e3e5;
+    color: #383d41;
   }
 }
 </style>
