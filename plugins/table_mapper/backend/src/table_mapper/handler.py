@@ -213,14 +213,20 @@ class TableMappingHandler:
             
             User = get_user_model()
             
-            # 尝试获取系统用户或创建一个临时用户对象
+            # 获取工作区
+            workspace = config.source_table.database.workspace
+            
+            # 尝试获取工作区内的用户
+            user = None
             try:
-                # 获取第一个超级用户作为系统用户
-                user = User.objects.filter(is_staff=True).first()
-                if user:
+                # 获取工作区内的第一个用户
+                workspace_user = workspace.workspaceuser_set.first()
+                if workspace_user:
+                    user = workspace_user.user
                     # 清除 web_socket_id 避免触发不必要的通知
                     user.web_socket_id = None
-            except Exception:
+            except Exception as e:
+                logger.warning(f"[Table Mapper] 无法获取工作区用户: {e}")
                 user = None
             
             # 将字段名转换为字段 ID 格式的值字典
