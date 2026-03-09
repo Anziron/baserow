@@ -1,16 +1,13 @@
 <template>
-  <li>
-    <a @click="openConfig">
-      <i class="iconoir-link"></i>
-      {{ $t('tableMapper.configureMapping') }}
-    </a>
+  <a class="context__menu-item-link" @click="openConfig">
+    <i class="context__menu-item-icon iconoir-link"></i>
+    {{ $t('tableMapper.configureMapping') }}
     <TableMapperConfigModal
-      v-if="modalOpen"
+      ref="modal"
       :table="table"
       :database="database"
-      @hidden="modalOpen = false"
     />
-  </li>
+  </a>
 </template>
 
 <script>
@@ -32,18 +29,12 @@ export default {
     },
     database: {
       type: Object,
-      required: false,
-      default: null,
+      required: true,
     },
-  },
-  data() {
-    return {
-      modalOpen: false,
-    }
   },
   methods: {
     openConfig() {
-      this.modalOpen = true
+      this.$refs.modal.show()
     },
   },
 }

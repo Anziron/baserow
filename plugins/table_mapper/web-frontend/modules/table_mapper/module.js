@@ -4,14 +4,14 @@
 
 import path from 'path'
 import en from './locales/en.json'
-import zhHans from './locales/zh_Hans.json'
+import zhCN from './locales/zh_CN.json'
 
 export default function TableMapperModule() {
   // 注册国际化文件
   let alreadyExtended = false
   this.nuxt.hook('i18n:extend-messages', function (additionalMessages) {
     if (alreadyExtended) return
-    additionalMessages.push({ en, zh_Hans: zhHans })
+    additionalMessages.push({ en, zh_CN: zhCN })
     alreadyExtended = true
   })
 

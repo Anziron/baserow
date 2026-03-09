@@ -1,87 +1,94 @@
 <template>
   <Modal>
-    <template #content>
-      <div class="table-mapper-config-modal">
-        <!-- 配置列表 -->
-        <div v-if="!editingConfig" class="config-list">
-          <div class="config-list__header">
-            <h2>{{ $t('tableMapper.title') }}</h2>
-            <Button type="primary" size="small" @click="startCreate">
-              {{ $t('tableMapper.addConfig') }}
-            </Button>
-          </div>
+    <div class="table-mapper-config-modal">
+      <!-- 配置列表 -->
+      <div v-if="!editingConfig" class="config-list">
+        <div class="config-list__header">
+          <h2>{{ $t('tableMapper.title') }}</h2>
+          <Button type="primary" size="small" @click="startCreate">
+            {{ $t('tableMapper.addConfig') }}
+          </Button>
+        </div>
 
-          <div v-if="configs.length === 0" class="config-list__empty">
-            <p>{{ $t('tableMapper.noConfigs') }}</p>
-          </div>
+        <div v-if="loading" class="config-list__loading">
+          <div class="loading"></div>
+        </div>
 
-          <div v-else class="config-list__items">
-            <div
-              v-for="config in configs"
-              :key="config.id"
-              class="config-item"
-            >
-              <div class="config-item__header">
-                <h3>{{ config.name }}</h3>
-                <span
-                  class="badge"
-                  :class="config.enabled ? 'badge--success' : 'badge--neutral'"
-                >
-                  {{
-                    config.enabled
-                      ? $t('tableMapper.enabled')
-                      : $t('tableMapper.disabled')
-                  }}
-                </span>
-              </div>
-              <div class="config-item__info">
-                <p>
-                  <strong>{{ $t('tableMapper.sourceMatchField') }}:</strong>
-                  {{ config.source_match_field_info.name }}
-                </p>
-                <p>
-                  <strong>{{ $t('tableMapper.targetTable') }}:</strong>
-                  {{ config.target_table_info.name }}
-                </p>
-                <p>
-                  <strong>{{ $t('tableMapper.fieldMappings') }}:</strong>
-                  {{ config.field_mappings.length }}
-                  {{ $t('tableMapper.mappingArrow') }}
-                </p>
-              </div>
-              <div class="config-item__actions">
-                <Button size="small" @click="startEdit(config)">
-                  {{ $t('tableMapper.editConfig') }}
-                </Button>
-                <Button size="small" type="danger" @click="confirmDelete(config)">
-                  {{ $t('tableMapper.delete') }}
-                </Button>
-              </div>
+        <div v-else-if="configs.length === 0" class="config-list__empty">
+          <p>{{ $t('tableMapper.noConfigs') }}</p>
+        </div>
+
+        <div v-else class="config-list__items">
+          <div
+            v-for="config in configs"
+            :key="config.id"
+            class="config-item"
+          >
+            <div class="config-item__header">
+              <h3>{{ config.name }}</h3>
+              <span
+                class="badge"
+                :class="config.enabled ? 'badge--success' : 'badge--neutral'"
+              >
+                {{
+                  config.enabled
+                    ? $t('tableMapper.enabled')
+                    : $t('tableMapper.disabled')
+                }}
+              </span>
+            </div>
+            <div class="config-item__info">
+              <p>
+                <strong>{{ $t('tableMapper.sourceMatchField') }}:</strong>
+                {{ config.source_match_field_info.name }}
+              </p>
+              <p>
+                <strong>{{ $t('tableMapper.targetTable') }}:</strong>
+                {{ config.target_table_info.name }}
+              </p>
+              <p>
+                <strong>{{ $t('tableMapper.fieldMappings') }}:</strong>
+                {{ config.field_mappings.length }}
+                {{ $t('tableMapper.mappingArrow') }}
+              </p>
+            </div>
+            <div class="config-item__actions">
+              <Button size="small" @click="startEdit(config)">
+                {{ $t('tableMapper.editConfig') }}
+              </Button>
+              <Button size="small" type="danger" @click="confirmDelete(config)">
+                {{ $t('tableMapper.delete') }}
+              </Button>
             </div>
           </div>
         </div>
-
-        <!-- 配置表单 -->
-        <TableMapperConfigForm
-          v-else
-          :config="editingConfig"
-          :table="table"
-          :database="database"
-          @save="handleSave"
-          @cancel="cancelEdit"
-        />
       </div>
-    </template>
+
+      <!-- 配置表单 -->
+      <TableMapperConfigForm
+        v-else
+        :config="editingConfig"
+        :table="table"
+        :database="database"
+        @save="handleSave"
+        @cancel="cancelEdit"
+      />
+    </div>
   </Modal>
 </template>
 
 <script>
 import modal from '@baserow/modules/core/mixins/modal'
+import Modal from '@baserow/modules/core/components/Modal'
+import Button from '@baserow/modules/core/components/Button'
 import TableMapperConfigForm from '@table_mapper/components/TableMapperConfigForm'
+import tableMapperService from '@table_mapper/services/tableMapper'
 
 export default {
   name: 'TableMapperConfigModal',
   components: {
+    Modal,
+    Button,
     TableMapperConfigForm,
   },
   mixins: [modal],
@@ -102,14 +109,16 @@ export default {
       loading: false,
     }
   },
-  async mounted() {
-    await this.loadConfigs()
-  },
   methods: {
+    show(...args) {
+      this.getRootModal().show(...args)
+      this.loadConfigs()
+    },
     async loadConfigs() {
       try {
         this.loading = true
-        const { data } = await this.$client.tableMapper.fetchConfigs(this.table.id)
+        const service = tableMapperService(this.$client)
+        const { data } = await service.fetchConfigs(this.table.id)
         this.configs = data
       } catch (error) {
         this.$store.dispatch('toast/error', {
@@ -145,13 +154,14 @@ export default {
     },
     async handleSave(config) {
       try {
+        const service = tableMapperService(this.$client)
         if (config.id) {
-          await this.$client.tableMapper.updateConfig(config.id, config)
+          await service.updateConfig(config.id, config)
           this.$store.dispatch('toast/success', {
             title: this.$t('tableMapper.updateSuccess'),
           })
         } else {
-          await this.$client.tableMapper.createConfig(this.table.id, config)
+          await service.createConfig(this.table.id, config)
           this.$store.dispatch('toast/success', {
             title: this.$t('tableMapper.createSuccess'),
           })
@@ -177,7 +187,8 @@ export default {
     },
     async deleteConfig(config) {
       try {
-        await this.$client.tableMapper.deleteConfig(config.id)
+        const service = tableMapperService(this.$client)
+        await service.deleteConfig(config.id)
         this.$store.dispatch('toast/success', {
           title: this.$t('tableMapper.deleteSuccess'),
         })
