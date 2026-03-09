@@ -2,8 +2,8 @@
  * Table Mapper 插件
  */
 
-import { TableMapperPlugin } from './plugins'
-import tableMapperService from './services/tableMapper'
+import { TableMapperPlugin } from '@table_mapper/plugins'
+import tableMapperService from '@table_mapper/services/tableMapper'
 
 export default (context) => {
   const { app } = context
