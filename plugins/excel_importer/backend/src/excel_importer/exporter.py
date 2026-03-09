@@ -53,9 +53,13 @@ class ExcelQuerysetSerializer(QuerysetSerializer):
 
         def write_row(row, _):
             data = []
-            if not excel_exclude_id_column:
-                data.append(str(row.id))
-            for field_serializer in self.field_serializers:
+            # field_serializers[0] is always the ID serializer in the base class
+            # Skip it if excel_exclude_id_column is True
+            serializers_to_use = (
+                self.field_serializers[1:] if excel_exclude_id_column 
+                else self.field_serializers
+            )
+            for field_serializer in serializers_to_use:
                 _, _, field_human_value = field_serializer(row)
                 data.append(str(field_human_value))
             worksheet.append(data)
