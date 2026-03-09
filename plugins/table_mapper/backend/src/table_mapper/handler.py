@@ -208,12 +208,32 @@ class TableMappingHandler:
             return False
         
         try:
-            # 直接更新模型实例，绕过权限检查
+            from baserow.contrib.database.rows.signals import rows_updated
+            
+            # 直接更新模型实例
             for field_name, value in updates.items():
                 setattr(source_row, field_name, value)
             
             # 保存到数据库
             source_row.save()
+            
+            # 获取更新的字段 ID 列表
+            updated_field_ids = []
+            for field_name in updates.keys():
+                if field_name.startswith("field_"):
+                    field_id = int(field_name.replace("field_", ""))
+                    updated_field_ids.append(field_id)
+            
+            # 发送信号，触发 WebSocket 广播
+            rows_updated.send(
+                sender=config.source_table.get_model(),
+                rows=[source_row],
+                user=None,
+                table=config.source_table,
+                model=config.source_table.get_model(),
+                updated_field_ids=updated_field_ids,
+                before_return=None
+            )
             
             logger.info(
                 f"[Table Mapper] 成功更新行 {source_row.id}，更新了 {len(updates)} 个字段"
