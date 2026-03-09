@@ -153,13 +153,20 @@ export default {
     async handleSave(config) {
       try {
         const service = tableMapperService(this.$client)
+        
+        // 确保 source_table 字段存在
+        const configData = {
+          ...config,
+          source_table: this.table.id
+        }
+        
         if (config.id) {
-          await service.updateConfig(config.id, config)
+          await service.updateConfig(config.id, configData)
           this.$store.dispatch('toast/success', {
             title: this.$t('tableMapper.updateSuccess'),
           })
         } else {
-          await service.createConfig(this.table.id, config)
+          await service.createConfig(this.table.id, configData)
           this.$store.dispatch('toast/success', {
             title: this.$t('tableMapper.createSuccess'),
           })
