@@ -136,6 +136,7 @@ class TableMappingConfig(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     
     class Meta:
+        app_label = 'table_mapper'
         ordering = ['-created_at']
         verbose_name = 'Table Mapping Config'
         verbose_name_plural = 'Table Mapping Configs'
