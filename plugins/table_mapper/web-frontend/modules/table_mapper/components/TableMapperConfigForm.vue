@@ -16,64 +16,10 @@
       </Checkbox>
     </FormGroup>
 
-    <!-- 匹配字段配置 -->
-    <div class="form-section">
-      <h4>{{ $t('tableMapper.matchFieldPairs') }}</h4>
-      <p class="form-section__hint">{{ $t('tableMapper.matchFieldPairsHint') }}</p>
-
-      <div
-        v-for="(pair, index) in localConfig.match_field_pairs"
-        :key="index"
-        class="field-pair-row"
-      >
-        <Dropdown
-          v-model="pair.source_field_id"
-          :placeholder="$t('tableMapper.sourceField')"
-          class="field-pair-row__field"
-        >
-          <DropdownItem
-            v-for="field in sourceFields"
-            :key="field.value"
-            :name="field.label"
-            :value="field.value"
-          />
-        </Dropdown>
-        <span class="field-pair-row__equals">=</span>
-        <Dropdown
-          v-model="pair.target_field_id"
-          :placeholder="$t('tableMapper.targetField')"
-          class="field-pair-row__field"
-        >
-          <DropdownItem
-            v-for="field in targetFields"
-            :key="field.value"
-            :name="field.label"
-            :value="field.value"
-          />
-        </Dropdown>
-        <Button
-          type="danger"
-          size="small"
-          icon="iconoir-bin"
-          @click="removeMatchPair(index)"
-        >
-          {{ $t('tableMapper.remove') }}
-        </Button>
-      </div>
-
-      <Button
-        type="secondary"
-        size="small"
-        icon="iconoir-plus"
-        @click="addMatchPair"
-      >
-        {{ $t('tableMapper.addMatchPair') }}
-      </Button>
-    </div>
-
     <!-- 目标表选择 -->
     <div class="form-section">
       <h4>{{ $t('tableMapper.targetTableSelection') }}</h4>
+      <p class="form-section__hint">{{ $t('tableMapper.targetTableHint') }}</p>
 
       <FormGroup :label="$t('tableMapper.targetTable')" required>
         <Dropdown
@@ -91,58 +37,130 @@
       </FormGroup>
     </div>
 
-    <!-- 字段映射 -->
-    <div class="form-section">
-      <h4>{{ $t('tableMapper.fieldMappings') }}</h4>
+    <!-- 匹配字段配置 -->
+    <div v-if="localConfig.target_table" class="form-section">
+      <h4>{{ $t('tableMapper.matchFieldPairs') }}</h4>
+      <p class="form-section__hint">{{ $t('tableMapper.matchFieldPairsHint') }}</p>
 
-      <div
-        v-for="(mapping, index) in localConfig.field_mappings"
-        :key="index"
-        class="field-mapping-row"
-      >
-        <Dropdown
-          v-model="mapping.target_field_id"
-          :placeholder="$t('tableMapper.targetField')"
-          class="field-mapping-row__field"
-        >
-          <DropdownItem
-            v-for="field in targetFields"
-            :key="field.value"
-            :name="field.label"
-            :value="field.value"
-          />
-        </Dropdown>
-        <span class="field-mapping-row__arrow">
-          {{ $t('tableMapper.mappingArrow') }}
-        </span>
-        <Dropdown
-          v-model="mapping.source_field_id"
-          :placeholder="$t('tableMapper.sourceField')"
-          class="field-mapping-row__field"
-        >
-          <DropdownItem
-            v-for="field in sourceFields"
-            :key="field.value"
-            :name="field.label"
-            :value="field.value"
-          />
-        </Dropdown>
-        <Button
-          type="danger"
-          size="small"
-          @click="removeMapping(index)"
-        >
-          {{ $t('tableMapper.removeMapping') }}
-        </Button>
+      <div v-if="loadingTargetFields" class="loading-message">
+        {{ $t('tableMapper.loadingFields') }}
       </div>
 
-      <Button
-        type="secondary"
-        size="small"
-        @click="addMapping"
-      >
-        {{ $t('tableMapper.addMapping') }}
-      </Button>
+      <div v-else>
+        <div
+          v-for="(pair, index) in localConfig.match_field_pairs"
+          :key="index"
+          class="field-pair-row"
+        >
+          <Dropdown
+            v-model="pair.source_field_id"
+            :placeholder="$t('tableMapper.sourceField')"
+            class="field-pair-row__field"
+          >
+            <DropdownItem
+              v-for="field in sourceFields"
+              :key="field.value"
+              :name="field.label"
+              :value="field.value"
+            />
+          </Dropdown>
+          <span class="field-pair-row__equals">=</span>
+          <Dropdown
+            v-model="pair.target_field_id"
+            :placeholder="$t('tableMapper.targetField')"
+            class="field-pair-row__field"
+            :disabled="targetFields.length === 0"
+          >
+            <DropdownItem
+              v-for="field in targetFields"
+              :key="field.value"
+              :name="field.label"
+              :value="field.value"
+            />
+          </Dropdown>
+          <Button
+            type="danger"
+            size="small"
+            icon="iconoir-bin"
+            @click="removeMatchPair(index)"
+          >
+            {{ $t('tableMapper.remove') }}
+          </Button>
+        </div>
+
+        <Button
+          type="secondary"
+          size="small"
+          icon="iconoir-plus"
+          @click="addMatchPair"
+          :disabled="!localConfig.target_table || targetFields.length === 0"
+        >
+          {{ $t('tableMapper.addMatchPair') }}
+        </Button>
+      </div>
+    </div>
+
+    <!-- 字段映射 -->
+    <div v-if="localConfig.target_table && localConfig.match_field_pairs.length > 0" class="form-section">
+      <h4>{{ $t('tableMapper.fieldMappings') }}</h4>
+      <p class="form-section__hint">{{ $t('tableMapper.fieldMappingsHint') }}</p>
+
+      <div v-if="loadingTargetFields" class="loading-message">
+        {{ $t('tableMapper.loadingFields') }}
+      </div>
+
+      <div v-else>
+        <div
+          v-for="(mapping, index) in localConfig.field_mappings"
+          :key="index"
+          class="field-mapping-row"
+        >
+          <Dropdown
+            v-model="mapping.target_field_id"
+            :placeholder="$t('tableMapper.targetField')"
+            class="field-mapping-row__field"
+            :disabled="targetFields.length === 0"
+          >
+            <DropdownItem
+              v-for="field in targetFields"
+              :key="field.value"
+              :name="field.label"
+              :value="field.value"
+            />
+          </Dropdown>
+          <span class="field-mapping-row__arrow">
+            {{ $t('tableMapper.mappingArrow') }}
+          </span>
+          <Dropdown
+            v-model="mapping.source_field_id"
+            :placeholder="$t('tableMapper.sourceField')"
+            class="field-mapping-row__field"
+          >
+            <DropdownItem
+              v-for="field in sourceFields"
+              :key="field.value"
+              :name="field.label"
+              :value="field.value"
+            />
+          </Dropdown>
+          <Button
+            type="danger"
+            size="small"
+            @click="removeMapping(index)"
+          >
+            {{ $t('tableMapper.removeMapping') }}
+          </Button>
+        </div>
+
+        <Button
+          type="secondary"
+          size="small"
+          @click="addMapping"
+          :disabled="!localConfig.target_table || localConfig.match_field_pairs.length === 0 || targetFields.length === 0"
+        >
+          {{ $t('tableMapper.addMapping') }}
+        </Button>
+      </div>
     </div>
 
     <!-- 匹配模式 -->
@@ -275,10 +293,11 @@ export default {
   },
   data() {
     return {
-      localConfig: { ...this.config },
+      localConfig: this.initializeConfig(),
       tables: [],
       sourceFields: [],
       targetFields: [],
+      loadingTargetFields: false,
     }
   },
   computed: {
@@ -300,6 +319,26 @@ export default {
     await this.loadData()
   },
   methods: {
+    initializeConfig() {
+      // 深拷贝配置对象，确保数组不共享引用
+      return {
+        name: this.config.name || '',
+        enabled: this.config.enabled !== undefined ? this.config.enabled : true,
+        target_table: this.config.target_table || null,
+        match_field_pairs: this.config.match_field_pairs 
+          ? JSON.parse(JSON.stringify(this.config.match_field_pairs))
+          : [],
+        field_mappings: this.config.field_mappings
+          ? JSON.parse(JSON.stringify(this.config.field_mappings))
+          : [],
+        match_mode: this.config.match_mode || 'exact',
+        multi_match_behavior: this.config.multi_match_behavior || 'first',
+        no_match_behavior: this.config.no_match_behavior || 'keep',
+        default_values: this.config.default_values || {},
+        execution_condition: this.config.execution_condition || 'target_empty',
+        allow_overwrite: this.config.allow_overwrite || false,
+      }
+    },
     async loadData() {
       console.log('[TableMapper] Loading data...')
       console.log('[TableMapper] Table:', this.table)
@@ -353,36 +392,82 @@ export default {
     async loadTargetFields() {
       console.log('[TableMapper] Loading target fields for table:', this.localConfig.target_table)
       
-      // 方法1: 从 database.tables 中查找目标表
-      if (this.database.tables && Array.isArray(this.database.tables)) {
-        const targetTable = this.database.tables.find(
-          (t) => t.id === this.localConfig.target_table
-        )
-        if (targetTable && targetTable.fields) {
-          this.targetFields = targetTable.fields.map((f) => ({
-            value: f.id,
-            label: f.name,
-          }))
-          console.log('[TableMapper] Target fields from database.tables:', this.targetFields)
-          return
-        }
+      if (!this.localConfig.target_table) {
+        this.targetFields = []
+        return
       }
       
-      // 方法2: 从 store 获取
-      const allFields = this.$store.getters['field/getAll'] || []
-      this.targetFields = allFields
-        .filter((f) => f.table_id === this.localConfig.target_table)
-        .map((f) => ({
+      this.loadingTargetFields = true
+      
+      try {
+        // 方法1: 从 database.tables 中查找目标表
+        if (this.database.tables && Array.isArray(this.database.tables)) {
+          const targetTable = this.database.tables.find(
+            (t) => t.id === this.localConfig.target_table
+          )
+          if (targetTable && targetTable.fields && targetTable.fields.length > 0) {
+            this.targetFields = targetTable.fields.map((f) => ({
+              value: f.id,
+              label: f.name,
+            }))
+            console.log('[TableMapper] Target fields from database.tables:', this.targetFields)
+            return
+          }
+        }
+        
+        // 方法2: 从 store 获取
+        let allFields = this.$store.getters['field/getAll'] || []
+        let targetFields = allFields.filter((f) => f.table_id === this.localConfig.target_table)
+        
+        // 如果 store 中没有目标表的字段，尝试从服务器加载
+        if (targetFields.length === 0) {
+          console.log('[TableMapper] Fields not in store, fetching from server...')
+          
+          // 查找目标表对象
+          let targetTable = null
+          if (this.database.tables && Array.isArray(this.database.tables)) {
+            targetTable = this.database.tables.find(
+              (t) => t.id === this.localConfig.target_table
+            )
+          } else {
+            const allTables = this.$store.getters['table/getAll'] || []
+            targetTable = allTables.find((t) => t.id === this.localConfig.target_table)
+          }
+          
+          if (targetTable) {
+            // 使用 store action 获取字段
+            await this.$store.dispatch('field/fetchAll', targetTable)
+            
+            // 重新从 store 获取
+            allFields = this.$store.getters['field/getAll'] || []
+            targetFields = allFields.filter((f) => f.table_id === this.localConfig.target_table)
+          }
+        }
+        
+        this.targetFields = targetFields.map((f) => ({
           value: f.id,
           label: f.name,
         }))
-      console.log('[TableMapper] Target fields from store:', this.targetFields)
+        console.log('[TableMapper] Target fields loaded:', this.targetFields)
+      } catch (error) {
+        console.error('[TableMapper] Failed to load target fields:', error)
+        this.targetFields = []
+      } finally {
+        this.loadingTargetFields = false
+      }
     },
     async onTargetTableChange() {
+      console.log('[TableMapper] Target table changed to:', this.localConfig.target_table)
+      
       // 清空目标字段相关配置
       this.localConfig.match_field_pairs = []
       this.localConfig.field_mappings = []
-      await this.loadTargetFields()
+      this.targetFields = []
+      
+      // 加载目标表字段
+      if (this.localConfig.target_table) {
+        await this.loadTargetFields()
+      }
     },
     addMatchPair() {
       this.localConfig.match_field_pairs.push({
@@ -442,6 +527,13 @@ export default {
     font-size: 13px;
     color: #666;
   }
+}
+
+.loading-message {
+  padding: 16px;
+  text-align: center;
+  color: #666;
+  font-style: italic;
 }
 
 .field-pair-row {

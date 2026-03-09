@@ -39,17 +39,16 @@
             </div>
             <div class="config-item__info">
               <p>
-                <strong>{{ $t('tableMapper.sourceMatchField') }}:</strong>
-                {{ config.source_match_field_info.name }}
+                <strong>{{ $t('tableMapper.matchFieldPairs') }}:</strong>
+                {{ config.match_field_pairs ? config.match_field_pairs.length : 0 }} 个匹配字段对
               </p>
               <p>
                 <strong>{{ $t('tableMapper.targetTable') }}:</strong>
-                {{ config.target_table_info.name }}
+                {{ config.target_table_info ? config.target_table_info.name : '-' }}
               </p>
               <p>
                 <strong>{{ $t('tableMapper.fieldMappings') }}:</strong>
-                {{ config.field_mappings.length }}
-                {{ $t('tableMapper.mappingArrow') }}
+                {{ config.field_mappings ? config.field_mappings.length : 0 }} 个字段映射
               </p>
             </div>
             <div class="config-item__actions">

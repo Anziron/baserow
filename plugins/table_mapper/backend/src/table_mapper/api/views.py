@@ -43,9 +43,7 @@ class TableMappingConfigListView(APIView):
                 source_table=table
             ).select_related(
                 'source_table',
-                'target_table',
-                'source_match_field',
-                'target_match_field'
+                'target_table'
             )
             
             serializer = TableMappingConfigSerializer(configs, many=True)
