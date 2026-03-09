@@ -208,35 +208,38 @@ class TableMappingHandler:
             return False
         
         try:
-            from baserow.contrib.database.rows.signals import rows_updated
+            from baserow.contrib.database.rows.handler import RowHandler
+            from django.contrib.auth import get_user_model
             
-            # 直接更新模型实例
+            User = get_user_model()
+            
+            # 尝试获取系统用户或创建一个临时用户对象
+            try:
+                # 获取第一个超级用户作为系统用户
+                user = User.objects.filter(is_staff=True).first()
+                if user:
+                    # 清除 web_socket_id 避免触发不必要的通知
+                    user.web_socket_id = None
+            except Exception:
+                user = None
+            
+            # 将字段名转换为字段 ID 格式的值字典
+            values = {}
             for field_name, value in updates.items():
-                setattr(source_row, field_name, value)
-            
-            # 保存到数据库
-            source_row.save()
-            
-            # 获取更新的字段 ID 列表
-            updated_field_ids = []
-            for field_name in updates.keys():
+                # field_name 格式为 "field_123"，提取字段 ID
                 if field_name.startswith("field_"):
                     field_id = int(field_name.replace("field_", ""))
-                    updated_field_ids.append(field_id)
+                    values[f"field_{field_id}"] = value
             
-            # 发送信号，触发 WebSocket 广播
-            try:
-                rows_updated.send(
-                    sender=config.source_table.get_model(),
-                    rows=[source_row],
-                    user=None,
-                    table=config.source_table,
-                    model=config.source_table.get_model(),
-                    updated_field_ids=updated_field_ids,
-                    before_return=[]  # 空列表而不是 None
-                )
-            except Exception as signal_error:
-                logger.warning(f"[Table Mapper] 发送信号失败: {signal_error}，但数据已保存")
+            # 使用 RowHandler 更新行（会自动触发 WebSocket 广播）
+            RowHandler().update_row_by_id(
+                user=user,
+                table=config.source_table,
+                row_id=source_row.id,
+                values=values,
+                model=config.source_table.get_model(),
+                values_already_prepared=True  # 值已经准备好，不需要再处理
+            )
             
             logger.info(
                 f"[Table Mapper] 成功更新行 {source_row.id}，更新了 {len(updates)} 个字段"
