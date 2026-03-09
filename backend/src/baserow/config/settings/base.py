@@ -100,6 +100,8 @@ INSTALLED_APPS = [
     "row_author_tracker.config.RowAuthorTrackerConfig",
     # Access Control Plugin - 细粒度访问控制插件 (替代 table_permissions)
     "access_control.apps.AccessControlConfig",
+    # Table Mapper Plugin - 表间字段自动映射插件
+    "table_mapper.apps.TableMapperConfig",
     *BASEROW_BUILT_IN_PLUGINS,
 ]
 
