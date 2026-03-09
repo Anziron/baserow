@@ -344,7 +344,7 @@ export default {
       console.log('[TableMapper] Table:', this.table)
       console.log('[TableMapper] Database:', this.database)
 
-      // 方法1: 尝试从 database.tables 获取
+      // 加载表列表
       if (this.database.tables && Array.isArray(this.database.tables)) {
         this.tables = this.database.tables
           .filter((t) => t.id !== this.table.id)
@@ -354,7 +354,6 @@ export default {
           }))
         console.log('[TableMapper] Tables from database.tables:', this.tables)
       } else {
-        // 方法2: 从 store 获取
         const allTables = this.$store.getters['table/getAll'] || []
         this.tables = allTables
           .filter((t) => t.database_id === this.database.id && t.id !== this.table.id)
@@ -365,28 +364,51 @@ export default {
         console.log('[TableMapper] Tables from store:', this.tables)
       }
 
-      // 方法1: 尝试从 table.fields 获取
-      if (this.table.fields && Array.isArray(this.table.fields)) {
-        this.sourceFields = this.table.fields.map((f) => ({
-          value: f.id,
-          label: f.name,
-        }))
-        console.log('[TableMapper] Source fields from table.fields:', this.sourceFields)
-      } else {
-        // 方法2: 从 store 获取
-        const allFields = this.$store.getters['field/getAll'] || []
-        this.sourceFields = allFields
-          .filter((f) => f.table_id === this.table.id)
-          .map((f) => ({
-            value: f.id,
-            label: f.name,
-          }))
-        console.log('[TableMapper] Source fields from store:', this.sourceFields)
-      }
+      // 加载源表字段
+      await this.loadSourceFields()
 
       // 如果已选择目标表，加载目标表字段
       if (this.localConfig.target_table) {
         await this.loadTargetFields()
+      }
+    },
+    
+    async loadSourceFields() {
+      console.log('[TableMapper] Loading source fields for table:', this.table.id)
+      
+      try {
+        // 方法1: 尝试从 table.fields 获取
+        if (this.table.fields && Array.isArray(this.table.fields) && this.table.fields.length > 0) {
+          this.sourceFields = this.table.fields.map((f) => ({
+            value: f.id,
+            label: f.name,
+          }))
+          console.log('[TableMapper] Source fields from table.fields:', this.sourceFields)
+          return
+        }
+        
+        // 方法2: 从 store 获取
+        let allFields = this.$store.getters['field/getAll'] || []
+        let sourceFields = allFields.filter((f) => f.table_id === this.table.id)
+        
+        // 如果 store 中没有源表的字段，尝试从服务器加载
+        if (sourceFields.length === 0) {
+          console.log('[TableMapper] Source fields not in store, fetching from server...')
+          await this.$store.dispatch('field/fetchAll', this.table)
+          
+          // 重新从 store 获取
+          allFields = this.$store.getters['field/getAll'] || []
+          sourceFields = allFields.filter((f) => f.table_id === this.table.id)
+        }
+        
+        this.sourceFields = sourceFields.map((f) => ({
+          value: f.id,
+          label: f.name,
+        }))
+        console.log('[TableMapper] Source fields loaded:', this.sourceFields)
+      } catch (error) {
+        console.error('[TableMapper] Failed to load source fields:', error)
+        this.sourceFields = []
       }
     },
     async loadTargetFields() {

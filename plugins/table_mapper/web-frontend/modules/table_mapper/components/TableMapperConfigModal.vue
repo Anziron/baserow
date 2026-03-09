@@ -181,13 +181,13 @@ export default {
       }
     },
     async confirmDelete(config) {
-      const result = await this.$store.dispatch('modal/open', {
-        type: 'confirm',
-        title: this.$t('tableMapper.deleteConfig'),
-        content: this.$t('tableMapper.confirmDelete'),
-      })
-      if (result) {
-        await this.deleteConfig(config)
+      try {
+        const confirmed = confirm(this.$t('tableMapper.confirmDelete'))
+        if (confirmed) {
+          await this.deleteConfig(config)
+        }
+      } catch (error) {
+        console.error('[TableMapper] Delete confirmation error:', error)
       }
     },
     async deleteConfig(config) {
