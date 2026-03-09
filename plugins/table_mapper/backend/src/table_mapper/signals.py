@@ -73,19 +73,11 @@ def on_rows_created(sender, rows, before, user, table, model, **kwargs):
     """
     监听行创建事件
     当创建新行时，如果所有匹配字段都有值，触发映射处理
-    支持批量导入场景
     """
     from table_mapper.models import TableMappingConfig
     from table_mapper.tasks import process_mapping_task
     
-    # 检查是否是批量导入（通过 send_realtime_update 参数判断）
-    send_realtime_update = kwargs.get('send_realtime_update', True)
-    is_bulk_import = not send_realtime_update
-    
-    logger.info(
-        f"[Table Mapper] 收到 rows_created 信号, 表 {table.id}, {len(rows)} 行"
-        f"{' (批量导入)' if is_bulk_import else ''}"
-    )
+    logger.info(f"[Table Mapper] 收到 rows_created 信号, 表 {table.id}, {len(rows)} 行")
     
     # 查找该表作为源表的所有启用的映射配置
     configs = TableMappingConfig.objects.filter(
@@ -97,42 +89,28 @@ def on_rows_created(sender, rows, before, user, table, model, **kwargs):
         logger.debug(f"[Table Mapper] 表 {table.id} 没有映射配置")
         return
     
-    logger.info(f"[Table Mapper] 找到 {configs.count()} 个映射配置")
-    
     # 遍历每个配置
     for config in configs:
-        logger.info(
-            f"[Table Mapper] 处理配置 {config.id} ({config.name}), "
-            f"匹配字段对: {config.match_field_pairs}"
-        )
-        
         # 检查哪些行的所有匹配字段都有值
         rows_to_process = []
         for row in rows:
             all_fields_have_value = True
-            field_values_debug = {}
             
             for pair in config.match_field_pairs:
                 source_field_id = pair.get('source_field_id')
                 if source_field_id:
                     match_field_name = f"field_{source_field_id}"
                     match_value = getattr(row, match_field_name, None)
-                    field_values_debug[source_field_id] = match_value
                     
                     if not match_value:
                         all_fields_have_value = False
                         break
             
-            logger.debug(
-                f"[Table Mapper] 行 {row.id} 匹配字段值: {field_values_debug}, "
-                f"是否处理: {all_fields_have_value}"
-            )
-            
             if all_fields_have_value:
                 rows_to_process.append(row)
         
         if not rows_to_process:
-            logger.info(
+            logger.debug(
                 f"[Table Mapper] 配置 {config.id} 没有行需要处理（匹配字段为空）"
             )
             continue
@@ -150,12 +128,8 @@ def on_rows_created(sender, rows, before, user, table, model, **kwargs):
                     row_id=row.id,
                     table_id=table.id
                 )
-                logger.debug(
-                    f"[Table Mapper] 已提交任务: 配置 {config.id}, 行 {row.id}"
-                )
             except Exception as e:
                 logger.error(
                     f"[Table Mapper] 提交任务失败: 配置 {config.id}, "
-                    f"行 {row.id}, 错误: {e}",
-                    exc_info=True
+                    f"行 {row.id}, 错误: {e}"
                 )
