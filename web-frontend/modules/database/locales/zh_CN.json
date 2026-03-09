@@ -478,6 +478,9 @@
     "importPreview": "导入预览",
     "useUpsertField": "如果行已存在则更新",
     "upsertTooltip": "使用唯一字段匹配现有行，用导入的值覆盖数据。",
+    "replaceExistingData": "替换所有现有数据",
+    "replaceExistingDataTooltip": "在导入新数据之前删除所有现有行。这将保留表结构和配置，但会删除所有当前数据。",
+    "replaceExistingDataWarning": "⚠️ 警告：这将在导入前永久删除表中的所有现有行。",
     "stateRowCreation": "正在导入...",
     "statePreValidation": "正在验证数据...",
     "stateCreateTable": "正在创建表..."
