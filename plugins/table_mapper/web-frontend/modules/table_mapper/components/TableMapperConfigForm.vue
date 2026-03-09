@@ -23,18 +23,30 @@
       <FormGroup :label="$t('tableMapper.sourceMatchField')" required>
         <Dropdown
           v-model="localConfig.source_match_field"
-          :options="sourceFields"
           :placeholder="$t('tableMapper.selectField')"
-        />
+        >
+          <DropdownItem
+            v-for="field in sourceFields"
+            :key="field.value"
+            :name="field.label"
+            :value="field.value"
+          />
+        </Dropdown>
       </FormGroup>
 
       <FormGroup :label="$t('tableMapper.targetTable')" required>
         <Dropdown
           v-model="localConfig.target_table"
-          :options="tables"
           :placeholder="$t('tableMapper.selectTable')"
           @input="onTargetTableChange"
-        />
+        >
+          <DropdownItem
+            v-for="table in tables"
+            :key="table.value"
+            :name="table.label"
+            :value="table.value"
+          />
+        </Dropdown>
       </FormGroup>
 
       <FormGroup
@@ -44,9 +56,15 @@
       >
         <Dropdown
           v-model="localConfig.target_match_field"
-          :options="targetFields"
           :placeholder="$t('tableMapper.selectField')"
-        />
+        >
+          <DropdownItem
+            v-for="field in targetFields"
+            :key="field.value"
+            :name="field.label"
+            :value="field.value"
+          />
+        </Dropdown>
       </FormGroup>
     </div>
 
@@ -61,19 +79,31 @@
       >
         <Dropdown
           v-model="mapping.target_field_id"
-          :options="targetFields"
           :placeholder="$t('tableMapper.targetField')"
           class="field-mapping-row__field"
-        />
+        >
+          <DropdownItem
+            v-for="field in targetFields"
+            :key="field.value"
+            :name="field.label"
+            :value="field.value"
+          />
+        </Dropdown>
         <span class="field-mapping-row__arrow">
           {{ $t('tableMapper.mappingArrow') }}
         </span>
         <Dropdown
           v-model="mapping.source_field_id"
-          :options="sourceFields"
           :placeholder="$t('tableMapper.sourceField')"
           class="field-mapping-row__field"
-        />
+        >
+          <DropdownItem
+            v-for="field in sourceFields"
+            :key="field.value"
+            :name="field.label"
+            :value="field.value"
+          />
+        </Dropdown>
         <Button
           type="danger"
           size="small"
@@ -185,8 +215,27 @@
 </template>
 
 <script>
+import FormGroup from '@baserow/modules/core/components/FormGroup'
+import FormInput from '@baserow/modules/core/components/FormInput'
+import Dropdown from '@baserow/modules/core/components/Dropdown'
+import DropdownItem from '@baserow/modules/core/components/DropdownItem'
+import RadioGroup from '@baserow/modules/core/components/RadioGroup'
+import Radio from '@baserow/modules/core/components/Radio'
+import Checkbox from '@baserow/modules/core/components/Checkbox'
+import Button from '@baserow/modules/core/components/Button'
+
 export default {
   name: 'TableMapperConfigForm',
+  components: {
+    FormGroup,
+    FormInput,
+    Dropdown,
+    DropdownItem,
+    RadioGroup,
+    Radio,
+    Checkbox,
+    Button,
+  },
   props: {
     config: {
       type: Object,
