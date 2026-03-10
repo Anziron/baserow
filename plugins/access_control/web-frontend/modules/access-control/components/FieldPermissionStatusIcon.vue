@@ -14,8 +14,6 @@
 </template>
 
 <script>
-import fieldPermissionsService from '@access-control/services/fieldPermissions'
-
 export default {
   name: 'FieldPermissionStatusIcon',
   props: {
@@ -43,17 +41,7 @@ export default {
       required: true,
     },
   },
-  data() {
-    return {
-      hasPermissionRestriction: false,
-      permissionCount: 0,
-      loading: false,
-    }
-  },
   computed: {
-    fieldService() {
-      return fieldPermissionsService(this.$client)
-    },
     /**
      * 检查当前用户是否是工作空间管理员
      */
@@ -72,12 +60,43 @@ export default {
       // 备用检查
       return this.workspace.permissions === 'ADMIN'
     },
+    
+    /**
+     * 从 store 获取字段权限
+     */
+    fieldPermissions() {
+      if (!this.isWorkspaceAdmin) return null
+      return this.$store.getters['fieldPermissions/getFieldPermissions'](this.field.id)
+    },
+    
+    /**
+     * 检查是否有权限限制
+     */
+    hasPermissionRestriction() {
+      if (!this.isWorkspaceAdmin) return false
+      
+      // 如果权限未加载，返回 false（不显示图标）
+      if (this.fieldPermissions === null) return false
+      
+      // 检查是否有非默认权限
+      return this.fieldPermissions.some(p => p.permission_level !== 'editable')
+    },
+    
+    /**
+     * 权限限制数量
+     */
+    permissionCount() {
+      if (!this.fieldPermissions) return 0
+      return this.fieldPermissions.filter(p => p.permission_level !== 'editable').length
+    },
+    
     tooltipText() {
       if (this.permissionCount > 0) {
         return this.$t('accessControl.field.permissionRestricted')
       }
       return ''
     },
+    
     iconClass() {
       return {
         'field-permission-status-icon--restricted': this.permissionCount > 0,
@@ -85,16 +104,7 @@ export default {
       }
     },
   },
-  watch: {
-    'field.id': {
-      handler() {
-        this.checkPermissions()
-      },
-      immediate: true,
-    },
-  },
   mounted() {
-    this.checkPermissions()
     // 监听字段权限更新事件
     this.$bus.$on('access-control-field-permission-updated', this.handlePermissionUpdated)
   },
@@ -102,41 +112,14 @@ export default {
     this.$bus.$off('access-control-field-permission-updated', this.handlePermissionUpdated)
   },
   methods: {
-    async checkPermissions() {
-      if (!this.field || !this.field.id) {
-        this.hasPermissionRestriction = false
-        this.permissionCount = 0
-        return
-      }
-
-      // 只有管理员才能查看字段权限配置
-      if (!this.isWorkspaceAdmin) {
-        this.hasPermissionRestriction = false
-        this.permissionCount = 0
-        return
-      }
-
-      this.loading = true
-      try {
-        const { data: permissions } = await this.fieldService.getPermissions(this.field.id)
-        // 检查是否有任何非默认(非editable)的权限设置
-        const restrictedPermissions = permissions.filter(
-          p => p.permission_level !== 'editable'
-        )
-        this.permissionCount = restrictedPermissions.length
-        this.hasPermissionRestriction = this.permissionCount > 0
-      } catch (error) {
-        // 如果获取失败(可能是权限不足),不显示图标
-        this.hasPermissionRestriction = false
-        this.permissionCount = 0
-      } finally {
-        this.loading = false
-      }
-    },
     handlePermissionUpdated(event) {
-      // 如果更新的是当前字段,重新检查权限
+      // 如果更新的是当前字段,重新从 store 获取（store 会自动更新）
       if (event && event.fieldId === this.field.id) {
-        this.checkPermissions()
+        // 刷新字段权限
+        this.$store.dispatch('fieldPermissions/refreshFieldPermission', {
+          fieldId: this.field.id,
+          client: this.$client,
+        })
       }
     },
     handleClick() {

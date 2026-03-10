@@ -463,7 +463,7 @@ class PluginPermissionsView(APIView):
             defaults={"permission_level": data.get("permission_level", PluginPermission.PERMISSION_NONE)},
         )
         
-        # 通知用户权限已更�?
+        # 通知用户权限已更�?
         notify_plugin_permission_updated(
             user_id=target_user.id,
             workspace_id=workspace.id,
@@ -542,7 +542,7 @@ class PluginPermissionView(APIView):
             permission.permission_level = data["permission_level"]
         permission.save()
         
-        # 通知用户权限已更�?
+        # 通知用户权限已更�?
         notify_plugin_permission_updated(
             user_id=permission.user_id,
             workspace_id=workspace.id,
@@ -610,20 +610,20 @@ class CurrentUserPluginPermissionView(APIView):
         """获取当前用户对指定插件的权限级别"""
         workspace = CoreHandler().get_workspace(workspace_id)
         
-        # 检查用户是否在工作空间�?
+        # 检查用户是否在工作空间�?
         try:
             workspace_user = WorkspaceUser.objects.get(workspace=workspace, user=request.user)
         except WorkspaceUser.DoesNotExist:
             raise UserNotInWorkspace()
         
-        # 管理员拥有所有插件权�?
+        # 管理员拥有所有插件权�?
         if workspace_user.permissions == "ADMIN":
             return Response({
                 "permission_level": "use",
                 "is_admin": True,
             })
         
-        # 查询用户的插件权�?
+        # 查询用户的插件权�?
         try:
             permission = PluginPermission.objects.get(
                 workspace=workspace,
@@ -1096,7 +1096,7 @@ class FieldPermissionsView(APIView):
             },
         )
         
-        # 通知用户字段权限已更�?
+        # 通知用户字段权限已更�?
         notify_field_permission_updated(
             user_id=target_user.id,
             workspace_id=field.table.database.workspace_id,
@@ -1177,7 +1177,7 @@ class FieldPermissionView(APIView):
             permission.permission_level = data["permission_level"]
         permission.save()
         
-        # 通知用户字段权限已更�?
+        # 通知用户字段权限已更�?
         notify_field_permission_updated(
             user_id=permission.user_id,
             workspace_id=field.table.database.workspace_id,
@@ -1215,6 +1215,67 @@ class FieldPermissionView(APIView):
             raise FieldPermissionDoesNotExist()
         permission.delete()
         return Response(status=204)
+
+
+class TableFieldPermissionsBatchView(APIView):
+    """API view for batch retrieving all field permissions for a table."""
+    
+    permission_classes = (IsAuthenticated,)
+
+    @extend_schema(
+        parameters=[
+            OpenApiParameter(name="table_id", location=OpenApiParameter.PATH, type=OpenApiTypes.INT),
+        ],
+        tags=["Access Control"],
+        operation_id="list_table_field_permissions_batch",
+        description="Batch retrieves all field permissions for a table. Returns a dictionary mapping field IDs to their permission lists.",
+        responses={200: dict},
+    )
+    @map_exceptions(
+        {
+            TableDoesNotExist: ERROR_TABLE_DOES_NOT_EXIST,
+            UserNotInWorkspace: ERROR_USER_NOT_IN_GROUP,
+        }
+    )
+    def get(self, request, table_id):
+        table = get_table_or_raise(table_id)
+        
+        # 检查用户是否有权限访问该表
+        # 只有工作空间管理员才能查看字段权限配置
+        workspace = table.database.workspace
+        try:
+            workspace_user = WorkspaceUser.objects.get(workspace=workspace, user=request.user)
+            is_admin = workspace_user.permissions == "ADMIN"
+        except WorkspaceUser.DoesNotExist:
+            raise UserNotInWorkspace()
+        
+        # 如果不是管理员，返回空结果
+        if not is_admin:
+            return Response({})
+        
+        # 获取表的所有字段
+        from baserow.contrib.database.models import Field
+        fields = Field.objects.filter(table=table).values_list('id', flat=True)
+        
+        # 批量获取字段权限
+        permissions = FieldPermission.objects.filter(
+            field_id__in=fields
+        ).select_related("user", "field")
+        
+        # 按字段ID分组
+        result = {}
+        for perm in permissions:
+            field_id = perm.field_id
+            if field_id not in result:
+                result[field_id] = []
+            result[field_id].append(FieldPermissionSerializer(perm).data)
+        
+        # 为没有权限配置的字段添加空列表
+        for field_id in fields:
+            if field_id not in result:
+                result[field_id] = []
+        
+        return Response(result)
 
 
 # =============================================================================

@@ -4,6 +4,7 @@ import { FieldPermissionContextItemType } from '@access-control/fieldContextItem
 import { RowPermissionSidebarType } from '@access-control/rowModalSidebarTypes'
 import { AccessControlPermissionManagerType } from '@access-control/permissionManagerTypes'
 import pluginPermissionsStore from '@access-control/store/pluginPermissions'
+import fieldPermissionsStore from '@access-control/store/fieldPermissions'
 import { registerRealtimeEvents } from '@access-control/realtime'
 
 export default (context) => {
@@ -11,6 +12,9 @@ export default (context) => {
   
   // 注册插件权限 Vuex store 模块
   store.registerModule('pluginPermissions', pluginPermissionsStore)
+  
+  // 注册字段权限 Vuex store 模块
+  store.registerModule('fieldPermissions', fieldPermissionsStore)
   
   app.$registry.register('plugin', new AccessControlPlugin(context))
   

@@ -26,6 +26,22 @@ export class AccessControlPlugin extends BaserowPlugin {
   }
 
   /**
+   * 当表被选中时触发（用于批量加载字段权限）
+   * @param {Object} table - 表对象
+   * @param {Object} store - Vuex store
+   * @param {Object} client - HTTP 客户端
+   */
+  tableSelected({ table, store }, { $client }) {
+    // 批量加载表的所有字段权限
+    if (table && table.id) {
+      store.dispatch('fieldPermissions/loadTableFieldPermissions', {
+        tableId: table.id,
+        client: $client,
+      })
+    }
+  }
+
+  /**
    * 为表头添加预览功能组件
    * 允许管理员以其他成员的视角预览表格
    * @param {Object} view - 视图对象

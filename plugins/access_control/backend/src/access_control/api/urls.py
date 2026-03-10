@@ -24,6 +24,7 @@ from .views import (
     # Field Permissions
     FieldPermissionsView,
     FieldPermissionView,
+    TableFieldPermissionsBatchView,
     # Row Permissions
     RowPermissionsView,
     RowPermissionView,
@@ -130,5 +131,11 @@ urlpatterns = [
         r"^fields/(?P<field_id>[0-9]+)/permissions/(?P<permission_id>[0-9]+)/$",
         FieldPermissionView.as_view(),
         name="field_permission",
+    ),
+    # Batch Field Permissions
+    re_path(
+        r"^tables/(?P<table_id>[0-9]+)/field-permissions/batch/$",
+        TableFieldPermissionsBatchView.as_view(),
+        name="table_field_permissions_batch",
     ),
 ]
